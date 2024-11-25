@@ -15,21 +15,16 @@
 # For GNU Affero General Public License see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-#== If webRoot has not been difined, we will set appRoot to webRoot
-if [[ ! -n "$WEB_ROOT" ]]; then
-  export WEB_ROOT=$APP_ROOT
-fi
-
 STATIC_FILES_PATH="$WEB_ROOT/sites/default/files/"
 SETTINGS_FILES_PATH="$WEB_ROOT/sites/default/settings.php"
 OVERWRITE_SETTING="$APP_ROOT/.devpanel/.devpanel-drupal-overwrite-settings"
 
-
-#Create static directory
-if [ ! -d "$STATIC_PATH" ]; then
-  mkdir -p $STATIC_FILES_PATH
+if [[ ! -n "$APACHE_RUN_USER" ]]; then
+  export APACHE_RUN_USER=www-data
 fi
-
+if [[ ! -n "$APACHE_RUN_GROUP" ]]; then
+  export APACHE_RUN_GROUP=www-data
+fi
 
 #== Composer install.
 if [[ -f "$APP_ROOT/composer.json" ]]; then
@@ -63,7 +58,7 @@ sudo sed -i -e "s/^\$settings\['hash_salt'\].*/\$settings\['hash_salt'\] = '$DRU
 [[ ! -d $STATIC_FILES_PATH ]] && sudo mkdir --mode 775 $STATIC_FILES_PATH || sudo chmod 775 -R $STATIC_FILES_PATH
 
 #== Extract static files
-if [[ $(drush status bootstrap) == '' ]]; then
+if [[ $(mysql -h$DB_HOST -P$DB_PORT -u$DB_USER -p$DB_PASSWORD $DB_NAME -e "show tables;") == '' ]]; then
   if [[ -f "$APP_ROOT/.devpanel/dumps/files.tgz" ]]; then
     echo  'Extract static files ...'
     sudo mkdir -p $STATIC_FILES_PATH
@@ -83,6 +78,6 @@ fi
 #== Update permission
 echo 'Update permission ....'
 drush cr
-sudo chown -R www-data:www-data $STATIC_FILES_PATH
-sudo chown www:www-data $SETTINGS_FILES_PATH
-sudo chmod 664 $SETTINGS_FILES_PATH
+sudo chown -R $APACHE_RUN_USER:$APACHE_RUN_GROUP $STATIC_FILES_PATH
+sudo chown www:www $SETTINGS_FILES_PATH
+sudo chmod 644 $SETTINGS_FILES_PATH
