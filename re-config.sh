@@ -34,10 +34,6 @@ if [[ -f "$WEB_ROOT/composer.json" ]]; then
   cd $WEB_ROOT && composer install
 fi
 
-#== Install drush locally
-echo "Install drush locally ..."
-composer require drush/drush
-
 
 cd $WEB_ROOT && git submodule update --init --recursive
 

@@ -49,6 +49,7 @@ cd $WEB_ROOT && git submodule update --init --recursive
 if [[ $(mysql -h$DB_HOST -P$DB_PORT -u$DB_USER -p$DB_PASSWORD $DB_NAME -e "show tables;") == '' ]]; then
   echo "Site installing ..."
   cd $APP_ROOT
+  sudo chown -R $APACHE_RUN_USER:$APACHE_RUN_GROUP $STATIC_FILES_PATH
   drush si --account-name=devpanel --account-pass=devpanel  --site-name="Drupal 11" --db-url=mysql://$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT/$DB_NAME -y
   drush cr
 fi
