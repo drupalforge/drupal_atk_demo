@@ -1,0 +1,7 @@
+lambda_output.output:
+  path: '/lambda-output'
+  defaults:
+    _controller: '\Drupal\pl_drupal_forge\Controller\LambdaOutputController::fetchLambdaOutput'
+    _title: 'Lambda Output'
+  requirements:
+    _permission: 'access content'

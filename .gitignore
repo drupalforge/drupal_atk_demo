@@ -1,0 +1,7 @@
+web/sites/default/files/php
+web/sites/default/files/js
+web/sites/default/files/css
+vendor
+web/core
+web/modules/contrib
+.idea

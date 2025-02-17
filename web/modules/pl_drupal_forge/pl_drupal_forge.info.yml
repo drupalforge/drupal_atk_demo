@@ -1,0 +1,5 @@
+name: 'PL Drupal Forge'
+type: module
+description: 'Display results of Playwright console from within Drupal.'
+package: Custom
+core_version_requirement: ^10 || ^11
