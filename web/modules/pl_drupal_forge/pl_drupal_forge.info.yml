@@ -1,5 +1,5 @@
 name: 'PL Drupal Forge'
 type: module
-description: 'Display results of Playwright console from within Drupal.'
+description: 'Trigger the test and capture the output .'
 package: Custom
-core_version_requirement: ^10 || ^11
+core_version_requirement: ^10.3 || ^11

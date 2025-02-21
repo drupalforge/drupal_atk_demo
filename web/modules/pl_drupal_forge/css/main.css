@@ -1,0 +1,13 @@
+#the-button {
+  position: relative;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 10px;
+  background: yellow;
+  color: red;
+  width: 100%;
+}

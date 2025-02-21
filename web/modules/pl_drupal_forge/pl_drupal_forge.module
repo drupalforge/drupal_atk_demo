@@ -4,3 +4,30 @@
  * @file
  * Primary module hooks for pl_drupal_forge module.
  */
+
+/**
+ * <strong>
+ *   <em> Implements hook_help().
+ * </em>
+ */
+function pl_drupal_forge_help($route_name, \Drupal\Core\Routing\RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.pl_drupal_forge':
+      return '<p>' . t('PL Drupal Forge help message placeholder') . '</p>';
+  }
+}
+
+/**
+ * <strong>
+ *   <em> Implements hook_theme().
+ * </em>
+ */
+function pl_drupal_forge_theme($existing, $type, $theme, $path) {
+  return [
+    'start_page_template' => [
+      'variables' => [
+        'base_url' => null,
+      ],
+    ],
+  ];
+}

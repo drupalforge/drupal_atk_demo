@@ -1,7 +1,7 @@
-lambda_output.output:
-  path: '/lambda-output'
+pl_drupal_forge.start:
+  path: '/test-me'
   defaults:
-    _controller: '\Drupal\pl_drupal_forge\Controller\LambdaOutputController::fetchLambdaOutput'
-    _title: 'Lambda Output'
+    _controller: '\Drupal\pl_drupal_forge\Controller\AtkClientController::start'
+    _title: 'Test me!'
   requirements:
     _permission: 'access content'
