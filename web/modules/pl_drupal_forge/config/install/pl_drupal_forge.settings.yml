@@ -1,0 +1,8 @@
+# AWS system profile (in ~/.aws/credentials).
+profile: 'performantlabs'
+
+# AWS region.
+region: 'us-east-1'
+
+# AWS Lambda function name.
+function: 'atk-lambda-func-dev-execute_tests'

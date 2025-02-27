@@ -5,6 +5,8 @@
  * Primary module hooks for pl_drupal_forge module.
  */
 
+use Drupal\user\Entity\Role;
+
 /**
  * <strong>
  *   <em> Implements hook_help().
@@ -26,8 +28,35 @@ function pl_drupal_forge_theme($existing, $type, $theme, $path) {
   return [
     'start_page_template' => [
       'variables' => [
-        'base_url' => null,
       ],
     ],
+    'base_url' => null,
   ];
+}
+
+/**
+ * Implements hook_install().
+ *
+ * Due to weird order of Drupal module initialization, we can't
+ * use module's config in the service constructor, so initialize it here.
+ *
+ * @return void
+ */
+function pl_drupal_forge_install() {
+  // Ensure config is installed.
+  \Drupal::service('config.installer')->installDefaultConfig('module', 'pl_drupal_forge');
+
+  // Init ATK (AWS) client.
+  \Drupal::service('pl_drupal_forge.atk_client')->init();
+
+  $role = Role::load('anonymous');
+  if ($role) {
+    $role->grantPermission('restful get pl_drupal_forge_logs');
+    $role->grantPermission('restful post pl_drupal_forge_invoke');
+    $role->save();
+
+    \Drupal::logger('pl_drupal_forge')->notice('' .
+      'Permission granted to anonymous users.
+      Enjoy your AWS and Azure bills 🤪');
+  }
 }

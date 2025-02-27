@@ -10,16 +10,8 @@ use GuzzleHttp\Client;
 
 class AtkClientController extends ControllerBase {
 
-  protected $httpClient;
-
-  public function __construct(Client $http_client) {
-    $this->httpClient = $http_client;
-  }
-
   public static function create(ContainerInterface $container) {
-    return new static(
-      $container->get('http_client')
-    );
+    return new static();
   }
 
   /**
@@ -35,22 +27,6 @@ class AtkClientController extends ControllerBase {
       '#theme' => 'start_page_template',
       '#base_url' => $this->getBaseUrl(),
     ];
-  }
-
-  public function fetchLambdaOutput() {
-    $url = 'https://your-api-gateway-url.amazonaws.com/prod/lambda-endpoint';
-
-    try {
-      $response = $this->httpClient->request('GET', $url);
-      $data = json_decode($response->getBody()->getContents(), TRUE);
-      return [
-        '#theme' => 'lambda_output',
-        '#output' => $data,
-      ];
-    } catch (\Exception $e) {
-      \Drupal::logger('lambda_output')->error($e->getMessage());
-      return ['#markup' => 'Error fetching Lambda output.'];
-    }
   }
 
   protected function getBaseUrl() {

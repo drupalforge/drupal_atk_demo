@@ -2,10 +2,4 @@ services:
 
   # A client to run ATK tests on AWS Lambda
   pl_drupal_forge.atk_client:
-    class: Drupal\pl_drupal_forge\Service\AtkLambdaService
-    arguments:
-      - '%region%'
-
-parameters:
-  region: 'us-east-1'
-
+    class: Drupal\pl_drupal_forge\Service\AtkClientService

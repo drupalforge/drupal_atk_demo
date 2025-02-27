@@ -1,0 +1,12 @@
+id: pl_drupal_forge_logs_config
+plugin_id: pl_drupal_forge_logs
+granularity: method
+configuration:
+  GET:
+    supported_formats:
+      - json
+    supported_auth:
+      - cookie
+  resource_permissions:
+    GET:
+      anonymous: true  # ✅ Allows anonymous access

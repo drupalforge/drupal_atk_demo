@@ -1,0 +1,12 @@
+id: pl_drupal_forge_invoke_config
+plugin_id: pl_drupal_forge_invoke
+granularity: method
+configuration:
+  POST:
+    supported_formats:
+      - json
+    supported_auth:
+      - cookie
+  resource_permissions:
+    POST:
+      anonymous: true  # ✅ Allows anonymous access

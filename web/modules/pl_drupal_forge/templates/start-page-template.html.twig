@@ -7,5 +7,63 @@
     <a href="https://www.drupal.org/project/automated_testing_kit/"
        target="_blank">Automated Testing Kit 💧</a>
     against <a href="{{ base_url }}">{{ base_url }}</a>.</p>
+  <input type="hidden" name="url" value="{{ base_url }}">
+  <!-- TODO select tags from the multiselect input -->
+  <input type="hidden" name="grep" value="@ATK-PW-1000">
   <button id="the-button">Press the button</button>
+  <div id="log-pane" style="display: none;">
+    <pre id="log-content"></pre>
+  </div>
 </div>
+
+<script>
+  function invoke() {
+    // disable the button to prevent occasional double-click
+    $('#the-button').prop('disabled', true);
+    // clear previous logs, if any
+    $('#log-content').innerText = '';
+
+    fetch('/pl_drupal_forge/invoke', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        url: $('[name="url"]').value,
+        grep: $('[name="grep"]').value,
+      })
+    }).then(() => {
+    })
+  }
+
+  let lastTimestamp;
+  function fetchLogs() {
+    let input = '/pl_drupal_forge/logs';
+    if (lastTimestamp) {
+      input += `?timestamp=${lastTimestamp}`;
+    }
+    fetch(input).then((response) => {
+      return response.json();
+    }).then((data) => {
+      if (data.status === 'running') {
+        $('#log-pane').style.display = 'block';
+        setTimeout(fetchLogs, 1000);
+      }
+      lastTimestamp = data.timestamp;
+
+      if (!data.hasOwnProperty('logs')) {
+        // bad bad response... don't know how to handle it...
+        return;
+      }
+      for (const log of data.logs) {
+        $('#log-content').innerText = $('#log-content').innerText +
+          `${new Date(log.timestamp).toString()}            ${log.message}\n`;
+      }
+
+      // if ended, enable the button again
+      if (data.status === 'ended') {
+        $('#the-button').prop('disabled', false);
+      }
+    });
+  }
+
+  fetchLogs();
+</script>

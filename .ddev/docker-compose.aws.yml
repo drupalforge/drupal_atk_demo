@@ -1,0 +1,5 @@
+services:
+  web:
+    volumes:
+      - "$HOME/.aws:$HOME/.aws"
+
