@@ -3,3 +3,5 @@ type: module
 description: 'Trigger the test and capture the output .'
 package: Custom
 core_version_requirement: ^10.3 || ^11
+dependencies:
+  - drupal:rest

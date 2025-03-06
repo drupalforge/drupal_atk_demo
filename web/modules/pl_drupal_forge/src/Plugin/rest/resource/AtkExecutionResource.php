@@ -5,7 +5,6 @@ namespace Drupal\pl_drupal_forge\Plugin\rest\resource;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\pl_drupal_forge\Service\AtkClientService;
 use Drupal\rest\Attribute\RestResource;
-use Drupal\rest\Plugin\ResourceBase;
 use Drupal\rest\ResourceResponse;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -20,7 +19,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
     'create' => '/pl_drupal_forge/invoke'
   ],
 )]
-class AtkExecutionResource extends ResourceBase {
+class AtkExecutionResource extends ResourceBase1 {
   protected AtkClientService $atkClientService;
 
   public function __construct(
@@ -54,13 +53,13 @@ class AtkExecutionResource extends ResourceBase {
   /**
    * Invoke the function.
    *
-   * @param $payload array Function payload.
    * @return ResourceResponse
    */
-  public function post(array $payload) {
-    $this->logger->info('Invoke with payload: @payload', ['@payload' => $payload]);
+  public function post() {
+    $payload = json_decode(\Drupal::request()->getContent(), true);
     $this->atkClientService->invokeFunction($payload);
-    return new ResourceResponse();
+    // Response object must be set, even empty, otherwise $.ajax() considers it an error.
+    return self::response([]);
   }
 
 }

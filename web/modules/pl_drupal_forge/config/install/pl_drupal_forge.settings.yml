@@ -6,3 +6,13 @@ region: 'us-east-1'
 
 # AWS Lambda function name.
 function: 'atk-lambda-func-dev-execute_tests'
+
+cloudWatch:
+  # Group for custom logs in AWS CloudWatch.
+  group: '/custom/atk_logs'
+  # Timeout, in ms, waiting while the log stream created.
+  timeout: 5000
+
+s3:
+  # Bucket for reports in AWS S3.
+  bucket: 'atk-playwright-results-79b8267d359c4c82bb9deae495980657'

@@ -28,9 +28,9 @@ function pl_drupal_forge_theme($existing, $type, $theme, $path) {
   return [
     'start_page_template' => [
       'variables' => [
+        'base_url' => null,
       ],
     ],
-    'base_url' => null,
   ];
 }
 

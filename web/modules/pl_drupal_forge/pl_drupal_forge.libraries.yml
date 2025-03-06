@@ -1,4 +1,8 @@
 main:
   css:
     theme:
-      css/main.css: {}
+      css/main.css: { }
+  js:
+    js/main.js: { }
+  dependencies:
+    - core/jquery

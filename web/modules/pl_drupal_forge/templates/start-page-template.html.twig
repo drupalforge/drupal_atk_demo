@@ -5,12 +5,12 @@
     should be an inspiring story on the value of end-to-end testing). </p>
   <p>Press the  button below to run
     <a href="https://www.drupal.org/project/automated_testing_kit/"
-       target="_blank">Automated Testing Kit 💧</a>
-    against <a href="{{ base_url }}">{{ base_url }}</a>.</p>
-  <input type="hidden" name="url" value="{{ base_url }}">
+       target="_blank">Automated Testing Kit 💧</a>.</p>
+  <label for="input-url" class="form-required form-item__label">URL</label>
+  <input id="input-url" type="text" name="url" value="{{ base_url }}" class="field">
   <!-- TODO select tags from the multiselect input -->
   <input type="hidden" name="grep" value="@ATK-PW-1000">
-  <button id="the-button">Press the button</button>
+  <button id="the-button" onclick="invoke()">Press the button</button>
   <div id="log-pane" style="display: none;">
     <pre id="log-content"></pre>
   </div>
@@ -19,19 +19,22 @@
 <script>
   function invoke() {
     // disable the button to prevent occasional double-click
-    $('#the-button').prop('disabled', true);
+    $('#the-button').prop('disabled', true).text('Running...');
     // clear previous logs, if any
-    $('#log-content').innerText = '';
+    $('#log-content').text('');
 
-    fetch('/pl_drupal_forge/invoke', {
+    $.ajax('/pl_drupal_forge/invoke?_format=json', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        url: $('[name="url"]').value,
-        grep: $('[name="grep"]').value,
-      })
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data: JSON.stringify({
+        url: $('[name="url"]').val(),
+        grep: $('[name="grep"]').val(),
+      }),
     }).then(() => {
-    })
+      fetchLogs();
+    }).catch(onError);
   }
 
   let lastTimestamp;
@@ -40,11 +43,11 @@
     if (lastTimestamp) {
       input += `?timestamp=${lastTimestamp}`;
     }
-    fetch(input).then((response) => {
-      return response.json();
-    }).then((data) => {
+    $.ajax(input).then((response) => {
+      // automatically parsed by jQuery
+      const data = response;
       if (data.status === 'running') {
-        $('#log-pane').style.display = 'block';
+        $('#log-pane').css('display', 'block');
         setTimeout(fetchLogs, 1000);
       }
       lastTimestamp = data.timestamp;
@@ -54,16 +57,32 @@
         return;
       }
       for (const log of data.logs) {
-        $('#log-content').innerText = $('#log-content').innerText +
-          `${new Date(log.timestamp).toString()}            ${log.message}\n`;
+        $('#log-content').append(
+          `${new Date(log.timestamp).toLocaleString()}            ${log.message}\n`
+        );
+        $('#log-pane').scrollTop($('#log-pane').prop('scrollHeight'));
       }
 
       // if ended, enable the button again
-      if (data.status === 'ended') {
-        $('#the-button').prop('disabled', false);
+      if (data.status === 'ended' || data.status === 'timeout') {
+        $('#the-button').prop('disabled', false).text('Press the button');
       }
-    });
+    }).catch(onError);
   }
 
-  fetchLogs();
+  function onError(error) {
+    // in case error handle fails, we can see the original object in console.
+    console.error(error);
+
+    // Drupal returns response as a piece of HTML, so handle it here
+    const message = error.responseText || '<strong>Unhandled error. Check out browser console for details.</strong>';
+    const $messages = $('.messages-list');
+    $messages.removeClass('hidden');
+    const $1 = $('<div class="messages messages--error" style="white-space: pre-line;"></div>').html(message);
+    $messages.append($1);
+    // scrollIntoView is not a function
+    // [0] will return native element
+    $messages[0].scrollIntoView();
+  }
+
 </script>

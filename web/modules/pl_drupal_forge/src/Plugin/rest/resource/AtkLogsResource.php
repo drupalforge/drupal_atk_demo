@@ -17,7 +17,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
     'canonical' => '/pl_drupal_forge/logs',
   ],
 )]
-class AtkLogsResource extends ResourceBase {
+class AtkLogsResource extends ResourceBase1 {
   protected AtkClientService $atkClientService;
 
   public function __construct(
@@ -48,7 +48,7 @@ class AtkLogsResource extends ResourceBase {
    * Return invocation status and the newest logs, in format:
    * <pre>
    *   {
-   *     "status": "<idle|running|ended>",
+   *     "status": "<idle|running|ended|timeout>",
    *     "timestamp": <the last log event timestamp, in epoch ms, use this as an input for the next call to get new records>
    *     "logs": [
    *       {
@@ -67,6 +67,6 @@ class AtkLogsResource extends ResourceBase {
     $timestamp = \Drupal::request()->query->get('timestamp');
     $data = $this->atkClientService->fetchLogs($timestamp);
 
-    return new ResourceResponse($data);
+    return self::response($data);
   }
 }

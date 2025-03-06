@@ -1,0 +1,21 @@
+parameters:
+  monolog.channel_handlers:
+    default: ['stdout']
+  monolog.handler.stdout:
+    type: stream
+    path: 'php://stdout'
+    level: debug
+    formatter: monolog.formatter.line
+
+services:
+  monolog.handler.stdout:
+    class: Monolog\Handler\StreamHandler
+    arguments: ['php://stdout', 'debug']
+    tags:
+      - { name: monolog.handler, channel: default }
+  monolog.logger:
+    class: Monolog\Logger
+    arguments: ['app']
+    calls:
+      - [ pushHandler, [ '@monolog.handler.stdout' ] ]
+

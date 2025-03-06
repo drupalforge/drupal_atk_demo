@@ -4,11 +4,30 @@ namespace Drupal\pl_drupal_forge\Service;
 
 use Aws\CloudWatchLogs\CloudWatchLogsClient;
 use Aws\Lambda\LambdaClient;
+use Drupal\pl_drupal_forge\Helper\Helper;
+use Psr\Log\LoggerInterface;
 
 class AtkClientService {
   protected \Drupal\Core\Config\ImmutableConfig $config;
   protected LambdaClient $lambdaClient;
   protected CloudWatchLogsClient $logsClient;
+  protected LoggerInterface $logger;
+
+  public function __construct() {
+    // There can  be two situations here.
+    // 1. We just installed the module, in this case $config is not
+    //    available and the service will be initialized in hook_install().
+    // 2. We started the service when the module is installed, in this
+    //    case initialize it here.
+    $this->logger = \Drupal::logger('pl_drupal_forge');
+    $config = \Drupal::config('pl_drupal_forge.settings');
+    if ($config->get()) {
+      $this->init();
+    }
+    else {
+      $this->logger->notice('Postpone initialization because config is not ready yet.');
+    }
+  }
 
   /**
    * @return void
@@ -25,24 +44,31 @@ class AtkClientService {
   }
 
   public function invokeFunction(array $payload): void {
+    $executionId = \Drupal::service('uuid')->generate();
+    $payload['uuid'] = $executionId;
     $function = $this->config->get('function');
+    $this->logger->info('Invoke @function with payload: @payload', ['@function' => $function, '@payload' => $payload]);
     $result = $this->lambdaClient->invoke([
       'FunctionName' => $function,
       'InvocationType' => 'Event',
-      'InvokeArgs' => json_encode($payload),
+      'Payload' => json_encode($payload),
     ]);
-    // Capture the unique execution ID.
-    $executionId = $result['ResponseMetadata']['RequestId'];
+    // Debug, debug, debug...
+    $this->logger->debug('Lambda response: @result', ['@result' => $result]);
 
-    // Store this ID in session.
+    // Store execution ID in session.
     $session = \Drupal::request()->getSession();
     $session->set('executionId', $executionId);
+    $session->set('startTime', Helper::timestamp());
+    $this->logger->info('Saved executionId: @executionId', ['@executionId' => $executionId]);
   }
 
   public function fetchLogs(int|null $lastTimestamp):array {
     // Get execution ID from the session.
     $session = \Drupal::request()->getSession();
     $executionId = $session->get('executionId');
+    $startTime = $session->get('startTime');
+    $this->logger->info('Pulled executionId: @executionId', ['@executionId' => $executionId]);
 
     // Get the previous log events' ID
     // as an associative array with key equal ID.
@@ -55,30 +81,57 @@ class AtkClientService {
         'status' => 'idle',
       ];
     }
-    $function = $this->config->get('function');
-    $logGroupName = "/aws/lambda/$function";
-    $result = $this->logsClient->filterLogEvents([
-      'logGroupName' => $logGroupName,
-      'startTime' => $lastTimestamp ? $lastTimestamp - 500 : 0,
-      'filterPattern' => "\"$executionId\"",
-    ]);
+    $logGroupName = $this->config->get('cloudWatch.group');
+    $timeout = $this->config->get('cloudWatch.timeout');
+    try {
+      $result = $this->logsClient->getLogEvents([
+        'logGroupName' => $logGroupName,
+        'logStreamName' => $executionId,
+        'startTime' => $lastTimestamp ? $lastTimestamp - 500 : 0,
+      ]);
+    } catch (\Aws\CloudWatchLogs\Exception\CloudWatchLogsException $exception) {
+      $timestamp = Helper::timestamp();
+      $diff = $timestamp - $startTime;
+      $this->logger->warning("Logs are not ready within {$diff}ms, exception is {$exception->getMessage()}");
+      // If timeout isn't exceeded yet, return "running", else "timeout".
+      if ($diff < $timeout) {
+        return [
+          'timestamp' => $lastTimestamp,
+          'logs' => [],
+          'status' => 'running',
+        ];
+      }
+      return [
+        'timestamp' => $lastTimestamp,
+        'logs' => [[
+          'timestamp' => $timestamp,
+          'message' => "Logs are not ready within {$diff}ms",
+        ]],
+        'status' => 'timeout',
+      ];
+    }
+    // Debug, debug, debug...
+    $this->logger->debug('Lambda response: @result', ['@result' => $result]);
 
     // Get the events from the response.
     $events = $result['events'];
 
+    // Event doesn't have a unique ID, so to check duplicates, let use hash of timestamp and message.
+    $id = fn($event) => md5((string)$event['timestamp'] . $event['message']);
+
     // Filter out duplicates.
     if ($lastTimestamp) {
-      $events = array_filter($events, fn($event) => !array_key_exists($event['eventId'], $eventIdSet));
+      $events = array_filter($events, fn($event) => !array_key_exists($id($event), $eventIdSet));
     }
 
     // Update eventIdSet.
     foreach ($events as $event) {
-      $eventIdSet[$event['eventId']] = true;
+      $eventIdSet[$id($event)] = true;
     }
     $session->set('eventIdSet', $eventIdSet);
 
     // Sort events by timestamp.
-    usort($events, fn($event1, $event2) => $event1['timestamp'] <=> $event2['timestamp']);
+    // usort($events, fn($event1, $event2) => $event1['timestamp'] <=> $event2['timestamp']);
 
     // The last timestamp is now the last in the array.
     if (count($events) > 0) {
@@ -89,18 +142,18 @@ class AtkClientService {
     // since there is no way to get response of the asynchronous call.
     $executionEnded = false;
     foreach ($events as $event) {
-      if (str_contains($event['message'], "END RequestId: $executionId")) {
+      if (str_contains($event['message'], "END Execution:")) {
         $executionEnded = true;
       }
+      // TODO grab execution response, put to session and add to return value.
     }
     if ($executionEnded) {
       $session->remove('executionId');
+      $session->remove('startTime');
       $session->remove('eventIdSet');
     }
 
-    // TODO similar way grab execution response, put to session and add to return value.
-
-    $logs = array_map(fn($event) => ['timestamp' => $event['timestamp'], 'message' => $event['message']], $events);
+    $logs = array_values(array_map(fn($event) => ['timestamp' => $event['timestamp'], 'message' => $event['message']], $events));
     return [
       'timestamp' => $lastTimestamp,
       'logs' => $logs,
