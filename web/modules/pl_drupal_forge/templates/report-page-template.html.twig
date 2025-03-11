@@ -1,0 +1,89 @@
+{{ attach_library('pl_drupal_forge/report') }}
+
+<!-- Display stats -->
+<div id="stats">
+  {% if report.stats %}
+    {% if report.stats.expected %}
+      <span class="stats passed">{{ report.stats.expected }} Passed</span>
+    {% endif %}
+    {% if report.stats.skipped %}
+      <span class="stats skipped">{{ report.stats.skipped }} Skipped</span>
+    {% endif %}
+    {% if report.stats.unexpected %}
+      <span class="stats failed">{{ report.stats.unexpected }} Failed</span>
+    {% endif %}
+  {% endif %}
+</div>
+
+<!-- Display suites -->
+<div>
+  {% if report.suites %}
+    {% for suite in report.suites %}
+      <div class="suite {{ suite.class }}">
+        {{ suite.title|default('Untitled.') }}
+        <details>
+          <summary>{{ suite.summary|default('Expand') }}</summary>
+          <!-- Display specs x tests within a suite -->
+          <!-- Tests are normally projects i.e. browsers / viewports within a spec. -->
+          <!-- Flatten them in form of "[<?>] <?>" like normal reporter does. -->
+          {% if suite.specs %}
+            {% for spec in suite.specs %}
+              {% if spec.tests %}
+                {% for test in spec.tests %}
+                  <div class="spec">
+                    [{{ test.projectName|default('?') }}] {{ spec.title|default('?') }}
+                      {% if test.results %}
+                        <details {{ test.status == 'unexpected' ? 'open': '' }}>
+                          <!-- Display results line by line.-->
+                          {% for result in test.results %}
+                            <span class="result">
+                              {% if result.startTime %}
+                                <span>{{ result.startTime }}</span>
+                              {% endif %}
+                              {% if result.status %}
+                                <span class="{{ result.status }}">{{ result.status }}</span>
+                              {% endif %}
+                              {% if result.duration %}
+                                <span class="duration">{{ result.duration }}ms</span>
+                              {% endif %}
+                              {% if result.error.stack %}
+                                <pre>{{ result.error.stack|replace({'[2m': '<strong>', '[22m': '</strong>', '[30m': '<span style="color: black;">', '[31m': '<span style="color: red;">', '[32m': '<span style="color: green;">', '[33m': '<span style="color: yellow;">', '[34m': '<span style="color: blue;">', '[35m': '<span style="color: magenta;">', '[36m': '<span style="color: cyan;">', '[37m': '<span style="color: white;">', '[39m': '</span>'})|raw }}</pre>
+                              {% endif %}
+                              {% if result.attachments %}
+                                {% for attachment in result.attachments %}
+                                  {% if attachment.name == 'screenshot' %}
+                                    <a href="#{{ attachment.id }}" class="popup-link">📷</a>
+                                    <div id="{{ attachment.id }}" class="popup">
+                                      <div class="popup-content">
+                                        <img src="{{ attachment.path }}" alt="{{ attachment.path }}">
+                                        <a href="#" class="popup-close-link">❌</a>
+                                      </div>
+                                    </div>
+                                  {% endif %}
+                                  {% if attachment.name == 'video' %}
+                                    <a href="#{{ attachment.id }}" class="popup-link">📽</a>
+                                    <div id="{{ attachment.id }}" class="popup">
+                                      <video controls>
+                                        <source src="{{ attachment.path }}" type="{{ attachment.contentType }}">
+                                        Your browser does not support HTML video.
+                                      </video>
+                                      <a href="#" class="popup-close-link">❌</a>
+                                    </div>
+                                  {% endif %}
+                                {% endfor %}
+                              {% endif %}
+                            </span>
+                            <br>
+                          {% endfor %}
+                        </details>
+                      {% endif %}
+                  </div>
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        </details>
+      </div>
+    {% endfor %}
+  {% endif %}
+</div>

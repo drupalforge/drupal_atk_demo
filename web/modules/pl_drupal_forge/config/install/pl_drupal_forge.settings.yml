@@ -14,5 +14,47 @@ cloudWatch:
   timeout: 5000
 
 s3:
-  # Bucket for reports in AWS S3.
-  bucket: 'atk-playwright-results-79b8267d359c4c82bb9deae495980657'
+  # URL prefix for reports in AWS S3.
+  prefix: 'https://atk-playwright-results-79b8267d359c4c82bb9deae495980657.s3.us-east-1.amazonaws.com/'
+
+# Tags to select from.
+# To update the list, execute in the tests home:
+#
+# grep -r 'test(' tests/**/*.js | grep -Po '@[\w-]*' | sort | uniq | while read LIN; do echo "'$LIN'"; done
+tags:
+  - '@alters-db'
+  - '@ATK-PW-1000'
+  - '@ATK-PW-1010'
+  - '@ATK-PW-1011'
+  - '@ATK-PW-1030'
+  - '@ATK-PW-1050'
+  - '@ATK-PW-1060'
+  - '@ATK-PW-1061'
+  - '@ATK-PW-1070'
+  - '@ATK-PW-1071'
+  - '@ATK-PW-1100'
+  - '@ATK-PW-1101'
+  - '@ATK-PW-1110'
+  - '@ATK-PW-1111'
+  - '@ATK-PW-1120'
+  - '@ATK-PW-1130'
+  - '@ATK-PW-1150'
+  - '@ATK-PW-1160'
+  - '@ATK-PW-1161'
+  - '@ATK-PW-1162'
+  - '@ATK-PW-1163'
+  - '@ATK-PY-1012'
+  - '@contact-us'
+  - '@content'
+  - '@drush'
+  - '@empty'
+  - '@media'
+  - '@menu'
+  - '@node'
+  - '@page-error'
+  - '@register-login'
+  - '@search'
+  - '@smoke'
+  - '@taxonomy'
+  - '@user'
+  - '@xml-sitemap'

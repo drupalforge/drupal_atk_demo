@@ -4,3 +4,7 @@ if (typeof window.jQuery !== "undefined") {
 } else {
   console.log('No goddamn jQuery, you are loser!');
 }
+
+$(document).ready(function () {
+  $('.js-multiselect').select2();
+});

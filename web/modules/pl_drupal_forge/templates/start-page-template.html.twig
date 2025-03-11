@@ -7,9 +7,14 @@
     <a href="https://www.drupal.org/project/automated_testing_kit/"
        target="_blank">Automated Testing Kit 💧</a>.</p>
   <label for="input-url" class="form-required form-item__label">URL</label>
-  <input id="input-url" type="text" name="url" value="{{ base_url }}" class="field">
-  <!-- TODO select tags from the multiselect input -->
-  <input type="hidden" name="grep" value="@ATK-PW-1000">
+  <input id="input-url" type="text" name="url" value="{{ base_url }}" class="field" style="min-width: 400px">
+  <!-- select tags from the multiselect input -->
+  <label for="tags" class="form-item__label">Tags</label>
+  <select id="tags" class="field js-multiselect" style="min-width: 400px" name="tag[]" multiple="multiple">
+    {% for tag in tags %}
+      <option value="{{ tag }}">{{ tag }}</option>
+    {% endfor %}
+  </select>
   <button id="the-button" onclick="invoke()">Press the button</button>
   <div id="log-pane" style="display: none;">
     <pre id="log-content"></pre>
@@ -23,6 +28,9 @@
     // clear previous logs, if any
     $('#log-content').text('');
 
+    // form grep as a regex
+    const tags = $.map($('#tags :selected'), e => e.value);
+    const grep = !tags.length ? null : `(${tags.join('|')})`;
     $.ajax('/pl_drupal_forge/invoke?_format=json', {
       method: 'POST',
       headers: {
@@ -30,7 +38,7 @@
       },
       data: JSON.stringify({
         url: $('[name="url"]').val(),
-        grep: $('[name="grep"]').val(),
+        grep,
       }),
     }).then(() => {
       fetchLogs();
@@ -38,6 +46,7 @@
   }
 
   let lastTimestamp;
+
   function fetchLogs() {
     let input = '/pl_drupal_forge/logs';
     if (lastTimestamp) {
@@ -66,8 +75,30 @@
       // if ended, enable the button again
       if (data.status === 'ended' || data.status === 'timeout') {
         $('#the-button').prop('disabled', false).text('Press the button');
+        // if received message, show it up
+        if (data.message) {
+          let message = data.message;
+          if (data.resultUri) {
+            message += `<br><a href="/test-report?report-uri=${encodeURIComponent(data.resultUri)}">Report is ready.</a>`;
+          }
+          showMessage(message, data.statusCode !== 200);
+        }
       }
     }).catch(onError);
+  }
+
+  // function showMessage(data) {
+  //   $m
+  // }
+
+  function showMessage(message, isError = true) {
+    const $messages = $('.messages-list');
+    $messages.removeClass('hidden');
+    const $1 = $(`<div class="messages ${isError ? 'messages--error': ''}" style="white-space: pre-line;"></div>`).html(message);
+    $messages.append($1);
+    // scrollIntoView is not a function
+    // [0] will return native element
+    $messages[0].scrollIntoView();
   }
 
   function onError(error) {
@@ -76,13 +107,7 @@
 
     // Drupal returns response as a piece of HTML, so handle it here
     const message = error.responseText || '<strong>Unhandled error. Check out browser console for details.</strong>';
-    const $messages = $('.messages-list');
-    $messages.removeClass('hidden');
-    const $1 = $('<div class="messages messages--error" style="white-space: pre-line;"></div>').html(message);
-    $messages.append($1);
-    // scrollIntoView is not a function
-    // [0] will return native element
-    $messages[0].scrollIntoView();
+    showMessage(message);
   }
 
 </script>

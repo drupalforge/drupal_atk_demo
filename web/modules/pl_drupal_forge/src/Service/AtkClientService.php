@@ -145,7 +145,9 @@ class AtkClientService {
       if (str_contains($event['message'], "END Execution:")) {
         $executionEnded = true;
       }
-      // TODO grab execution response, put to session and add to return value.
+      // The rest of the log line must be a JSON-serialized function response.
+      // Parse it and add to our response.
+      $functionResponse = json_decode(str_replace('END Execution:', '', $event['message']), true);
     }
     if ($executionEnded) {
       $session->remove('executionId');
@@ -154,11 +156,15 @@ class AtkClientService {
     }
 
     $logs = array_values(array_map(fn($event) => ['timestamp' => $event['timestamp'], 'message' => $event['message']], $events));
-    return [
+    $response = [
       'timestamp' => $lastTimestamp,
       'logs' => $logs,
       'status' => $executionEnded ? 'ended' : 'running',
     ];
+    if (isset($functionResponse) && is_array($functionResponse)) {
+      $response = array_merge($functionResponse, $response);
+    }
+    return $response;
   }
 
 }

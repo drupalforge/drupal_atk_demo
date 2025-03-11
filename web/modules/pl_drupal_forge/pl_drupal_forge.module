@@ -29,6 +29,12 @@ function pl_drupal_forge_theme($existing, $type, $theme, $path) {
     'start_page_template' => [
       'variables' => [
         'base_url' => null,
+        'tags' => [],
+      ],
+    ],
+    'report_page_template' => [
+      'variables' => [
+        'report' => null,
       ],
     ],
   ];

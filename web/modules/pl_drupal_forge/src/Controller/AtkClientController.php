@@ -26,6 +26,7 @@ class AtkClientController extends ControllerBase {
     return [
       '#theme' => 'start_page_template',
       '#base_url' => $this->getBaseUrl(),
+      '#tags' => $this->config('pl_drupal_forge.settings')->get('tags'),
     ];
   }
 

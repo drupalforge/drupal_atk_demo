@@ -10,7 +10,8 @@
   background: yellow;
   color: red;
   width: 100%;
-  margin-bottom: 20px;
+  margin-top: var(--sp2);
+  margin-bottom: var(--sp2);
 }
 
 #the-button:disabled {
@@ -24,3 +25,18 @@
   overflow-y: scroll;
   background-color: #dbe6ff;
 }
+
+/*start tinkering js-multiselect*/
+* {
+  --sp2: 20px;
+  --sp3: 42px;
+}
+
+[type="search"] {
+  min-height: 29px !important;
+}
+
+textarea {
+  display: inline !important;
+}
+/*end tinkering js-multiselect*/

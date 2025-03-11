@@ -5,3 +5,12 @@ pl_drupal_forge.start:
     _title: 'Test me!'
   requirements:
     _permission: 'access content'
+pl_drupal_forge.report:
+  path: '/test-report'
+  defaults:
+    _controller: '\Drupal\pl_drupal_forge\Controller\AtkReportController::report'
+    _title: 'Test Report'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: TRUE
