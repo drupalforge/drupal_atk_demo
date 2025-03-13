@@ -5,3 +5,10 @@ vendor
 web/core
 web/modules/contrib
 .idea
+/web/sites/default/files/xmlsitemap
+/web/sites/default/files/media-icons
+/tests
+/recipes
+/playwright.config.js
+/playwright.atk.config.js
+/package.json
