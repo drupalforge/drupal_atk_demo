@@ -62,7 +62,7 @@
     if (lastTimestamp) {
       input += `?timestamp=${lastTimestamp}`;
     }
-    $DRAPI(input).then((response) => {
+    $.ajax(input).then((response) => {
       // automatically parsed by jQuery
       const data = response;
       if (data.status === 'running') {
