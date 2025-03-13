@@ -11,16 +11,11 @@ ddev launch
 ```
 
 ## Configuration
-Add the AWS credentials to .aws/credentials:
-
-```
-[performantlabs]
-aws_access_key_id = [XXX]
-aws_secret_access_key = [xxx]
-```
-
 See [pl_drupal_forge.settings.yml](web/modules/pl_drupal_forge/config/install/pl_drupal_forge.settings.yml).
-AWS shares the credentials above (via [docker-compose.aws.yml](.ddev/docker-compose.aws.yml)).
+AWS shares the credentials from ~/.aws (via [docker-compose.aws.yml](.ddev/docker-compose.aws.yml)).
+If you don't have AWS configured on the host machine, do the following steps:
+ - copy .aws directory to home: `cp -r ./.aws ~`
+ - replace `[XXX]` with actual keys
 
 ## Usage
 Open "Test Me!" page and follow the instructions.
