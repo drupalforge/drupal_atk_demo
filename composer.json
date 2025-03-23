@@ -34,7 +34,7 @@
         "drupal/redirect": "^1.9",
         "drupal/token": "^1.13",
         "drupal/webform": "^6.2",
-        "drupal/xmlsitemap": "^1.5",
+        "drupal/xmlsitemap": "^2.0",
         "drush/drush": "^13.3",
         "ewcomposer/unpack": "dev-master"
     },
