@@ -17,6 +17,9 @@ If you don't have AWS configured on the host machine, do the following steps:
  - copy .aws directory to home: `cp -r ./.aws ~`
  - replace `[XXX]` with actual keys
 
+You should have the `credentials` and `config` files in your ~/.aws directory.
+Restart DDEV.
+
 ## Usage
 Open "Test Me!" page and follow the instructions.
 
