@@ -89,7 +89,10 @@
         if (data.message) {
           let message = data.message;
           if (data.resultUri) {
-            message += `<br><a href="/test-report?report-uri=${encodeURIComponent(data.resultUri)}">Report is ready.</a>`;
+            // To use JSON report pre-processed on the server:
+            // message += `<br><a href="/test-report?report-uri=${encodeURIComponent(data.resultUri)}">Report is ready.</a>`;
+            // To use standard HTML report in the new tab:
+            message += `<br><a href="${data.resultUri}" target="_blank">Report is ready.</a>`;
           }
           showMessage(message, data.statusCode !== 200);
         }
