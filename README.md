@@ -49,7 +49,7 @@ ddev share
 
 ## Exposing SSH to the Internet
 The command above will expose http port only. To expose SSH (which
-is needed for Drush commands), do the following.
+is needed for executing Drush commands from the tests), do the following.
 
 Authorize your SSH keys to DDEV. Restart.
 Authorize ATK Lambda Function's SSH keys (the following command implying that they are
