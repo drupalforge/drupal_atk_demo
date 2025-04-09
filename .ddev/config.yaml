@@ -270,6 +270,9 @@ corepack_enable: true
 # additional_hostnames: []
 # can have their intended affect. 'override_config' affects only behavior of the
 # config.*.yaml file it exists in.
+hooks:
+  post-start:
+    - exec-host: ddev sshd:config
 
 # Many DDEV commands can be extended to run tasks before or after the
 # DDEV command is executed, for example "post-start", "post-import-db",

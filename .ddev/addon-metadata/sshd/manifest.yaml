@@ -1,0 +1,14 @@
+name: sshd
+repository: https://github.com/hanoii/ddev-sshd/tarball/main
+version: ""
+install_date: "2025-04-08T16:24:40-06:00"
+project_files:
+    - config.sshd.yaml
+    - docker-compose.sshd.yaml
+    - web-build/Dockerfile.sshd
+    - web-build/ddev-sshd.conf
+    - commands/host/sshd:config
+    - commands/web/sshd:keys
+    - homeadditions/.bashrc.sshd
+global_files: []
+removal_actions: []

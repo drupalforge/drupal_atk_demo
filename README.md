@@ -46,3 +46,75 @@ Then run:
 ```shell
 ddev share
 ```
+
+## Exposing SSH to the Internet
+The command above will expose http port only. To expose SSH (which
+is needed for Drush commands), do the following.
+
+Authorize your SSH keys to DDEV. Restart.
+Authorize ATK Lambda Function's SSH keys (the following command implying that they are
+in the same directory).
+```shell
+ddev auth ssh -d ~/.ssh/
+ddev restart
+```
+
+Check out SSH port mapping.
+```shell
+ddev describe
+```
+
+You should see a line like this:
+```text
+- web:22 -> 127.0.0.1:32832
+```
+
+Check you can connect to the container. Replace the port and your user.
+```shell
+ssh -o StrictHostKeyChecking=no -p 32832 -o SetEnv=IS_DDEV_PROJECT=true ilya@localhost
+```
+
+Now it's time to connect ngrok.
+
+Create `ngrok.yml` with the following content. Replace authorization token, http and ssh port.
+```yaml
+version: 2
+authtoken: '[xxx]'
+tunnels:
+  web:
+    proto: http
+    addr: http://127.0.0.1:32804
+  ssh:
+    proto: tcp
+    addr: 32803
+```
+
+Run:
+```shell
+ngrok start --config ngrok.yml --all
+```
+
+You should see two ports forwarding:
+```text
+Forwarding                    tcp://0.tcp.ngrok.io:10186 -> localhost:32832
+Forwarding                    https://17368dc6c817.ngrok.app -> http://127.0.0.1:32833
+```
+
+Check that you can connect to the container:
+```shell
+ssh -o StrictHostKeyChecking=no -p 10186 -o SetEnv=IS_DDEV_PROJECT=true ilya@0.tcp.ngrok.io
+```
+
+Now, to run SSH commands from the tests, module settings should be updated.
+
+Check module settings:
+```shell
+ddev drush cget pl_drupal_forge.settings targetSite
+```
+
+If necessary, update host, port, and username. For example
+```shell
+ddev drush cset pl_drupal_forge.settings targetSite.port 10186
+```
+
+Double-check module settings. Now you can go to the Test me! page and run the tests.

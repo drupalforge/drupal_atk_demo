@@ -17,6 +17,16 @@ s3:
   # URL prefix for reports in AWS S3.
   prefix: 'https://atk-playwright-results-79b8267d359c4c82bb9deae495980657.s3.us-east-1.amazonaws.com/'
 
+# Drush command to be executed by tests.
+drushCmd: 'export IS_DDEV_PROJECT=true && /var/www/html/vendor/bin/drush'
+
+# SSH connection info to this site, for execution Drush commands.
+targetSite:
+  isTarget: true
+  host: '0.tcp.ngrok.io'
+  port: 13353
+  username: 'ilya'
+
 # Tags to select from.
 # To update the list, execute in the tests home:
 #

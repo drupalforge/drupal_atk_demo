@@ -46,6 +46,8 @@ class AtkClientService {
   public function invokeFunction(array $payload): void {
     $executionId = \Drupal::service('uuid')->generate();
     $payload['uuid'] = $executionId;
+    $payload['drushCmd'] = $this->config->get('drushCmd');
+    $payload['targetSite'] = $this->config->get('targetSite');
     $function = $this->config->get('function');
     $this->logger->info('Invoke @function with payload: @payload', ['@function' => $function, '@payload' => $payload]);
     $result = $this->lambdaClient->invoke([
