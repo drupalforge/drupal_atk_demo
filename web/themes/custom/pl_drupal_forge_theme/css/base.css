@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+:root{
+  --pl-blue-darker: #1893B4;
+  --pl-blue-darkest: #0C7895;
+  --pl-blue-light: #BEEAF1;
+  --pl-blue-lighter: #E4F5F8;
+  --pl-blue: #62BBCB;
+  --pl-neutral-dark: #6A6A6A;
+  --pl-neutral-darker: #3E3B3B;
+  --pl-neutral-darkest: #1D1D1D;
+  --pl-neutral-light: #CCD1D1;
+  --pl-neutral-lighter: #F7F7F7;
+  --pl-neutral: #898989;
+  --pl-orange-light: #F6BD91;
+  --pl-orange-lighter: #FDEFE4;
+  --pl-orange: #EC6E0E;
+  --pl-tan-light: #FAF8F6;
+  --pl-tan: #F2EFED;
+  --pl-white: #FFFFFF
+}
+
+body {
+  font-size: 1rem;
+  font-family: 'Rubik', sans-serif;
+  color: var(--pl-neutral-darkest);
+  background-color: var(--pl-white);
+}

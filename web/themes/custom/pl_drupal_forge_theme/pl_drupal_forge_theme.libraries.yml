@@ -1,0 +1,6 @@
+styles:
+  css:
+    theme:
+      css/base.css: {}
+      css/utilities.css: {}
+      css/region/footer.css: {}

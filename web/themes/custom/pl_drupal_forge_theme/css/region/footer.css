@@ -1,0 +1,27 @@
+.region--footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: var(--pl-neutral-darkest);
+  color: var(--pl-neutral-light);
+  padding: 3rem 0 2rem;
+  font-size: 0.75rem;
+  font-weight: 300;
+  line-height: 1.5;
+  font-family: 'Rubik', sans-serif;
+
+  a {
+    color: var(--pl-blue-light);
+  }
+
+  a:hover {
+    color: var(--pl-white);
+  }
+}
+
+
+.pl-logo img {
+  width: 200px;
+}
