@@ -4,3 +4,5 @@ styles:
       css/base.css: {}
       css/utilities.css: {}
       css/region/footer.css: {}
+      css/region/header.css: {}
+      css/region/hero.css: {}

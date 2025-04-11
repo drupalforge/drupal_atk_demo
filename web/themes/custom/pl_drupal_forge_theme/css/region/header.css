@@ -1,0 +1,11 @@
+.region--header {
+  padding: 1rem 0;
+  background-color: var(--pl-white);
+  color: var(--pl-neutral-darkest);
+
+  .pl-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

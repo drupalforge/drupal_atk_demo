@@ -15,7 +15,12 @@
 
 {% if content %}
   <div{{ attributes.addClass('region--' ~ region) }}>
-    <div class="pl-container">
+    <div class="pl-container header__container">
+      <div class="header__logo">
+        <a href="{{ url('<front>') }}">
+          <img src="{{ directory }}/images/atk-logo.png" alt="{{ 'Home'|t }}" />
+        </a>
+      </div>
       {{ content }}
     </div>
   </div>

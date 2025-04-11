@@ -25,4 +25,5 @@ body {
   font-family: 'Rubik', sans-serif;
   color: var(--pl-neutral-darkest);
   background-color: var(--pl-white);
+  font-variant-ligatures: none;
 }
