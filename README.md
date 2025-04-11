@@ -69,12 +69,18 @@ You should see a line like this:
 - web:22 -> 127.0.0.1:32832
 ```
 
-Check you can connect to the container. Replace the port and your user.
+Check that you can connect to the container. Determine your username in the container:
 ```shell
-ssh -o StrictHostKeyChecking=no -p 32832 -o SetEnv=IS_DDEV_PROJECT=true ilya@localhost
+ddev ssh
+whoami
 ```
 
-Now it's time to connect ngrok.
+Replace the port from the `ddev describe` above and your username from above. If this works, exit the shell afterwards.
+```shell
+ssh -o StrictHostKeyChecking=no -p <port> -o SetEnv=IS_DDEV_PROJECT=true <username>@localhost
+```
+
+Now it's time to connect ngrok. Fetch the ngrok authorization token from [https://dashboard.ngrok.com/get-started/your-authtoken](https://dashboard.ngrok.com/get-started/your-authtoken).
 
 Create `ngrok.yml` with the following content. Replace authorization token, http and ssh port.
 ```yaml
@@ -83,10 +89,10 @@ authtoken: '[xxx]'
 tunnels:
   web:
     proto: http
-    addr: http://127.0.0.1:32804
+    addr: http://127.0.0.1:<port_web:80>
   ssh:
     proto: tcp
-    addr: 32803
+    addr: <port_web:22>
 ```
 
 Run:
@@ -100,10 +106,19 @@ Forwarding                    tcp://0.tcp.ngrok.io:10186 -> localhost:32832
 Forwarding                    https://17368dc6c817.ngrok.app -> http://127.0.0.1:32833
 ```
 
-Check that you can connect to the container:
+Open another terminal and check that you can connect to the container. Take the username from above, 
+the host and port frrom the tcp://<ngrok_host>:<ngrok_port>.
 ```shell
-ssh -o StrictHostKeyChecking=no -p 10186 -o SetEnv=IS_DDEV_PROJECT=true ilya@0.tcp.ngrok.io
+ssh -o StrictHostKeyChecking=no -p <ngrok_port> -o SetEnv=IS_DDEV_PROJECT=true <username>@<ngrok_host>
 ```
+
+You should log in and see something like:
+```shell
+Warning: Permanently added '[4.tcp.ngrok.io]:12859' (ED25519) to the list of known hosts.
+Linux pl-drupal-forge-web 6.13.7-orbstack-00283-g9d1400e7e9c6 #104 SMP Mon Mar 17 06:15:48 UTC 2025 aarch64
+```
+
+Exit the ssh shell.
 
 Now, to run SSH commands from the tests, module settings should be updated.
 
@@ -112,9 +127,20 @@ Check module settings:
 ddev drush cget pl_drupal_forge.settings targetSite
 ```
 
-If necessary, update host, port, and username. For example
+You should see something like this:
 ```shell
-ddev drush cset pl_drupal_forge.settings targetSite.port 10186
+'pl_drupal_forge.settings:targetSite':
+  isTarget: true
+  host: 0.tcp.ngrok.io
+  port: 13353
+  username: ilya
 ```
 
-Double-check module settings. Now you can go to the Test me! page and run the tests.
+These may be wrong. Update the host, port, and username. For example
+```shell
+ddev drush cset pl_drupal_forge.settings targetSite.host <ngrok_host>
+ddev drush cset pl_drupal_forge.settings targetSite.port <ngrok_port>
+ddev drush cset pl_drupal_forge.settings targetSite.username <username>
+```
+
+Double-check the module settings. Launch the site, visit Test me! and run the tests.
