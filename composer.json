@@ -33,6 +33,7 @@
         "drupal/pathauto": "^1.0",
         "drupal/redirect": "^1.9",
         "drupal/token": "^1.13",
+        "drupal/twig_vardumper": "^3.2",
         "drupal/webform": "^6.2",
         "drupal/xmlsitemap": "^2.0",
         "drush/drush": "^13.3",
