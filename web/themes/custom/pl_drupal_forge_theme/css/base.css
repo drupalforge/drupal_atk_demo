@@ -1,27 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
-:root{
+:root {
   /* Colors */
-  --pl-blue-darker: #1893B4;
-  --pl-blue-darkest: #0C7895;
-  --pl-blue-light: #BEEAF1;
-  --pl-blue-lighter: #E4F5F8;
-  --pl-blue: #62BBCB;
-  --pl-neutral-dark: #6A6A6A;
-  --pl-neutral-darker: #3E3B3B;
-  --pl-neutral-darkest: #1D1D1D;
-  --pl-neutral-light: #CCD1D1;
-  --pl-neutral-lighter: #F7F7F7;
+  --pl-blue-darker: #1893b4;
+  --pl-blue-darkest: #0c7895;
+  --pl-blue: #62bbcb;
+  --pl-blue-light: #beeaf1;
+  --pl-blue-lighter: #e4f5f8;
+  --pl-blue-lightest: #f2fafc;
+  --pl-neutral-darkest: #1d1d1d;
+  --pl-neutral-darker: #3e3b3b;
+  --pl-neutral-dark: #6a6a6a;
   --pl-neutral: #898989;
-  --pl-orange-light: #F6BD91;
-  --pl-orange-lighter: #FDEFE4;
-  --pl-orange: #EC6E0E;
-  --pl-tan-light: #FAF8F6;
-  --pl-tan: #F2EFED;
-  --pl-white: #FFFFFF;
+  --pl-neutral-light: #ccd1d1;
+  --pl-neutral-lighter: #f7f7f7;
+  --pl-white: #ffffff;
+  --pl-orange: #ec6e0e;
+  --pl-orange-light: #f6bd91;
+  --pl-orange-lighter: #fdefe4;
+  --pl-tan: #f2efed;
+  --pl-tan-light: #faf8f6;
+  --pl-overlay: rgba(44, 56, 60, 0.7);
 
   /* Shadows */
-  --pl-card-default-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  --pl-card-default-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
 body {
@@ -45,7 +48,37 @@ h3 {
   font-size: 1.25rem;
   font-weight: 600;
 }
+a.pl-button,
+button.pl-button {
+  align-items: center;
+  background-color: var(--pl-blue-darker);
+  border-radius: 10rem;
+  color: var(--pl-white);
+  display: flex;
+  font-size: 0.875rem;
+  font-weight: 500;
+  gap: 0.5rem;
+  justify-content: center;
+  letter-spacing: 0.015em;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
 
+  &:hover {
+    background-color: var(--pl-blue-darkest);
+  }
+
+  &:active {
+    background-color: var(--pl-blue-darker);
+  }
+
+  &:focus {
+    outline-offset: 2px;
+  }
+}
+
+.pl-button--full {
+  align-self: stretch;
+}
 
 .main-menu {
   align-items: center;

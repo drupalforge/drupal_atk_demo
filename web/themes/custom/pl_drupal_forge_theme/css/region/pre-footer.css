@@ -3,9 +3,45 @@
   padding: 3rem 0;
 }
 
+.pre-footer__container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 0 3.5rem;
+
+  @media screen and (min-width: 768px) {
+    align-items: stretch;
+    flex-direction: row;
+    padding: 0 2rem;
+  }
+}
+
 .cta-card {
   background: var(--pl-white);
   border-radius: 0.75rem;
   box-shadow: var(--pl-card-default-shadow);
-  padding: 1.875rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+  padding: 1.5rem;
+  row-gap: 2rem;
+  width: 100%;
+}
+
+.cta-card__text {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+}
+
+h3.cta-card__heading {
+  margin: 0;
+}
+
+p.cta-card__description {
+  color: var(--pl-neutral-dark);
+  font-weight: 400;
+  margin: 0;
 }
