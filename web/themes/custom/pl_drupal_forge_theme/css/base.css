@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
 :root{
+  /* Colors */
   --pl-blue-darker: #1893B4;
   --pl-blue-darkest: #0C7895;
   --pl-blue-light: #BEEAF1;
@@ -17,8 +18,11 @@
   --pl-orange: #EC6E0E;
   --pl-tan-light: #FAF8F6;
   --pl-tan: #F2EFED;
-  --pl-white: #FFFFFF
-;}
+  --pl-white: #FFFFFF;
+
+  /* Shadows */
+  --pl-card-default-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
 
 body {
   background-color: var(--pl-white);
@@ -27,6 +31,21 @@ body {
   font-size: 1rem;
   font-variant-ligatures: none;
 }
+
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+h2 {
+  font-size: 2.25rem;
+  font-weight: 700;
+}
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
 
 .main-menu {
   align-items: center;

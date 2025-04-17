@@ -1,0 +1,11 @@
+.region--pre_footer {
+  background-color: var(--pl-neutral-lighter);
+  padding: 3rem 0;
+}
+
+.cta-card {
+  background: var(--pl-white);
+  border-radius: 0.75rem;
+  box-shadow: var(--pl-card-default-shadow);
+  padding: 1.875rem;
+}

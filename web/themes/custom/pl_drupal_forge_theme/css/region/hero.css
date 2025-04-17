@@ -1,5 +1,26 @@
 .region--hero {
   background: linear-gradient(224deg, rgba(228, 245, 248, 0.40) 20.46%, rgba(202, 233, 238, 0.40) 42.91%, rgba(175, 220, 228, 0.70) 72.54%);
-  padding: 4rem 0;
+  padding: 6.25rem 0;
   text-align: center;
+}
+
+
+.hero-text {
+  margin: 0 auto;
+  text-wrap: balance;
+  width: 80%;
+
+  h1 {
+    font-size: 4.5rem;
+    line-height: 4.75rem;
+    margin: 0 0 2rem;
+  }
+
+  p {
+    font-size: 1.25rem;
+    letter-spacing: 0.02em;
+    line-height: 1.5;
+    margin: 0 auto;
+    width: 80%;
+  }
 }

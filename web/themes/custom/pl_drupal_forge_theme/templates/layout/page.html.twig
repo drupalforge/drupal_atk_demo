@@ -58,8 +58,13 @@
     <div class="layout-content">
       {{ page.content }}
     </div>{# /.layout-content #}
-
   </main>
+
+  {% if page.pre_footer %}
+    <div class="layout-pre-footer">
+      {{ page.pre_footer }}
+    </div>
+  {% endif %}
 
   {% if page.footer %}
     <footer role="contentinfo">

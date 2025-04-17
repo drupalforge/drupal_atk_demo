@@ -12,4 +12,5 @@ regions:
   hero: 'Hero'
   admin: 'Administration'
   content: 'Content'
+  pre_footer: 'Pre Footer'
   footer: 'Footer'
