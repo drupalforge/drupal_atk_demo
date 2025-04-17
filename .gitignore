@@ -12,3 +12,4 @@ web/modules/contrib
 /playwright.config.js
 /playwright.atk.config.js
 /package.json
+.prettierrc.json
