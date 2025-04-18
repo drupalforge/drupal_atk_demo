@@ -1,0 +1,30 @@
+uuid: 804e4268-bc5d-4c83-86de-e6321fbef7e6
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:cta_card:ccf7dedb-954c-4809-9232-2c5c43cb8fec'
+  module:
+    - block_content
+    - system
+  theme:
+    - pl_drupal_forge_theme
+id: pl_drupal_forge_theme_card1
+theme: pl_drupal_forge_theme
+region: pre_footer
+weight: -5
+provider: null
+plugin: 'block_content:ccf7dedb-954c-4809-9232-2c5c43cb8fec'
+settings:
+  id: 'block_content:ccf7dedb-954c-4809-9232-2c5c43cb8fec'
+  label: 'Card 1'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'

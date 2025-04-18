@@ -1,0 +1,20 @@
+uuid: c3a2d02f-c04c-4aa1-bdc0-2a842668fc82
+langcode: en
+status: true
+dependencies:
+  theme:
+    - pl_drupal_forge_theme
+_core:
+  default_config_hash: Q9_2whdOj1YIomfvsIfopROW4FT_X5pY0DjdOiOaQ5U
+id: pl_drupal_forge_theme_primary_admin_actions
+theme: pl_drupal_forge_theme
+region: admin
+weight: -4
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

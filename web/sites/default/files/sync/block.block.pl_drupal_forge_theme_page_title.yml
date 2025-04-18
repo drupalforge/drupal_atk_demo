@@ -1,0 +1,26 @@
+uuid: cb21c393-6f03-45b6-96cf-ee2c3c602398
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - pl_drupal_forge_theme
+_core:
+  default_config_hash: 6aOgWsNTXjqrDm98TXSAjP6qd2nCijD1xw45MrnbK-Y
+id: pl_drupal_forge_theme_page_title
+theme: pl_drupal_forge_theme
+region: content
+weight: -6
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: '<front>'

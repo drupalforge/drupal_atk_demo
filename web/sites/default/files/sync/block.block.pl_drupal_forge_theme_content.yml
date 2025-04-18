@@ -1,0 +1,22 @@
+uuid: 63176aa5-099f-4d77-9d64-6a219b81d989
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - pl_drupal_forge_theme
+_core:
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
+id: pl_drupal_forge_theme_content
+theme: pl_drupal_forge_theme
+region: content
+weight: -5
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

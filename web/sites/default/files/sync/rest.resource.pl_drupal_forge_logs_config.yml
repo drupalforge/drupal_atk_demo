@@ -1,0 +1,22 @@
+uuid: 92c5a957-469f-4e80-9e7d-4979f3ff058a
+langcode: en
+status: true
+dependencies:
+  module:
+    - pl_drupal_forge
+    - serialization
+    - user
+_core:
+  default_config_hash: 4IJfj3VrE0yRR23ZEzZf5h_UViv1OAIXkYGdS8mezys
+id: pl_drupal_forge_logs_config
+plugin_id: pl_drupal_forge_logs
+granularity: method
+configuration:
+  GET:
+    supported_formats:
+      - json
+    supported_auth:
+      - cookie
+  resource_permissions:
+    GET:
+      anonymous: true

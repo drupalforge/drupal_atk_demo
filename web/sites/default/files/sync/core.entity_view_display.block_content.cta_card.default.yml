@@ -1,0 +1,54 @@
+uuid: 3f81cb9f-200a-4f47-a5e1-653254655291
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cta_card
+    - field.field.block_content.cta_card.field_card_description
+    - field.field.block_content.cta_card.field_card_heading
+    - field.field.block_content.cta_card.field_card_icon
+    - field.field.block_content.cta_card.field_card_link
+  module:
+    - link
+id: block_content.cta_card.default
+targetEntityType: block_content
+bundle: cta_card
+mode: default
+content:
+  field_card_description:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_card_heading:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_card_icon:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_card_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: null
+      url_only: false
+      url_plain: false
+      rel: nofollow
+      target: _blank
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

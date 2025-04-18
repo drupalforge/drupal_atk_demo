@@ -1,0 +1,23 @@
+uuid: 4631c96a-4a5b-4ebd-b34e-5de27290cc3e
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.restricted_html
+    - rest.resource.pl_drupal_forge_invoke_config
+    - rest.resource.pl_drupal_forge_logs_config
+  module:
+    - filter
+    - rest
+    - system
+_core:
+  default_config_hash: 6WavjUYXIegP9AAg2zXGx54MWIVoomC3SZhNiqe-Dyk
+id: anonymous
+label: 'Anonymous user'
+weight: 0
+is_admin: false
+permissions:
+  - 'access content'
+  - 'restful get pl_drupal_forge_logs'
+  - 'restful post pl_drupal_forge_invoke'
+  - 'use text format restricted_html'

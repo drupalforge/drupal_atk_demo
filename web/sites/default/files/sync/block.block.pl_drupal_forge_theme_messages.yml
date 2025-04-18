@@ -1,0 +1,22 @@
+uuid: 3fa7cdad-6a97-4495-b9de-d3f85e0cdf0f
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - pl_drupal_forge_theme
+_core:
+  default_config_hash: BZ5tpW7H8X4PVGRm3MImTIHd2tN0eF7zOtp4SpRYUA0
+id: pl_drupal_forge_theme_messages
+theme: pl_drupal_forge_theme
+region: admin
+weight: -3
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  label_display: '0'
+  provider: system
+visibility: {  }
