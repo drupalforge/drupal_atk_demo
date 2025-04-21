@@ -10,6 +10,7 @@ hooks:
         cmd: |-
           composer -n install --no-dev
           drush cr
+
       - branch: "staging"
         # matches release on "develop" branch only
         # run commands or scripts from cmd below... eg:
@@ -18,6 +19,7 @@ hooks:
         cmd: |-
           composer -n install --no-dev
           drush cr
+
       - branch: "develop"
         # matches release on "develop" branch only
         # run commands or scripts from cmd below... eg:
@@ -26,6 +28,7 @@ hooks:
         cmd: |-
           composer -n install
           drush cr
+
       - branch: "*"
         # matches release on "any" branch only
         # run commands or scripts from cmd below... eg:
