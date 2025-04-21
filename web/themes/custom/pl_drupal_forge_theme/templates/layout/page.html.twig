@@ -50,6 +50,36 @@
   </header>
 
   {{ page.hero }}
+
+  {# Create ac-hoc region for front page only #}
+  {% if is_front %}
+    {{ include('@pl_drupal_forge_theme/partials/site-slogan.html.twig') }}
+  {% endif %}
+
+  {% if page.primary_menu %}
+    <nav role="navigation" aria-label="{{ 'Primary menu'|t }}">
+      {{ page.primary_menu }}
+    </nav>
+  {% endif %}
+
+  {% if page.secondary_menu %}
+    <nav role="navigation" aria-label="{{ 'Secondary menu'|t }}">
+      {{ page.secondary_menu }}
+    </nav>
+  {% endif %}
+
+  {% if page.breadcrumb %}
+    <div class="layout-breadcrumb">
+      {{ page.breadcrumb }}
+    </div>
+  {% endif %}
+
+  {{ page.highlighted }}
+
+  {{ page.help }}
+
+  {{ messages }}
+
   {{ page.admin }}
 
   <main role="main">

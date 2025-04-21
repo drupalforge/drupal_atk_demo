@@ -1,0 +1,162 @@
+.region--site-slogan {
+  position: relative;
+}
+
+.site-slogan__container {
+  align-items: center;
+  color: var(--pl-white);
+  display: flex;
+  font-size: 2.25rem;
+  font-weight: 500;
+  justify-content: center;
+  letter-spacing: 0.02em;
+  padding-block: 2.5rem;
+  position: relative;
+  text-align: center;
+  z-index: 2;
+}
+
+.site-slogan__background {
+  background: linear-gradient(
+    135deg,
+    rgba(24, 147, 180, 0.95) 20%,
+    #1893b4 95%
+  );
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+
+  .bubble {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    display: inline-block;
+    height: 3.5rem;
+    position: absolute;
+    width: 3.5rem;
+  }
+  .bubble-1 {
+    animation: move-1 40s infinite;
+    left: 5%;
+    opacity: 0.25;
+    top: 26%;
+    transform: translate(0, 0) scale(0.6);
+  }
+  .bubble-2 {
+    animation: move-2 41s infinite;
+    left: 7%;
+    opacity: 0.2;
+    top: 40%;
+    transform: translate(0, 0) scale(1.15);
+  }
+  .bubble-3 {
+    animation: move-3 42s infinite;
+    left: 12%;
+    opacity: 0.22;
+    top: 65%;
+    transform: translate(0, 0) scale(1.5);
+  }
+  .bubble-4 {
+    animation: move-5 41s infinite;
+    left: 17%;
+    opacity: 0.14;
+    top: 40%;
+    transform: translate(0, 0) scale(0.6);
+  }
+  .bubble-5 {
+    animation: move-5 40s infinite;
+    left: 19%;
+    opacity: 0.2;
+    top: 33%;
+    transform: translate(0, 0) scale(1.2);
+  }
+  .bubble-6 {
+    animation: move-6 40s infinite;
+    left: 80%;
+    opacity: 0.23;
+    top: 15%;
+    transform: translate(0, 0) scale(0.9);
+  }
+  .bubble-7 {
+    animation: move-7 41s infinite;
+    left: 82%;
+    opacity: 0.26;
+    top: 25%;
+    transform: translate(0, 0) scale(0.55);
+  }
+  .bubble-8 {
+    animation: move-8 42s infinite;
+    left: 85%;
+    opacity: 0.23;
+    top: 60%;
+    transform: translate(0, 0) scale(1.6);
+  }
+  .bubble-9 {
+    animation: move-9 41s infinite;
+    left: 93%;
+    opacity: 0.19;
+    top: 50%;
+    transform: translate(0, 0) scale(0.7);
+  }
+  .bubble-10 {
+    animation: move-10 40s infinite;
+    left: 94%;
+    opacity: 0.24;
+    top: 40%;
+    transform: translate(0, 0) scale(1.2);
+  }
+}
+
+@keyframes move-1 {
+  46% {
+    transform: translate(-15%, -19%);
+  }
+}
+@keyframes move-2 {
+  50% {
+    transform: translate(-25%, -23%);
+  }
+}
+@keyframes move-3 {
+  55% {
+    transform: translate(-42%, -62%);
+  }
+}
+@keyframes move-4 {
+  55% {
+    transform: translate(-20%, -10%);
+  }
+}
+@keyframes move-5 {
+  40% {
+    transform: translate(-15%, -50%);
+  }
+}
+@keyframes move-6 {
+  48% {
+    transform: translate(-30%, -32%);
+  }
+}
+@keyframes move-7 {
+  35% {
+    transform: translate(-59%, -20%);
+  }
+}
+@keyframes move-8 {
+  30% {
+    transform: translate(20%, -65%);
+  }
+}
+@keyframes move-9 {
+  54% {
+    transform: translate(-61%, -13%);
+  }
+}
+@keyframes move-10 {
+  42% {
+    transform: translate(-18%, -28%);
+  }
+}

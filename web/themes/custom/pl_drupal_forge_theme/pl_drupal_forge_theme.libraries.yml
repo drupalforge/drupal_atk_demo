@@ -5,5 +5,6 @@ styles:
       css/utilities.css: {}
       css/region/header.css: {}
       css/region/hero.css: {}
+      css/region/site-slogan.css: {}
       css/region/pre-footer.css: {}
       css/region/footer.css: {}
