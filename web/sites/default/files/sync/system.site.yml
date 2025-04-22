@@ -4,7 +4,7 @@ langcode: en
 uuid: c30ce5e0-8517-455c-847b-97a8f8d8eb56
 name: 'Automated Testing Kit'
 mail: admin@example.com
-slogan: ''
+slogan: 'Release with confidence — every time'
 page:
   403: ''
   404: ''
