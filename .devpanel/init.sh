@@ -69,3 +69,13 @@ drush cr
 sudo chown -R $APACHE_RUN_USER:$APACHE_RUN_GROUP $STATIC_FILES_PATH
 sudo chown www:www $SETTINGS_FILES_PATH
 sudo chmod 644 $SETTINGS_FILES_PATH
+
+#== Enable PL Drupal Forge by default
+drush en pl_drupal_forge -y
+
+#== Apply recipe
+cd $APP_APP_ROOT
+composer require drupal/automated_testing_kit_demo_recipe
+drush cr
+composer unpack drupal/automated_testing_kit_demo_recipe
+drush recipe ../recipes/automated_testing_kit_demo_recipe -v
