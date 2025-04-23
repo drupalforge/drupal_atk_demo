@@ -29,6 +29,7 @@
         "drupal/core-project-message": "^11.1",
         "drupal/core-recommended": "^11.1",
         "drupal/devel": "^5.3",
+        "drupal/feeds": "^3.0",
         "drupal/monolog": "^3.0",
         "drupal/pathauto": "^1.0",
         "drupal/redirect": "^1.9",
@@ -36,7 +37,8 @@
         "drupal/webform": "^6.2",
         "drupal/xmlsitemap": "^2.0",
         "drush/drush": "^13.3",
-        "ewcomposer/unpack": "dev-master"
+        "ewcomposer/unpack": "dev-master",
+        "performant-labs/qa_accounts": "dev-main"
     },
     "conflict": {
         "drupal/drupal": "*"
