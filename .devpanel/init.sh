@@ -36,6 +36,14 @@ fi
 echo "Install drush locally ..."
 composer require --dev drush/drush
 
+#== AWS configure.
+mkdir -p $HOME/.aws/
+cat <<EOT > $HOME/.aws/credentials
+[performantlabs]
+aws_access_key_id = $AWS_ACCESS_KEY_ID
+aws_secret_access_key = $AWS_SECRET_ACCESS_KEY
+EOT
+
 
 
 cd $WEB_ROOT && git submodule update --init --recursive
