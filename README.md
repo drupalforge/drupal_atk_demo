@@ -1,6 +1,6 @@
 # drupal-forge
 
-## Installation
+## Development Environment (DDEV) Installation
 
 ```shell
 ddev start
@@ -75,7 +75,7 @@ ddev ssh
 whoami
 ```
 
-Exit the container. In the command below, replace the port from the `ddev describe` 
+Exit the container. In the command below, replace the port from the `ddev describe`
 above and your username from above. If this works, exit the shell afterwards.
 ```shell
 ssh -o StrictHostKeyChecking=no -p <port> -o SetEnv=IS_DDEV_PROJECT=true <username>@localhost
@@ -108,8 +108,8 @@ Forwarding                    tcp://0.tcp.ngrok.io:10186 -> localhost:32832
 Forwarding                    https://17368dc6c817.ngrok.app -> http://127.0.0.1:32833
 ```
 
-Open another terminal and check that you can connect to the container. Take the username from above, 
-the host and port frrom the tcp://<ngrok_host>:<ngrok_port>.
+Open another terminal and check that you can connect to the container. Take the username from above,
+the host and port from the tcp://<ngrok_host>:<ngrok_port>.
 ```shell
 ssh -o StrictHostKeyChecking=no -p <ngrok_port> -o SetEnv=IS_DDEV_PROJECT=true <username>@<ngrok_host>
 ```
@@ -152,3 +152,33 @@ If asked for a URL, type the domain ngrok provided into the text field. Somethin
 
 
 Run the tests.
+
+
+## Devpanel Installation
+
+Sing in into [devpanel](https://staging.site.devpanel.com/workspaces). Open the demo
+workflow.
+
+![01-workflows.png](img/01-workflows.png)
+
+Click to the "ATK Demo" project.
+
+![02-projects.png](img/02-projects.png)
+
+Click to the branch you want to deploy.
+
+![03-branches.png](img/03-branches.png)
+
+On step 1, leave all default settings and click Next.
+
+![04-deploy-step1.png](img/04-deploy-step1.png)
+
+On step 2, leave all default settings and click Next.
+
+![05-deploy-step2.png](img/05-deploy-step2.png)
+
+On step 3, select Secret Manager "aws-credentials", and click Next.
+
+![06-deploy-step3.png](img/06-deploy-step3.png)
+
+Wait while the application is deployed.
