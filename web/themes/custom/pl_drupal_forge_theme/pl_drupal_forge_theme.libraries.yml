@@ -2,7 +2,10 @@ styles:
   css:
     theme:
       css/base.css: {}
+      css/spacing.css: {}
       css/utilities.css: {}
+      css/block/bullet-list.css: {}
+      css/block/cta-card.css: {}
       css/region/header.css: {}
       css/region/hero.css: {}
       css/region/site-slogan.css: {}

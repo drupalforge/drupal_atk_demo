@@ -25,6 +25,19 @@
   /* Shadows */
   --pl-card-default-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
     rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+
+  /* Spacing */
+  --pl-sp-2xs: 0.25rem;
+  --pl-sp-xs: 0.5rem;
+  --pl-sp-sm: 0.75rem;
+  --pl-sp-md: 1rem;
+  --pl-sp-lg: 1.25rem;
+  --pl-sp-xl: 1.625rem;
+  --pl-sp-2xl: 2rem;
+  --pl-sp-3xl: 3.125rem;
+  --pl-sp-4xl: 4rem;
+  --pl-sp-5xl: 5rem;
+  --pl-sp-6xl: 6.25rem;
 }
 
 body {
@@ -60,7 +73,7 @@ button.pl-button {
   gap: 0.5rem;
   justify-content: center;
   letter-spacing: 0.015em;
-  padding: 0.75rem 1rem;
+  padding: var(--pl-sp-sm) var(--pl-sp-md);
   text-decoration: none;
 
   &:hover {

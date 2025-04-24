@@ -6,7 +6,7 @@
   font-size: 0.75rem;
   font-weight: 300;
   line-height: 1.5;
-  padding: 3rem 0 2rem;
+  padding: var(--pl-sp-3xl) 0 var(--pl-sp-2xl);
   text-align: center;
 
   a {

@@ -5,7 +5,7 @@
     rgba(202, 233, 238, 0.4) 42.91%,
     rgba(175, 220, 228, 0.7) 72.54%
   );
-  padding: 6.25rem 0;
+  padding: var(--pl-sp-6xl) 0;
   text-align: center;
 }
 
@@ -17,7 +17,7 @@
   h1 {
     font-size: 4.5rem;
     line-height: 4.75rem;
-    margin: 0 0 2rem;
+    margin: 0 0 var(--pl-sp-2xl);
   }
 
   p {
