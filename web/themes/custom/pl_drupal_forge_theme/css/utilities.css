@@ -1,5 +1,17 @@
 .pl-container {
   margin: 0 auto;
   max-width: 1200px;
-  padding: 0 2rem;
+  padding: 0 var(--pl-sp-2xl);
+}
+
+.pl-card {
+  background: var(--pl-white);
+  border-radius: 0.75rem;
+  box-shadow: var(--pl-card-default-shadow);
+  padding: var(--pl-sp-2xl);
+}
+
+.pl-div--width-auto {
+  margin-inline: auto;
+  width: max-content;
 }
