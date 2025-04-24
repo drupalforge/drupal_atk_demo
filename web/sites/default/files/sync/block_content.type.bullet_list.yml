@@ -1,0 +1,8 @@
+uuid: 509768b6-92cf-4587-9d15-7aa725ed4a37
+langcode: en
+status: true
+dependencies: {  }
+id: bullet_list
+label: 'Bullet List'
+revision: false
+description: 'A bullet list styled for this site.'

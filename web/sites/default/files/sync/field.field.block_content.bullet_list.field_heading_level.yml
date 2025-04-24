@@ -1,0 +1,23 @@
+uuid: 50906212-9b6d-4fb3-b1b7-c2bdc21ef74e
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.bullet_list
+    - field.storage.block_content.field_heading_level
+  module:
+    - options
+id: block_content.bullet_list.field_heading_level
+field_name: field_heading_level
+entity_type: block_content
+bundle: bullet_list
+label: 'Heading level'
+description: 'If you choose to display a heading for the list, choose the level based on proper semantic heading levels based on where the block is placed on the page. Select "span" if the text should not be a heading, but you still need title text above the list. '
+required: true
+translatable: false
+default_value:
+  -
+    value: h2
+default_value_callback: ''
+settings: {  }
+field_type: list_string

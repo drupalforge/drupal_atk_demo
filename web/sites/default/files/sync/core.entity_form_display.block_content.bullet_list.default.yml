@@ -1,0 +1,45 @@
+uuid: a354e59a-5a8b-46bd-9fff-11b76b524be0
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.bullet_list
+    - field.field.block_content.bullet_list.field_heading_level
+    - field.field.block_content.bullet_list.field_list_heading
+    - field.field.block_content.bullet_list.field_list_item
+id: block_content.bullet_list.default
+targetEntityType: block_content
+bundle: bullet_list
+mode: default
+content:
+  field_heading_level:
+    type: options_select
+    weight: 27
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_list_heading:
+    type: string_textfield
+    weight: 28
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_list_item:
+    type: string_textfield
+    weight: 26
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }
