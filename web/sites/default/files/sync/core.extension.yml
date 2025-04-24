@@ -6,14 +6,17 @@ module:
   big_pipe: 0
   block: 0
   block_content: 0
+  block_content_suggestions: 0
   breakpoint: 0
   ckeditor5: 0
   config: 0
   contextual: 0
+  ctools: 0
   datetime: 0
   dblog: 0
   dynamic_page_cache: 0
   editor: 0
+  entity_reference_revisions: 0
   field: 0
   field_ui: 0
   file: 0
