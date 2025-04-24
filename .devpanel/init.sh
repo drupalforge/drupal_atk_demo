@@ -82,7 +82,7 @@ sudo chmod 644 $SETTINGS_FILES_PATH
 drush en pl_drupal_forge -y
 
 #== Apply recipe
-cd $APP_APP_ROOT
+cd $APP_ROOT
 composer require drupal/automated_testing_kit_demo_recipe
 drush cr
 composer unpack drupal/automated_testing_kit_demo_recipe
