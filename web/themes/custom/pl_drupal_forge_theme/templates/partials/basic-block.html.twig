@@ -1,0 +1,18 @@
+{# Configure conditional classes. #}
+{% set additionalClasses = [] %}
+
+{% if content.field_extra_classes|render|striptags|trim %}
+  {% set additionalClasses = additionalClasses|merge(content.field_extra_classes|render|striptags|trim|split(' ')) %}
+{% endif %}
+
+
+<div{{ attributes.addClass(additionalClasses) }}>
+  {{ title_prefix }}
+  {% if label %}
+    <h2{{ title_attributes }}>{{ label }}</h2>
+  {% endif %}
+  {{ title_suffix }}
+  {% block content %}
+    {{ content|without('field_extra_classes') }}
+  {% endblock %}
+</div>
