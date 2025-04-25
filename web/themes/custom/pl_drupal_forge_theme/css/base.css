@@ -72,19 +72,20 @@ h3 {
   font-size: 1.25rem;
   font-weight: 600;
 }
-a.pl-button,
-button.pl-button {
+
+.pl-button {
   align-items: center;
   background-color: var(--pl-blue-darker);
   border-radius: 10rem;
   color: var(--pl-white);
-  display: flex;
+  display: inline-flex;
   font-size: 0.875rem;
   font-weight: 500;
   gap: 0.5rem;
   justify-content: center;
   letter-spacing: 0.015em;
-  padding: var(--pl-sp-sm) var(--pl-sp-md);
+  line-height: var(--pl-sp-lg);
+  padding: var(--pl-sp-xs) var(--pl-sp-md);
   text-decoration: none;
 
   &:hover {
@@ -98,6 +99,11 @@ button.pl-button {
   &:focus {
     outline-offset: 2px;
   }
+}
+
+.pl-button--lg {
+  font-size: 1.125rem;
+  padding: var(--pl-sp-md) var(--pl-sp-2xl);
 }
 
 .pl-button--full {
