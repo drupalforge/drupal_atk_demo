@@ -1,0 +1,20 @@
+uuid: 358fe6dc-faf3-4acb-adab-ee346db0ee2e
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - entity_reference_revisions
+id: block_content.field_slot_3
+field_name: field_slot_3
+entity_type: block_content
+type: entity_reference_revisions
+settings:
+  target_type: block_content
+module: entity_reference_revisions
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

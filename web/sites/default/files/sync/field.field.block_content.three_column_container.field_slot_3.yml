@@ -1,0 +1,35 @@
+uuid: 50f7906c-d81b-4aba-8856-3a0b6555d8bf
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.basic
+    - block_content.type.bullet_list
+    - block_content.type.cta_card
+    - block_content.type.three_column_container
+    - field.storage.block_content.field_slot_3
+  module:
+    - entity_reference_revisions
+id: block_content.three_column_container.field_slot_3
+field_name: field_slot_3
+entity_type: block_content
+bundle: three_column_container
+label: 'Slot 3'
+description: 'Blocks to be placed in the third slot. Search for existing block content to place within.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:block_content'
+  handler_settings:
+    target_bundles:
+      basic: basic
+      bullet_list: bullet_list
+      cta_card: cta_card
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: true
+    auto_create_bundle: basic
+field_type: entity_reference_revisions

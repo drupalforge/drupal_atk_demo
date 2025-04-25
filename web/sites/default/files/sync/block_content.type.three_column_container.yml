@@ -1,0 +1,8 @@
+uuid: b1e9bca0-b1c2-4107-92a2-88346df7e863
+langcode: en
+status: true
+dependencies: {  }
+id: three_column_container
+label: 'Three-Column Container'
+revision: false
+description: 'A layout block with three equal columns. Can be presented as an unstyled div or as a card.'
