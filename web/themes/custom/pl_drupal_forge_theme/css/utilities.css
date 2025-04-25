@@ -15,3 +15,9 @@
   margin-inline: auto;
   width: max-content;
 }
+
+.pl-div--width-600 {
+  margin-inline: auto;
+  max-width: 600px;
+  text-align: center;
+}
