@@ -2,17 +2,3 @@
   background-color: var(--pl-neutral-lighter);
   padding: var(--pl-sp-3xl) 0;
 }
-
-.pre-footer__container {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: var(--pl-sp-2xl);
-  padding: 0 var(--pl-sp-3xl);
-
-  @media screen and (min-width: 900px) {
-    align-items: stretch;
-    flex-direction: row;
-    padding: 0 var(--pl-sp-2xl);
-  }
-}
