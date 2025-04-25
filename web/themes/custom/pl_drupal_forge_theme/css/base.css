@@ -119,3 +119,13 @@ h3 {
   margin: 0;
   padding: 0;
 }
+
+.messages.messages--status {
+  background-color: var(--pl-orange-light);
+  color: black;
+  font-size: 1rem;
+  margin: 0 auto 2rem;
+  max-width: 600px;
+  padding: var(--pl-sp-sm) var(--pl-sp-md);
+  text-align: center;
+}

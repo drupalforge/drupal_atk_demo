@@ -1,0 +1,4 @@
+.region--content {
+  background-color: var(--pl-white);
+  padding: var(--pl-sp-3xl) 0;
+}
