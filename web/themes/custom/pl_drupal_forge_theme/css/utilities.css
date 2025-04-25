@@ -8,7 +8,7 @@
   background: var(--pl-white);
   border-radius: 0.75rem;
   box-shadow: var(--pl-card-default-shadow);
-  padding: var(--pl-sp-2xl);
+  padding: calc(var(--pl-sp-2xl) * 1.25);
 }
 
 .pl-div--width-auto {

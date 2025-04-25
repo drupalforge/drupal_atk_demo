@@ -1,0 +1,46 @@
+/* Two-column */
+.container-block--two {
+  column-gap: var(--pl-sp-2xl);
+  display: flex;
+}
+.container-block--two.layout--equal {
+  .slot {
+    width: 50%;
+  }
+}
+
+.container-block--two.layout--one-third {
+  .slot--1 {
+    width: 33.3333%;
+  }
+  .slot--2 {
+    width: 66.6667%;
+  }
+}
+
+.container-block--two.layout--two-thirds {
+  .slot--1 {
+    width: 66.6667%;
+  }
+  .slot--2 {
+    width: 33.3333%;
+  }
+}
+
+.container-block--two.layout--one-quarter {
+  .slot--1 {
+    width: 25%;
+  }
+  .slot--2 {
+    width: 75%;
+  }
+}
+
+.container-block--two.layout--three-quarters {
+  .slot--1 {
+    width: 75%;
+  }
+  .slot--2 {
+    width: 25%;
+  }
+}
