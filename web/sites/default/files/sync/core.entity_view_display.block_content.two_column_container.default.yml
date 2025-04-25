@@ -1,0 +1,60 @@
+uuid: fbe7c819-5947-4f7c-89dc-2358350c0639
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.two_column_container
+    - field.field.block_content.two_column_container.field_container_style
+    - field.field.block_content.two_column_container.field_extra_classes
+    - field.field.block_content.two_column_container.field_slot_1
+    - field.field.block_content.two_column_container.field_slot_2
+    - field.field.block_content.two_column_container.field_two_column_layout
+  module:
+    - entity_reference_revisions
+    - options
+id: block_content.two_column_container.default
+targetEntityType: block_content
+bundle: two_column_container
+mode: default
+content:
+  field_container_style:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_extra_classes:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_slot_1:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_slot_2:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_two_column_layout:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+hidden: {  }

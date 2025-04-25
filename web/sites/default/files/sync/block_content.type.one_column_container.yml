@@ -1,0 +1,8 @@
+uuid: 02299517-cfca-4aef-af19-757cca2b6410
+langcode: en
+status: true
+dependencies: {  }
+id: one_column_container
+label: 'One Column Container'
+revision: false
+description: 'A layout block with a single column. Can be presented as an unstyled div or as a card.'

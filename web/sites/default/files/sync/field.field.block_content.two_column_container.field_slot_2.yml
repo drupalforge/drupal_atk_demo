@@ -1,0 +1,35 @@
+uuid: c3021674-13ff-48a3-bc1d-673c34cdb43c
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.basic
+    - block_content.type.bullet_list
+    - block_content.type.cta_card
+    - block_content.type.two_column_container
+    - field.storage.block_content.field_slot_2
+  module:
+    - entity_reference_revisions
+id: block_content.two_column_container.field_slot_2
+field_name: field_slot_2
+entity_type: block_content
+bundle: two_column_container
+label: 'Slot 2'
+description: 'Blocks to be placed in the second slot. Search for existing block content to place within.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:block_content'
+  handler_settings:
+    target_bundles:
+      basic: basic
+      bullet_list: bullet_list
+      cta_card: cta_card
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: true
+    auto_create_bundle: basic
+field_type: entity_reference_revisions

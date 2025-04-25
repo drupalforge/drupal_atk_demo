@@ -1,0 +1,19 @@
+uuid: 8c11dea9-cee7-434a-9591-e1fec10049b7
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.one_column_container
+    - field.storage.block_content.field_extra_classes
+id: block_content.one_column_container.field_extra_classes
+field_name: field_extra_classes
+entity_type: block_content
+bundle: one_column_container
+label: 'Extra classes'
+description: 'Add any extra classes that should be applied to this block. Multiple classes should be separated by a space. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

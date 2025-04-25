@@ -1,0 +1,27 @@
+uuid: 7c012ac6-6ce0-489e-9035-a70473f84259
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_container_style
+field_name: field_container_style
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: unstyled
+      label: Unstyled
+    -
+      value: card
+      label: Card
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
