@@ -6,12 +6,13 @@ dependencies:
     - 'block_content:one_column_container:5f879a79-155c-4b40-b089-b1856eb64f4e'
   module:
     - block_content
+    - system
   theme:
     - pl_drupal_forge_theme
 id: pl_drupal_forge_theme_frontpagelistcard
 theme: pl_drupal_forge_theme
 region: hero
-weight: 0
+weight: -5
 provider: null
 plugin: 'block_content:5f879a79-155c-4b40-b089-b1856eb64f4e'
 settings:
@@ -22,4 +23,8 @@ settings:
   status: true
   info: ''
   view_mode: full
-visibility: {  }
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'

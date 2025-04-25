@@ -1,23 +1,23 @@
-uuid: 804e4268-bc5d-4c83-86de-e6321fbef7e6
+uuid: 2a4db083-6354-4a28-b82b-da38312325e8
 langcode: en
 status: true
 dependencies:
   content:
-    - 'block_content:cta_card:ccf7dedb-954c-4809-9232-2c5c43cb8fec'
+    - 'block_content:basic:08604b68-7d6b-4bcb-aabd-2b72825b3159'
   module:
     - block_content
     - system
   theme:
     - pl_drupal_forge_theme
-id: pl_drupal_forge_theme_card1
+id: pl_drupal_forge_theme_readytotrycta
 theme: pl_drupal_forge_theme
-region: pre_footer
-weight: -5
+region: content
+weight: 0
 provider: null
-plugin: 'block_content:ccf7dedb-954c-4809-9232-2c5c43cb8fec'
+plugin: 'block_content:08604b68-7d6b-4bcb-aabd-2b72825b3159'
 settings:
-  id: 'block_content:ccf7dedb-954c-4809-9232-2c5c43cb8fec'
-  label: 'Card 1'
+  id: 'block_content:08604b68-7d6b-4bcb-aabd-2b72825b3159'
+  label: 'Ready to try cta'
   label_display: '0'
   provider: block_content
   status: true

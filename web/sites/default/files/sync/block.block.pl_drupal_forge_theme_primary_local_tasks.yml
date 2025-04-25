@@ -1,6 +1,6 @@
 uuid: 4ed06c93-1d28-44bd-93ae-6ca5718086a1
 langcode: en
-status: true
+status: false
 dependencies:
   theme:
     - pl_drupal_forge_theme
