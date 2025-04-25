@@ -30,3 +30,23 @@ function pl_drupal_forge_theme_preprocess_page(array &$variables): void {
   // Add the site slogan to the page variables.
   $variables['site_slogan'] = $site_slogan;
 }
+
+/**
+ * Implements hook_preprocess_menu().
+ */
+function pl_drupal_forge_theme_preprocess_menu(&$variables): void {
+  if ($variables['menu_name'] === 'main') {
+    // Check if the menu has links.
+    if (!empty($variables['items'])) {
+      foreach ($variables['items'] as &$item) {
+        // Add a custom class to the <a> tag.
+        $item['url']->setOption('attributes', [
+          'class' => array_merge(
+            $item['url']->getOption('attributes')['class'] ?? [],
+            ['pl-button']
+          ),
+        ]);
+      }
+    }
+  }
+}
