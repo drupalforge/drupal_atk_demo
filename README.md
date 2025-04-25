@@ -75,14 +75,16 @@ ddev ssh
 whoami
 ```
 
-Replace the port from the `ddev describe` above and your username from above. If this works, exit the shell afterwards.
+Exit the container. In the command below, replace the port from the `ddev describe` 
+above and your username from above. If this works, exit the shell afterwards.
 ```shell
 ssh -o StrictHostKeyChecking=no -p <port> -o SetEnv=IS_DDEV_PROJECT=true <username>@localhost
 ```
 
 Now it's time to connect ngrok. Fetch the ngrok authorization token from [https://dashboard.ngrok.com/get-started/your-authtoken](https://dashboard.ngrok.com/get-started/your-authtoken).
 
-Create `ngrok.yml` with the following content. Replace authorization token, http and ssh port.
+Create `ngrok.yml` with the following content. Replace authorization token.
+<port_web> and <port_ssh> come from `ddev describe`.
 ```yaml
 version: 2
 authtoken: '[xxx]'
@@ -92,7 +94,7 @@ tunnels:
     addr: http://127.0.0.1:<port_web:80>
   ssh:
     proto: tcp
-    addr: <port_web:22>
+    addr: <port_ssh:22>
 ```
 
 Run:
@@ -136,11 +138,17 @@ You should see something like this:
   username: ilya
 ```
 
-These may be wrong. Update the host, port, and username. For example
+These may be wrong. Update the host, port, and username. For example:
 ```shell
 ddev drush cset pl_drupal_forge.settings targetSite.host <ngrok_host>
 ddev drush cset pl_drupal_forge.settings targetSite.port <ngrok_port>
 ddev drush cset pl_drupal_forge.settings targetSite.username <username>
 ```
 
-Double-check the module settings. Launch the site, visit Test me! and run the tests.
+Double-check the module settings. Launch the site.
+
+If asked for a URL, type the domain ngrok provided into the text field. Something like:
+```https://e133f2aa8f88.ngrok.app/```
+
+
+Run the tests.
