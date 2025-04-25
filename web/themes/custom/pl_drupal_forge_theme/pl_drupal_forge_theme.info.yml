@@ -14,3 +14,5 @@ regions:
   content: 'Content'
   pre_footer: 'Pre Footer'
   footer: 'Footer'
+ckeditor5-stylesheets:
+  - 'css/base.css'

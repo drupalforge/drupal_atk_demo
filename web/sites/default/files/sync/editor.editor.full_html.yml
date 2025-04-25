@@ -19,6 +19,7 @@ settings:
       - superscript
       - subscript
       - removeFormat
+      - style
       - '|'
       - link
       - '|'
@@ -102,6 +103,14 @@ settings:
       multiBlock: true
     ckeditor5_sourceEditing:
       allowed_tags: {  }
+    ckeditor5_style:
+      styles:
+        -
+          label: Button
+          element: '<a class="pl-button">'
+        -
+          label: 'Button Large'
+          element: '<a class="pl-button pl-button--lg">'
 image_upload:
   status: true
   scheme: public
