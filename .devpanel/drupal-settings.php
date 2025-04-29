@@ -290,7 +290,7 @@ $databases = [];
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = '5d4e9f99f42d6438d0094e2865b1a3c8da21e696eb60f706255341a800d15ef6';
+$settings['hash_salt'] = '';
 
 /**
  * Deployment identifier.
