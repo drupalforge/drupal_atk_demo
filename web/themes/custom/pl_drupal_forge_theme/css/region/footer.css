@@ -7,9 +7,7 @@
   font-weight: 300;
   line-height: 1.5;
   padding: var(--pl-sp-3xl) 0 var(--pl-sp-2xl);
-  position: relative;
   text-align: center;
-  z-index: 2;
 
   a {
     color: var(--pl-blue-light);
@@ -18,16 +16,6 @@
   a:hover {
     color: var(--pl-white);
   }
-}
-
-.footer-background {
-  background-color: var(--pl-neutral-darkest);
-  bottom: 0;
-  height: 10rem;
-  left: 0;
-  position: fixed;
-  right: 0;
-  z-index: 1;
 }
 
 .pl-logo img {
