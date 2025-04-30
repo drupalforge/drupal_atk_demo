@@ -6,17 +6,20 @@
  */
 
 /**
- * Implements hook_preprocess_image_widget().
+ * Implements hook_preprocess_html().
  */
-function pl_drupal_forge_theme_preprocess_image_widget(array &$variables): void {
-  $data = &$variables['data'];
+function pl_drupal_forge_theme_preprocess_html(array &$variables): void {
+  // Get the current path.
+  $current_path = \Drupal::service('path.current')->getPath();
 
-  // This prevents image widget templates from rendering preview container HTML
-  // to users that do not have permission to access these previews.
-  // @todo revisit in https://drupal.org/node/953034
-  // @todo revisit in https://drupal.org/node/3114318
-  if (isset($data['preview']['#access']) && $data['preview']['#access'] === FALSE) {
-    unset($data['preview']);
+  // Check if the page is the front page.
+  if (\Drupal::service('path.matcher')->isFrontPage()) {
+    $variables['attributes']['class'][] = 'page--front';
+  }
+  else {
+    // Sanitize the path and add it as a body class, prefixed with "page--".
+    $sanitized_path = \Drupal\Component\Utility\Html::getClass(trim($current_path, '/'));
+    $variables['attributes']['class'][] = 'page--' . $sanitized_path;
   }
 }
 
@@ -48,5 +51,20 @@ function pl_drupal_forge_theme_preprocess_menu(&$variables): void {
         ]);
       }
     }
+  }
+}
+
+/**
+ * Implements hook_preprocess_image_widget().
+ */
+function pl_drupal_forge_theme_preprocess_image_widget(array &$variables): void {
+  $data = &$variables['data'];
+
+  // This prevents image widget templates from rendering preview container HTML
+  // to users that do not have permission to access these previews.
+  // @todo revisit in https://drupal.org/node/953034
+  // @todo revisit in https://drupal.org/node/3114318
+  if (isset($data['preview']['#access']) && $data['preview']['#access'] === FALSE) {
+    unset($data['preview']);
   }
 }
