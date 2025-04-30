@@ -1,8 +1,8 @@
 pl_drupal_forge.start:
-  path: '/test-me'
+  path: '/test-runner'
   defaults:
     _controller: '\Drupal\pl_drupal_forge\Controller\AtkClientController::start'
-    _title: 'Test me!'
+    _title: 'Test Runner'
   requirements:
     _permission: 'access content'
 pl_drupal_forge.report:
