@@ -1,5 +1,5 @@
 test_me:
-  title: 'Test Me!'
+  title: 'Go to test page'
   description: ''
   parent: 'main'
   route_name: 'pl_drupal_forge.start'
