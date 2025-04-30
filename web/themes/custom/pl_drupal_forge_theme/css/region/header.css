@@ -1,5 +1,4 @@
 .region--header {
-  background-color: var(--pl-white);
   color: var(--pl-neutral-darkest);
   padding: var(--pl-sp-md) 0;
 
@@ -11,5 +10,5 @@
 }
 
 .header__logo img {
-  height: 50px;
+  height: 46px;
 }

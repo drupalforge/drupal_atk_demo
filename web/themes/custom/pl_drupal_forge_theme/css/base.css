@@ -13,7 +13,7 @@
   --pl-neutral-dark: #6a6a6a;
   --pl-neutral: #898989;
   --pl-neutral-light: #ccd1d1;
-  --pl-neutral-lighter: #f7f7f7;
+  --pl-neutral-lighter: #f1f1f1;
   --pl-white: #ffffff;
   --pl-orange: #ec6e0e;
   --pl-orange-light: #f6bd91;
@@ -85,7 +85,7 @@ h3 {
   justify-content: center;
   letter-spacing: 0.015em;
   line-height: var(--pl-sp-lg);
-  padding: var(--pl-sp-xs) var(--pl-sp-md);
+  padding: var(--pl-sp-xs) var(--pl-sp-lg);
   text-decoration: none;
 
   &:hover {

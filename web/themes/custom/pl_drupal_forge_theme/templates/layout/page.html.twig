@@ -1,18 +1,18 @@
 <div class="layout-container">
+  <div class="pl-gradient-1">
+    <header role="banner">
+      {{ page.header }}
+    </header>
 
-  <header role="banner">
-    {{ page.header }}
-  </header>
-
-  {{ messages }}
-
-  {{ page.hero }}
+    {{ page.hero }}
+  </div>
 
   {# Create ac-hoc region for front page only #}
   {% if is_front %}
     {{ include('@pl_drupal_forge_theme/partials/site-slogan.html.twig') }}
   {% endif %}
 
+  {{ messages }}
   {{ page.admin }}
 
   <main role="main">
