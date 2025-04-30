@@ -40,6 +40,10 @@
   --pl-sp-6xl: 6.25rem;
 }
 
+html {
+  background-color: var(--pl-neutral-darkest);
+}
+
 body {
   background-color: var(--pl-white);
   color: var(--pl-neutral-darker);
