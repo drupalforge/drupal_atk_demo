@@ -36,3 +36,8 @@
   {% endif %}
 
 </div>{# /.layout-container #}
+
+{# This is a workaround for the footer background to be sticky #}
+{% if page.footer %}
+  <div class="footer-background"/>
+{% endif %}

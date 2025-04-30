@@ -48,6 +48,11 @@ body {
   font-variant-ligatures: none;
 }
 
+.layout-container {
+  position: relative;
+  z-index: 2;
+}
+
 h1,
 h2,
 h3,
