@@ -1,3 +1,10 @@
+pl_drupal_forge.front:
+  path: '/home'
+  defaults:
+    _controller: '\Drupal\pl_drupal_forge\Controller\AtkFrontController::front'
+    _title: 'Home'
+  requirements:
+    _permission: 'access content'
 pl_drupal_forge.start:
   path: '/test-runner'
   defaults:
