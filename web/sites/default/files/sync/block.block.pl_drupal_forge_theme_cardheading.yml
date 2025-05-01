@@ -17,7 +17,7 @@ provider: null
 plugin: 'block_content:2d9827ac-6545-484c-a77d-5b99c253b73e'
 settings:
   id: 'block_content:2d9827ac-6545-484c-a77d-5b99c253b73e'
-  label: 'Card grid heading'
+  label: 'Card grid heading (front page)'
   label_display: '0'
   provider: block_content
   status: true

@@ -17,7 +17,7 @@ provider: null
 plugin: 'block_content:5f879a79-155c-4b40-b089-b1856eb64f4e'
 settings:
   id: 'block_content:5f879a79-155c-4b40-b089-b1856eb64f4e'
-  label: 'Front page list card'
+  label: 'List card (front page)'
   label_display: '0'
   provider: block_content
   status: true

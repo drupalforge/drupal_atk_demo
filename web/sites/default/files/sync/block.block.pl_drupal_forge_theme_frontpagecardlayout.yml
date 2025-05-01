@@ -17,7 +17,7 @@ provider: null
 plugin: 'block_content:087ac9b2-96c7-4f54-bd1f-580bf98adf0d'
 settings:
   id: 'block_content:087ac9b2-96c7-4f54-bd1f-580bf98adf0d'
-  label: 'Front page card layout'
+  label: 'Card grid (front page)'
   label_display: '0'
   provider: block_content
   status: true

@@ -1,23 +1,23 @@
-uuid: be6dc479-f72a-420f-b8a2-6f261411efac
+uuid: 9cf3fa18-3d6f-4643-9f87-0f85363e2bb6
 langcode: en
 status: true
 dependencies:
   content:
-    - 'block_content:basic:2cab1977-6c48-4044-b278-8cad8adf7681'
+    - 'block_content:basic:e3443a11-60df-49c4-9022-02466a866444'
   module:
     - block_content
     - system
   theme:
     - pl_drupal_forge_theme
-id: pl_drupal_forge_theme_herotext
+id: pl_drupal_forge_theme_testrunnerintrotestpage
 theme: pl_drupal_forge_theme
 region: hero
-weight: -6
+weight: -4
 provider: null
-plugin: 'block_content:2cab1977-6c48-4044-b278-8cad8adf7681'
+plugin: 'block_content:e3443a11-60df-49c4-9022-02466a866444'
 settings:
-  id: 'block_content:2cab1977-6c48-4044-b278-8cad8adf7681'
-  label: 'Hero Text (front page)'
+  id: 'block_content:e3443a11-60df-49c4-9022-02466a866444'
+  label: 'Test Runner intro (test page)'
   label_display: '0'
   provider: block_content
   status: true
@@ -27,4 +27,4 @@ visibility:
   request_path:
     id: request_path
     negate: false
-    pages: '<front>'
+    pages: /test-runner
