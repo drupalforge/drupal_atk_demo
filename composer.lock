@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e0c32ed3478b1b2e7d71e8c89026eb5c",
+    "content-hash": "9912f2bb0208e41095edcace7bee23df",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2505,6 +2505,58 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/monolog",
                 "issues": "https://drupal.org/project/issues/monolog"
+            }
+        },
+        {
+            "name": "drupal/multiselect_dropdown",
+            "version": "1.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/multiselect_dropdown.git",
+                "reference": "1.2.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/multiselect_dropdown-1.2.3.zip",
+                "reference": "1.2.3",
+                "shasum": "725f003bf7dbcfaa14d7df58b9ba97af39ddab0a"
+            },
+            "require": {
+                "drupal/core": "^10.3 || ^11",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "drupal/better_exposed_filters": "^6 || ^7"
+            },
+            "suggest": {
+                "drupal/better_exposed_filters": "^6 || ^7"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.2.3",
+                    "datestamp": "1740683428",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Benjamin Baird",
+                    "homepage": "https://www.drupal.org/u/benabaird"
+                }
+            ],
+            "description": "Provides a form render element which displays checkboxes in a dropdown select-like element.",
+            "homepage": "https://www.drupal.org/project/multiselect_dropdown",
+            "support": {
+                "source": "https://git.drupalcode.org/project/multiselect_dropdown",
+                "issues": "https://www.drupal.org/project/issues/multiselect_dropdown"
             }
         },
         {
