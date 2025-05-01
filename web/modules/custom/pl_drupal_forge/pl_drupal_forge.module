@@ -28,6 +28,7 @@ function pl_drupal_forge_theme($existing, $type, $theme, $path) {
   return [
     'start_page_template' => [
       'variables' => [
+        'start_test_form' => null,
         'base_url' => null,
         'tags' => [],
       ],
