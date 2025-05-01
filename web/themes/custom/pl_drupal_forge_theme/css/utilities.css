@@ -39,3 +39,41 @@
     rgba(202, 233, 238, 0.4) 80%
   );
 }
+
+.hero-text {
+  margin: 0 auto;
+  text-align: center;
+  text-wrap: balance;
+  width: 85%;
+
+  h1 {
+    font-size: 3.5rem;
+    line-height: 3.75rem;
+    margin: 0 0 var(--pl-sp-xl);
+  }
+
+  p {
+    font-size: 1.125rem;
+    letter-spacing: 0.02em;
+    line-height: 1.5;
+    margin: 0 auto;
+    width: 85%;
+  }
+}
+
+.page--front {
+  .hero-text {
+    h1 {
+      font-size: 4.5rem;
+      line-height: 4.75rem;
+      margin: 0 0 var(--pl-sp-3xl);
+    }
+    p {
+      font-size: 1.25rem;
+      letter-spacing: 0.02em;
+      line-height: 1.5;
+      margin: 0 auto;
+      width: 85%;
+    }
+  }
+}
