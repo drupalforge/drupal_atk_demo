@@ -80,6 +80,7 @@ h3 {
 .pl-button {
   align-items: center;
   background-color: var(--pl-blue-darker);
+  border-color: transparent;
   border-radius: 10rem;
   color: var(--pl-white);
   display: inline-flex;

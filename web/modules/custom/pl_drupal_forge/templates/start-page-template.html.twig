@@ -1,25 +1,28 @@
 {{ attach_library('pl_drupal_forge/main') }}
 
-<div>
-  <p>Once upon a time, in one far away Web Development Studio… (here
-    should be an inspiring story on the value of end-to-end testing). </p>
-  <p>Press the  button below to run
-    <a href="https://www.drupal.org/project/automated_testing_kit/"
-       target="_blank">Automated Testing Kit 💧</a>.</p>
-  <label for="input-url" class="form-required form-item__label">URL</label>
-  <input id="input-url" type="text" name="url" value="{{ base_url }}" class="field" style="min-width: 400px">
-  <!-- select tags from the multiselect input -->
-  <label for="tags" class="form-item__label">Tags</label>
-  <select id="tags" class="field js-multiselect" style="min-width: 400px" name="tag[]" multiple="multiple">
-    {% for tag in tags %}
-      <option value="{{ tag }}">{{ tag }}</option>
-    {% endfor %}
-  </select>
-  <button id="the-button" onclick="invoke()">Press the button</button>
+<div class="pl-card pl-div--width-600">
+<form id="test-runner-form" class="pl-form">
+  <div class="pl-form-item">
+    <label for="input-url" class="pl-form-item__label">URL</label>
+    <input id="input-url" class="pl-form-item__input" type="text" name="url" value="{{ base_url }}">
+  </div>
+  <div class="pl-form-item">
+    <label for="tags" class="pl-form-item__label">Tags</label>
+    <select id="tags" class="pl-form-item__input field js-multiselect" style="min-width: 400px" name="tag[]" multiple="multiple">
+      {% for tag in tags %}
+        <option value="{{ tag }}">{{ tag }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <button id="the-button" class="pl-button pl-button--lg" onclick="invoke()">Start Tests</button>
+  </form>
+</div>
+
+
   <div id="log-pane" style="display: none;">
     <pre id="log-content"></pre>
   </div>
-</div>
+
 
 <script>
   function $DRAPI(url, init) {

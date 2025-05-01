@@ -2,6 +2,7 @@ styles:
   css:
     theme:
       css/base.css: {}
+      css/form.css: {}
       css/spacing.css: {}
       css/utilities.css: {}
       css/regions.css: {}

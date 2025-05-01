@@ -1,0 +1,24 @@
+.pl-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pl-sp-xl);
+}
+
+.pl-form-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pl-sp-xs);
+  text-align: left;
+}
+
+.pl-form-item__label {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.pl-form-item__input {
+  border: 1px solid var(--pl-neutral-light);
+  border-radius: 0.5rem;
+  height: 2rem;
+  padding: var(--pl-sp-2xs) var(--pl-sp-xs);
+}

@@ -1,42 +1,26 @@
-#the-button {
-  position: relative;
-  font-family: inherit;
-  font-size: inherit;
-  cursor: pointer;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  text-align: center;
-  padding: 10px;
-  background: yellow;
-  color: red;
-  width: 100%;
-  margin-top: var(--sp2);
-  margin-bottom: var(--sp2);
-}
-
 #the-button:disabled {
   cursor: not-allowed;
 }
 
 #log-pane {
-  width: 100%;
+  background-color: #dbe6ff;
   height: 200px;
   overflow-x: scroll;
   overflow-y: scroll;
-  background-color: #dbe6ff;
+  width: 100%;
 }
 
 /*start tinkering js-multiselect*/
-* {
+/* * {
   --sp2: 20px;
   --sp3: 42px;
 }
 
-[type="search"] {
+[type='search'] {
   min-height: 29px !important;
 }
 
 textarea {
   display: inline !important;
-}
+} */
 /*end tinkering js-multiselect*/
