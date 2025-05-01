@@ -40,7 +40,7 @@
   );
 }
 
-.hero-text {
+.pl-hero-text {
   margin: 0 auto;
   text-align: center;
   text-wrap: balance;
@@ -62,7 +62,7 @@
 }
 
 .page--front {
-  .hero-text {
+  .pl-hero-text {
     h1 {
       font-size: 4.5rem;
       line-height: 4.75rem;
