@@ -5,23 +5,23 @@
     </header>
 
     {{ page.hero }}
+
+    {# Create ac-hoc region for front page only #}
+    {% if is_front %}
+      {{ include('@pl_drupal_forge_theme/partials/site-slogan.html.twig') }}
+    {% endif %}
+
+    {{ messages }}
+    {{ page.admin }}
+
+    <main role="main">
+      <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+
+      <div class="layout-content">
+        {{ page.content }}
+      </div>{# /.layout-content #}
+    </main>
   </div>
-
-  {# Create ac-hoc region for front page only #}
-  {% if is_front %}
-    {{ include('@pl_drupal_forge_theme/partials/site-slogan.html.twig') }}
-  {% endif %}
-
-  {{ messages }}
-  {{ page.admin }}
-
-  <main role="main">
-    <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
-
-    <div class="layout-content">
-      {{ page.content }}
-    </div>{# /.layout-content #}
-  </main>
 
   {% if page.pre_footer %}
     <div class="layout-pre-footer">
