@@ -2,8 +2,8 @@
 
 :root {
   /* Colors */
-  --pl-blue-darker: #1893b4;
-  --pl-blue-darkest: #0c7895;
+  --pl-blue-dark: #10819f;
+  --pl-blue-darker: #0b738f;
   --pl-blue: #62bbcb;
   --pl-blue-light: #beeaf1;
   --pl-blue-lighter: #e4f5f8;
@@ -15,6 +15,7 @@
   --pl-neutral-light: #ccd1d1;
   --pl-neutral-lighter: #f1f1f1;
   --pl-white: #ffffff;
+  --pl-orange-dark: #bf590b;
   --pl-orange: #ec6e0e;
   --pl-orange-light: #f6bd91;
   --pl-orange-lighter: #fdefe4;
@@ -52,6 +53,15 @@ body {
   font-variant-ligatures: none;
 }
 
+a {
+  color: var(--pl-orange-dark);
+
+  &:hover {
+    color: var(--pl-orange);
+    text-decoration: none;
+  }
+}
+
 h1,
 h2,
 h3,
@@ -79,7 +89,7 @@ h3 {
 
 .pl-button {
   align-items: center;
-  background-color: var(--pl-blue-darker);
+  background-color: var(--pl-blue-dark);
   border-color: transparent;
   border-radius: 10rem;
   color: var(--pl-white);
@@ -94,11 +104,11 @@ h3 {
   text-decoration: none;
 
   &:hover {
-    background-color: var(--pl-blue-darkest);
+    background-color: var(--pl-blue-darker);
   }
 
   &:active {
-    background-color: var(--pl-blue-darker);
+    background-color: var(--pl-blue-dark);
   }
 
   &:focus {
@@ -111,13 +121,17 @@ h3 {
   }
 
   &:disabled:hover {
-    background-color: var(--pl-blue-darker);
+    background-color: var(--pl-blue-dark);
   }
 }
 
 .pl-button--lg {
   font-size: 1.125rem;
   padding: var(--pl-sp-md) var(--pl-sp-2xl);
+
+  &:focus {
+    outline-offset: 4px;
+  }
 }
 
 .pl-button--full {
