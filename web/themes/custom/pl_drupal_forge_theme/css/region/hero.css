@@ -1,24 +1,43 @@
 .region--hero {
-  padding: var(--pl-sp-6xl) 0;
+  padding: var(--pl-sp-4xl) 0;
   text-align: center;
 }
 
 .hero-text {
   margin: 0 auto;
   text-wrap: balance;
-  width: 80%;
+  width: 85%;
 
   h1 {
-    font-size: 4.5rem;
-    line-height: 4.75rem;
-    margin: 0 0 var(--pl-sp-2xl);
+    font-size: 3.5rem;
+    line-height: 3.75rem;
+    margin: 0 0 var(--pl-sp-xl);
   }
 
   p {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     letter-spacing: 0.02em;
     line-height: 1.5;
     margin: 0 auto;
-    width: 80%;
+    width: 85%;
   }
+}
+
+/* Adjust hero sizes slightly if front page. */
+.page--front .region--hero {
+  padding: var(--pl-sp-5xl) 0;
+}
+
+.page--front .hero-text h1 {
+  font-size: 4.5rem;
+  line-height: 4.75rem;
+  margin: 0 0 var(--pl-sp-3xl);
+}
+
+.page--front .hero-text p {
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  margin: 0 auto;
+  width: 85%;
 }
