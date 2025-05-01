@@ -58,7 +58,7 @@ function pl_drupal_forge_install() {
    // Update system.site configuration (e.g., default front page).
    $system_site_config = $config_factory->getEditable('system.site');
    $system_site_config
-     ->set('page.front', '/test-me')
+     ->set('page.front', '/home')
      ->save();
 
   // Init ATK (AWS) client.
