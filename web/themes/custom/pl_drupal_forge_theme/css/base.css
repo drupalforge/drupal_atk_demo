@@ -179,7 +179,7 @@ h3 {
   padding: 0;
 }
 
-.messages.messages--status {
+.messages {
   background-color: var(--pl-orange-light);
   color: black;
   font-size: 1rem;
