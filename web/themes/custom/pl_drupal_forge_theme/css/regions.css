@@ -16,7 +16,7 @@
 
 /* Hero */
 .region--hero {
-  padding: var(--pl-sp-4xl) 0;
+  padding: var(--pl-sp-4xl) 0 var(--pl-sp-2xl);
   text-align: center;
 }
 
