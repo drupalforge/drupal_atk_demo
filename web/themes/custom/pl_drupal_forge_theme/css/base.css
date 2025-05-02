@@ -147,27 +147,26 @@ h3 {
   margin-block-start: 0.5rem;
 }
 
-/* Ensure the video takes up the full width of its container */
 .pl-video-wrapper {
-  margin: 0 auto; /* Center the video if needed */
-  max-width: 100%; /* Prevent overflow */
-  width: 100%; /* Ensure the wrapper spans the full width */
+  margin: 0 auto;
+  max-width: 100%;
+  width: 100%;
 }
 
 .pl-video-embed {
-  height: 0; /* Set height to 0 to enable aspect ratio */
-  overflow: hidden; /* Hide anything outside the container */
-  padding-top: 56.25%; /* Maintain 16:9 aspect ratio (9 / 16 = 0.5625) */
+  height: 0;
+  overflow: hidden;
+  padding-top: 56.25%;
   position: relative;
 }
 
 .pl-video-embed iframe {
-  border: none; /* Remove iframe border */
-  height: 100%; /* Make the iframe span the full height */
+  border: none;
+  height: 100%;
   left: 0;
   position: absolute;
   top: 0;
-  width: 100%; /* Make the iframe span the full width */
+  width: 100%;
 }
 
 .main-menu {

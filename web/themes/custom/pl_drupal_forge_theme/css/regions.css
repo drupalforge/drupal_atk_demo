@@ -16,12 +16,16 @@
 
 /* Hero */
 .region--hero {
-  padding: var(--pl-sp-4xl) 0 var(--pl-sp-2xl);
+  padding: var(--pl-sp-4xl) 0;
   text-align: center;
 }
 
 .page--front .region--hero {
   padding: var(--pl-sp-5xl) 0;
+}
+
+.page--test-runner .region--hero {
+  padding: var(--pl-sp-4xl) 0 var(--pl-sp-xl);
 }
 
 /* Content */
