@@ -1,0 +1,8 @@
+uuid: ae322e75-3831-4084-9d69-ba70b34526aa
+langcode: en
+status: true
+dependencies: {  }
+id: embedded_video
+label: 'Embedded Video'
+revision: false
+description: 'Embed a Vimeo video.'

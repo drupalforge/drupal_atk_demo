@@ -1,23 +1,23 @@
-uuid: 2a4db083-6354-4a28-b82b-da38312325e8
+uuid: c1d394e6-5fd6-459b-bb38-8918ce0d73ab
 langcode: en
 status: true
 dependencies:
   content:
-    - 'block_content:basic:08604b68-7d6b-4bcb-aabd-2b72825b3159'
+    - 'block_content:two_column_container:26ba6e2e-3182-4e88-8033-84133fb6feaf'
   module:
     - block_content
     - system
   theme:
     - pl_drupal_forge_theme
-id: pl_drupal_forge_theme_readytotrycta
+id: pl_drupal_forge_theme_promoblocktestpage
 theme: pl_drupal_forge_theme
 region: content
-weight: -4
+weight: -5
 provider: null
-plugin: 'block_content:08604b68-7d6b-4bcb-aabd-2b72825b3159'
+plugin: 'block_content:26ba6e2e-3182-4e88-8033-84133fb6feaf'
 settings:
-  id: 'block_content:08604b68-7d6b-4bcb-aabd-2b72825b3159'
-  label: 'Ready to try CTA (front page)'
+  id: 'block_content:26ba6e2e-3182-4e88-8033-84133fb6feaf'
+  label: 'Promo block (test page)'
   label_display: '0'
   provider: block_content
   status: true
@@ -27,4 +27,4 @@ visibility:
   request_path:
     id: request_path
     negate: false
-    pages: '<front>'
+    pages: /test-runner

@@ -8,6 +8,7 @@ dependencies:
     - rest.resource.pl_drupal_forge_logs_config
   module:
     - filter
+    - media
     - rest
     - system
 _core:
@@ -21,3 +22,4 @@ permissions:
   - 'restful get pl_drupal_forge_logs'
   - 'restful post pl_drupal_forge_invoke'
   - 'use text format restricted_html'
+  - 'view media'

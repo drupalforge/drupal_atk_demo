@@ -12,7 +12,7 @@ dependencies:
 id: pl_drupal_forge_theme_cardheading
 theme: pl_drupal_forge_theme
 region: pre_footer
-weight: 0
+weight: -6
 provider: null
 plugin: 'block_content:2d9827ac-6545-484c-a77d-5b99c253b73e'
 settings:

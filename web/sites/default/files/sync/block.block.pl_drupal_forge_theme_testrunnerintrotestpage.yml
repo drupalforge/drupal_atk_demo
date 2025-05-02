@@ -12,7 +12,7 @@ dependencies:
 id: pl_drupal_forge_theme_testrunnerintrotestpage
 theme: pl_drupal_forge_theme
 region: hero
-weight: -4
+weight: -5
 provider: null
 plugin: 'block_content:e3443a11-60df-49c4-9022-02466a866444'
 settings:

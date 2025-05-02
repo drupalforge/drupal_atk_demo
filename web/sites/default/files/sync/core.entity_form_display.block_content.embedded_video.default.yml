@@ -1,0 +1,30 @@
+uuid: 61ea99a7-a95e-4db0-bc0a-732bf117a072
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.embedded_video
+    - field.field.block_content.embedded_video.field_video_url
+  module:
+    - media_library
+id: block_content.embedded_video.default
+targetEntityType: block_content
+bundle: embedded_video
+mode: default
+content:
+  field_video_url:
+    type: media_library_widget
+    weight: 26
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

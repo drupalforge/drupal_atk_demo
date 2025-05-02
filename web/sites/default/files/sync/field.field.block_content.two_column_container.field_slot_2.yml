@@ -6,6 +6,7 @@ dependencies:
     - block_content.type.basic
     - block_content.type.bullet_list
     - block_content.type.cta_card
+    - block_content.type.embedded_video
     - block_content.type.two_column_container
     - field.storage.block_content.field_slot_2
   module:
@@ -27,6 +28,7 @@ settings:
       basic: basic
       bullet_list: bullet_list
       cta_card: cta_card
+      embedded_video: embedded_video
     sort:
       field: _none
       direction: ASC

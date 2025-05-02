@@ -1,0 +1,39 @@
+uuid: 6589742d-b72d-4667-b44e-96115a286d7a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.video_embed.field_caption
+    - field.field.media.video_embed.field_media_oembed_video
+    - media.type.video_embed
+  module:
+    - media
+id: media.video_embed.default
+targetEntityType: media
+bundle: video_embed
+mode: default
+content:
+  field_caption:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_media_oembed_video:
+    type: oembed
+    label: visually_hidden
+    settings:
+      max_width: 0
+      max_height: 0
+      loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  name: true
+  thumbnail: true
+  uid: true
