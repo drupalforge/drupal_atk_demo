@@ -180,11 +180,34 @@ h3 {
 }
 
 .messages {
-  background-color: var(--pl-orange-light);
+  background-color: var(--pl-white);
+  border-radius: 0.75rem;
+  box-shadow: var(--pl-card-default-shadow);
   color: black;
   font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
   margin: 0 auto 2rem;
-  max-width: 600px;
-  padding: var(--pl-sp-sm) var(--pl-sp-md);
-  text-align: center;
+  max-width: 1080px;
+  overflow-x: scroll;
+  padding: var(--pl-sp-lg);
+  width: 100%;
+
+  pre {
+    font-size: 0.875rem;
+    line-height: 1.75;
+  }
+}
+
+.messages--status {
+  background-color: var(--pl-blue-light);
+}
+
+.messages--warning {
+  background-color: var(--pl-orange-light);
+}
+
+.messages--error {
+  background-color: var(--pl-orange-dark);
+  color: var(--pl-white);
 }
