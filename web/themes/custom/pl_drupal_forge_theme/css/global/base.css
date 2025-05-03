@@ -118,12 +118,9 @@ h3 {
   }
 
   &:disabled {
+    background-color: var(--pl-neutral);
     cursor: not-allowed;
     opacity: 0.5;
-  }
-
-  &:disabled:hover {
-    background-color: var(--pl-blue-dark);
   }
 }
 

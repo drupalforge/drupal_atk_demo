@@ -18,14 +18,7 @@
   </form>
 
   {# {{ start_test_form }} #}
-
 </div>
-
-
-  <div id="log-pane" style="display: none;">
-    <pre id="log-content"></pre>
-  </div>
-
 
 <script>
   function $DRAPI(url, init) {
@@ -43,6 +36,10 @@
     $('#the-button').prop('disabled', true).text('Running...');
     // clear previous logs, if any
     $('#log-content').text('');
+    // Hide placeholder text while tests are running
+    $('#log-placeholder').css('display', 'none');
+    // Scroll to the #test-results section
+    document.getElementById('test-results').scrollIntoView({ behavior: 'smooth' });
 
     // form grep as a regex
     const tags = $.map($('#tags :selected'), e => e.value);
@@ -90,7 +87,7 @@
 
       // if ended, enable the button again
       if (data.status === 'ended' || data.status === 'timeout') {
-        $('#the-button').prop('disabled', false).text('Press the button');
+        $('#the-button').prop('disabled', false).text('Start Tests');
         // if received message, show it up
         if (data.message) {
           let message = data.message;

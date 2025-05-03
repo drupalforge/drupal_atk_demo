@@ -34,8 +34,8 @@ class AtkClientController extends ControllerBase {
   }
 
   /**
-   * Start "Test Me" page. Contains the "Press the button".
-   * On button press, the Lamnda function is triggered,
+   * Test Runner page.
+   * On button press, the Lambda function is triggered,
    * which runs ATK {@link https://www.drupal.org/project/automated_testing_kit/} tests
    * against this very site, and update the output to the page.
    *
