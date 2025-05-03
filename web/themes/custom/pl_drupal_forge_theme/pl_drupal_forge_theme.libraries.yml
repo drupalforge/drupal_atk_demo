@@ -1,12 +1,13 @@
 styles:
   css:
     theme:
-      css/base.css: {}
-      css/form.css: {}
-      css/spacing.css: {}
-      css/utilities.css: {}
-      css/regions.css: {}
-      css/site-slogan.css: {}
+      css/global/base.css: {}
+      css/global/form.css: {}
+      css/global/spacing.css: {}
+      css/global/utilities.css: {}
+      css/global/regions.css: {}
       css/block/bullet-list.css: {}
       css/block/container-blocks.css: {}
       css/block/cta-card.css: {}
+      css/page/front.css: {}
+      css/page/test-runner.css: {}

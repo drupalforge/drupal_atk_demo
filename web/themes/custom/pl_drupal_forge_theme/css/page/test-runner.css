@@ -1,0 +1,26 @@
+.test-output-container {
+  padding: var(--pl-sp-5xl) 0;
+}
+
+#log-container {
+  background-color: var(--pl-neutral-darkest);
+  border-radius: 0.75rem;
+  height: 70rem;
+}
+
+#log-pane {
+  background-color: transparent;
+  border-radius: 0.75rem;
+  height: 100%;
+  overflow-x: scroll;
+  overflow-y: scroll;
+  width: 100%;
+}
+
+#log-content {
+  color: #ccd1d1;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.75;
+  padding: var(--pl-sp-sm) var(--pl-sp-xl);
+}

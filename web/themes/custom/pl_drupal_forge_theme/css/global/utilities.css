@@ -1,6 +1,6 @@
 .pl-container {
   margin: 0 auto;
-  max-width: 1080px;
+  max-width: 1200px;
   padding: 0 var(--pl-sp-2xl);
 }
 
@@ -24,19 +24,19 @@
 
 .pl-gradient-1 {
   background: linear-gradient(
-    174deg,
+    172deg,
     rgba(228, 245, 248, 0.1) 10%,
-    rgba(202, 233, 238, 0.4) 50%,
+    rgba(202, 233, 238, 0.6) 40%,
     rgba(175, 220, 228, 0.75) 75%
   );
 }
 
 .pl-gradient-2 {
   background: linear-gradient(
-    30deg,
-    rgba(228, 245, 248, 0.1) 10%,
-    rgba(175, 220, 228, 0.75) 50%,
-    rgba(202, 233, 238, 0.4) 80%
+    180deg,
+    rgba(175, 220, 228, 0.75) 10%,
+    rgba(202, 233, 238, 0.6) 40%,
+    rgba(228, 245, 248, 0.1) 75%
   );
 }
 
