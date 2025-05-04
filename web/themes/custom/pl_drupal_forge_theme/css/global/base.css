@@ -2,8 +2,8 @@
 
 :root {
   /* Colors */
-  --pl-blue-dark: #10819f;
   --pl-blue-darker: #0b738f;
+  --pl-blue-dark: #10819f;
   --pl-blue: #62bbcb;
   --pl-blue-light: #beeaf1;
   --pl-blue-lighter: #e4f5f8;
@@ -24,7 +24,7 @@
   --pl-overlay: rgba(44, 56, 60, 0.7);
 
   /* Shadows */
-  --pl-card-default-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+  --pl-card-default-shadow: rgba(0, 0, 0, 0.1) 0px 1px 4px 0px,
     rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 
   /* Spacing */
@@ -137,6 +137,16 @@ h3 {
   align-self: stretch;
 }
 
+.pl-extlink {
+  color: var(--pl-blue-darker);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--pl-blue-dark);
+    text-decoration: underline;
+  }
+}
+
 .pl-media-caption {
   font-size: 0.8125rem;
   font-weight: 400;
@@ -207,4 +217,9 @@ h3 {
 .messages--error {
   background-color: var(--pl-orange-dark);
   color: var(--pl-white);
+}
+
+.pl-alert {
+  border-radius: 0.75rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }

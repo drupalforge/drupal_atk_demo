@@ -1,5 +1,5 @@
 <div class="layout-container">
-  <div class="pl-gradient-1">
+  <div class="pl-gradient-2">
     <header role="banner">
       {{ page.header }}
     </header>
@@ -18,9 +18,13 @@
   </div>
 
   {# Test output location -- this page only #}
-  <div class="pl-gradient-2">
+  <div class="pl-gradient-3">
     <div id="test-results" class="pl-container test-output-container">
-    <h2>Test Results</h2>
+      <div class="test-output-container__header">
+        <h2>Test Results</h2>
+        {# Placeholder for link #}
+        <div id="report-link"></div>
+      </div>
       <div id="log-container">
         <div id="log-placeholder">
         <pre>Test output will appear here...</pre>

@@ -1,9 +1,16 @@
 .test-output-container {
   padding: var(--pl-sp-3xl) 0 var(--pl-sp-5xl);
+}
+
+.test-output-container__header {
+  align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--pl-sp-sm);
 
   h2 {
     font-size: 1.75rem;
-    margin-bottom: var(--pl-sp-md);
+    font-weight: 600;
   }
 }
 
