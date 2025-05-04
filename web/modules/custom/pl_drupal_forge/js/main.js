@@ -1,4 +1,4 @@
-if (typeof window.jQuery !== "undefined") {
+if (typeof window.jQuery !== 'undefined') {
   window.$ = window.jQuery;
   console.log('Drupal has loaded jQuery, halilujah');
 } else {
@@ -6,5 +6,5 @@ if (typeof window.jQuery !== "undefined") {
 }
 
 $(document).ready(function () {
-  $('.js-multiselect').select2();
+  $('.js-multiselect').select2({ theme: 'pl' });
 });

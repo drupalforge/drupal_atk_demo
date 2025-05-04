@@ -1,12 +1,8 @@
 main:
-  css:
-    theme:
-      css/main.css: {}
   js:
     js/main.js: {}
   dependencies:
     - core/jquery
-    - pl_drupal_forge/select2
 report:
   css:
     theme:

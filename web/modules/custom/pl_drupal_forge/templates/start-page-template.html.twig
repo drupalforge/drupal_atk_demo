@@ -1,4 +1,5 @@
 {{ attach_library('pl_drupal_forge/main') }}
+{{ attach_library('pl_drupal_forge/select2') }}
 {{ attach_library('pl_drupal_forge/sweetalert2') }}
 
 <div class="pl-card pl-div--width-600">
@@ -9,7 +10,7 @@
     </div>
     <div class="pl-form-item">
       <label for="tags" class="pl-form-item__label">Tags</label>
-      <select id="tags" class="pl-form-item__input field js-multiselect" style="min-width: 400px" name="tag[]" multiple="multiple">
+      <select id="tags" class="pl-form-item__input field js-multiselect" name="tag[]" multiple="multiple">
         {% for tag in tags %}
           <option value="{{ tag }}">{{ tag }}</option>
         {% endfor %}
