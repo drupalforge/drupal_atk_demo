@@ -7,8 +7,8 @@
       <input id="input-url" class="pl-form-item__input" type="text" name="url" value="{{ base_url }}">
     </div>
     <div class="pl-form-item">
-      <label for="select-tags" class="pl-form-item__label">Tags</label>
-      <select id="select-tags" class="pl-form-item__select js-multiselect" name="tag" multiple="multiple">
+      <label for="tags" class="pl-form-item__label">Tags</label>
+      <select id="tags" class="pl-form-item__select js-multiselect" name="tag" multiple="multiple">
         {% for tag in tags %}
           <option class="tag-option" value="{{ tag }}">{{ tag }}</option>
         {% endfor %}
