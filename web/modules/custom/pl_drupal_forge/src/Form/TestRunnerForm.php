@@ -21,6 +21,9 @@ class TestRunnerForm extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
+    // Add the JavaScript library for the form.
+    $form['#attached']['library'][] = 'pl_drupal_forge/main';
+
     $form['#attributes'] = [
       'class' => ['pl-form'],
     ];
@@ -72,7 +75,6 @@ class TestRunnerForm extends FormBase {
       '#attributes' => [
         'id' => 'the-button',
         'class' => ['pl-button', 'pl-button--lg'],
-        'onclick' => 'invoke();',
       ],
     ];
 

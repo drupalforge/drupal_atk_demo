@@ -11,6 +11,13 @@ $(document).ready(function () {
     placeholder: 'Select tags...',
     closeOnSelect: false,
   });
+
+  // Enable this if you use the `start_test_form`
+  // instead of building the form directly in the template,
+  // $('#the-button').on('click', function (e) {
+  //   e.preventDefault();
+  //   invoke();
+  // });
 });
 
 function $DRAPI(url, init) {
