@@ -45,21 +45,12 @@ class TestRunnerForm extends FormBase {
     ];
 
     $form['tags'] = [
-      '#type' => 'multiselect_dropdown',
+      '#type' => 'select',
+      '#multiple' => TRUE,
       '#title' => $this->t('Tags'),
       '#options' => $this->getTags(),
-      '#default_open' => FALSE,
-      '#modal_breakpoint' => 760,
-      '#label_aria' => $this->t('Toggle the list of tags'),
-      '#label_none' => $this->t('Select tags...'),
-      '#label_all' => $this->t('All tags'),
-      '#label_single' => $this->t('%d tag selected'),
-      '#label_plural' => $this->t('%d tags selected'),
-      '#label_close' => $this->t('Close'),
-      '#label_select_all' => $this->t('Select all'),
-      '#label_select_none' => $this->t('Select none'),
       '#attributes' => [
-        'class' => ['pl-form-item__input'],
+        'class' => ['pl-form-item__select'],
       ],
       "#label_attributes" => [
         'class' => ['pl-form-item__label'],
