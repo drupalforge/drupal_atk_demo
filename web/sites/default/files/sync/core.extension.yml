@@ -27,8 +27,6 @@ module:
   media_library: 0
   menu_link_content: 0
   menu_ui: 0
-  multiselect_dropdown: 0
-  multiselect_dropdown_polyfill: 0
   mysql: 0
   node: 0
   options: 0
