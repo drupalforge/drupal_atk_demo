@@ -3,6 +3,8 @@ main:
     js/main.js: {}
   dependencies:
     - core/jquery
+    - pl_drupal_forge/select2
+    - pl_drupal_forge/sweetalert2
 report:
   css:
     theme:
