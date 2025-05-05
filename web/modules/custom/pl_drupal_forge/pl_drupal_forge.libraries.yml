@@ -3,24 +3,23 @@ main:
     js/main.js: {}
   dependencies:
     - core/jquery
-    - pl_drupal_forge/select2
+    - pl_drupal_forge/multiple_select
     - pl_drupal_forge/sweetalert2
+
 report:
   css:
     theme:
       css/report.css: {}
 
-select2:
-  version: 1.x
+multiple_select:
+  version: 2.x
   css:
     theme:
-      https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css:
+      https://unpkg.com/multiple-select@2.1.1/dist/multiple-select.min.css:
         { type: external }
   js:
-    https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js:
+    https://unpkg.com/multiple-select@2.1.1/dist/multiple-select.min.js:
       { type: external }
-  dependencies:
-    - core/jquery
 
 sweetalert2:
   version: 11.x

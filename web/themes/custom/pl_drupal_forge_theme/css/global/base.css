@@ -23,6 +23,9 @@
   --pl-tan-light: #faf8f6;
   --pl-overlay: rgba(44, 56, 60, 0.7);
 
+  /* Fonts */
+  --pl-font-family: 'Rubik', sans-serif;
+
   /* Shadows */
   --pl-card-default-shadow: rgba(0, 0, 0, 0.1) 0px 1px 4px 0px,
     rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
@@ -48,7 +51,7 @@ html {
 body {
   background-color: var(--pl-white);
   color: var(--pl-neutral-darker);
-  font-family: 'Rubik', sans-serif;
+  font-family: var(--pl-font-family);
   font-size: 1rem;
   font-variant-ligatures: none;
 }

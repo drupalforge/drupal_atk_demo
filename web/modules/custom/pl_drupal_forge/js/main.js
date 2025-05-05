@@ -6,18 +6,45 @@ if (typeof window.jQuery !== 'undefined') {
 }
 
 $(document).ready(function () {
-  $('.js-multiselect').select2({
-    theme: 'pl',
-    placeholder: 'Select tags...',
-    closeOnSelect: false,
-  });
-
   // Enable this if you use the `start_test_form`
   // instead of building the form directly in the template,
   // $('#the-button').on('click', function (e) {
   //   e.preventDefault();
   //   invoke();
   // });
+
+  $('.js-multiselect').multipleSelect({
+    placeholder: 'Select tags...',
+    minimumCountSelected: 4,
+
+    // Function to split selected tags into separate spans.
+    onClick: function () {
+      $('.ms-choice > span').each(function () {
+        const $this = $(this);
+        const text = $this.text().trim();
+
+        if (text) {
+          const tags = text.split(',');
+          $this.empty();
+
+          // Create a single wrapper div for all selected tags
+          const $wrapperDiv = $('<div>').addClass('tag-wrapper');
+
+          tags.forEach(function (tag) {
+            if (tag.trim()) {
+              $('<span>')
+                .text(tag.trim())
+                .addClass('selected-tag')
+                .appendTo($wrapperDiv);
+            }
+          });
+
+          // Append the wrapper div to the parent
+          $this.append($wrapperDiv);
+        }
+      });
+    },
+  });
 });
 
 function $DRAPI(url, init) {
