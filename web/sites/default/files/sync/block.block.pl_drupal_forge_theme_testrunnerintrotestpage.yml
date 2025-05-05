@@ -17,7 +17,7 @@ provider: null
 plugin: 'block_content:e3443a11-60df-49c4-9022-02466a866444'
 settings:
   id: 'block_content:e3443a11-60df-49c4-9022-02466a866444'
-  label: 'Test Runner intro (test page)'
+  label: 'Test Runner intro text (test page)'
   label_display: '0'
   provider: block_content
   status: true

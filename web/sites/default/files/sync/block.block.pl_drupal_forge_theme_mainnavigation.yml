@@ -11,7 +11,7 @@ dependencies:
 id: pl_drupal_forge_theme_mainnavigation
 theme: pl_drupal_forge_theme
 region: header
-weight: -3
+weight: -6
 provider: null
 plugin: 'system_menu_block:main'
 settings:
