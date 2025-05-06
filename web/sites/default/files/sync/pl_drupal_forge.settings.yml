@@ -1,5 +1,8 @@
 _core:
-  default_config_hash: nTTX4CKw6Cw4PoCc9GwL7MS6eTsPr7P4GukykZZctEI
+  default_config_hash: gI_m_GxOGx9sRmt_8wOOtADorawijIRZqEiLPrhfOEo
+show_url: true
+results_heading: 'Test results'
+output_placeholder: 'Test output will appear here...'
 profile: performantlabs
 region: us-east-1
 function: atk-lambda-func-dev-execute_tests
