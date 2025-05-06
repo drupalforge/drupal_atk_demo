@@ -226,3 +226,21 @@ h3 {
   border-radius: 0.75rem;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
+
+#block-pl-drupal-forge-theme-pagetitle {
+  margin-block-end: var(--pl-sp-xl);
+}
+
+.page--user {
+  #block-pl-drupal-forge-theme-content {
+    min-height: 50vh;
+  }
+}
+
+.page--user-login {
+  .layout-content {
+    margin: 0 auto;
+    max-width: 40rem;
+    padding: var(--pl-sp-lg);
+  }
+}

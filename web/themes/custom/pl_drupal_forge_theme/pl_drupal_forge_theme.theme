@@ -22,6 +22,11 @@ function pl_drupal_forge_theme_preprocess_html(array &$variables): void {
     // Sanitize the path and add it as a body class, prefixed with "page--".
     $sanitized_path = \Drupal\Component\Utility\Html::getClass(trim($current_path, '/'));
     $variables['attributes']['class'][] = 'page--' . $sanitized_path;
+
+    // Add another body class if the path contains "user".
+    if (strpos($current_path, '/user') !== false) {
+      $variables['attributes']['class'][] = 'page--user';
+    }
   }
 }
 
@@ -85,5 +90,23 @@ function pl_drupal_forge_theme_preprocess_image_widget(array &$variables): void 
 function pl_drupal_forge_theme_element_info_alter(&$info): void {
   if (isset($info['status_messages'])) {
     $info['status_messages']['#pre_render'][] = [PLDrupalForgeThemePreRender::class, 'messagePlaceholder'];
+  }
+}
+
+
+
+/**
+ * Implements hook_form_alter().
+ */
+function pl_drupal_forge_theme_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if ($form_id === 'user_login_form') {
+    $form['#attributes']['class'][] = 'pl-form';
+    $form['name']['#attributes']['class'][] = 'pl-form-item__input';
+    $form['name']['#label_attributes']['class'][] = 'pl-form-item__label';
+    $form['name']['#wrapper_attributes']['class'][] = 'pl-form-item';
+    $form['pass']['#attributes']['class'][] = 'pl-form-item__input';
+    $form['pass']['#label_attributes']['class'][] = 'pl-form-item__label';
+    $form['pass']['#wrapper_attributes']['class'][] = 'pl-form-item';
+    $form['actions']['submit']['#attributes']['class'][] = 'pl-button';
   }
 }
