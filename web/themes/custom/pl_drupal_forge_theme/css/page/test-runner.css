@@ -37,3 +37,27 @@
   line-height: 1.75;
   padding: var(--pl-sp-sm) var(--pl-sp-xl);
 }
+
+#report-link {
+  a {
+    align-items: center;
+    column-gap: 0.375rem;
+    display: flex;
+  }
+
+  .lucide-external-link {
+    height: var(--pl-sp-md);
+    width: var(--pl-sp-md);
+  }
+}
+
+.view-report-button {
+  column-gap: 0.5rem;
+  display: flex !important;
+
+  .lucide-external-link {
+    height: var(--pl-sp-lg);
+    padding-bottom: 0.25rem;
+    width: var(--pl-sp-lg);
+  }
+}

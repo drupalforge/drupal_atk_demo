@@ -130,8 +130,11 @@ function fetchLogs() {
             showAlert(data.message, data.resultUri);
 
             // Also add a report link above the log.
-            const reportLink = `<a href="${data.resultUri}" target="_blank" class="pl-extlink">View Report</a>`;
+            const reportLink = `<a href="${data.resultUri}" target="_blank" class="pl-extlink">View Report <i data-lucide="external-link"></i></a>`;
             $('#report-link').html(reportLink);
+
+            // Ensure Lucide icons are rendered
+            lucide.createIcons();
           } else {
             // Otherwise, show the message in the messages list.
             showMessage(message, data.statusCode !== 200);
@@ -148,13 +151,14 @@ function showAlert(messageText, reportLink) {
     title: 'Report is ready',
     titleText: 'Report is ready',
     text: messageText,
-    confirmButtonText: `View Report`,
+    confirmButtonText: `View Report <i data-lucide="external-link"></i>`,
     buttonsStyling: false,
     color: 'var(--pl-neutral-darkest)',
     backdrop: 'rgba(0, 0, 0, 0.6)',
     customClass: {
       popup: 'pl-alert',
-      confirmButton: 'pl-button pl-button--lg pl-sp-m-block-lg',
+      confirmButton:
+        'view-report-button pl-button pl-button--lg pl-sp-m-block-lg',
     },
   }).then((result) => {
     if (result.isConfirmed) {
