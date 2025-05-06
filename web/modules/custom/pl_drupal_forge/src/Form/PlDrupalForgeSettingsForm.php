@@ -32,7 +32,7 @@ class PlDrupalForgeSettingsForm extends ConfigFormBase {
 
     $form['show_url'] = [
       '#type' => 'checkbox',
-      '#title' => $this->t('Show URL'),
+      '#title' => $this->t('Show URL field'),
       '#default_value' => $config->get('show_url'),
       '#description' => $this->t('Check this box to show the URL field on the test runner page. It will be hidden by default.'),
     ];
