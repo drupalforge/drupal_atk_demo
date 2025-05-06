@@ -37,6 +37,13 @@ class PlDrupalForgeSettingsForm extends ConfigFormBase {
       '#description' => $this->t('Check this box to show the URL field on the test runner page. It will be hidden by default.'),
     ];
 
+    $form['results_heading'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Results heading'),
+      '#default_value' => $config->get('results_heading'),
+      '#description' => $this->t('Heading text for the test results output.'),
+    ];
+
     $form['output_placeholder'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Output placeholder text'),
@@ -53,6 +60,7 @@ class PlDrupalForgeSettingsForm extends ConfigFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $this->config('pl_drupal_forge.settings')
       ->set('show_url', $form_state->getValue('show_url'))
+      ->set('results_heading', $form_state->getValue('results_heading'))
       ->set('output_placeholder', $form_state->getValue('output_placeholder'))
       ->save();
 

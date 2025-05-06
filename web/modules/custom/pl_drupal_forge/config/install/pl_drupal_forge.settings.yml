@@ -71,4 +71,5 @@ tags:
 
 # Module settings default values.
 show_url: false
+results_heading: 'Test results'
 output_placeholder: 'Test output will appear here...'

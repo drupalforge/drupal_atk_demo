@@ -40,12 +40,14 @@ function pl_drupal_forge_theme_preprocess_page(array &$variables): void {
   // Load the configuration for the PL Drupal Forge module.
   $config = \Drupal::config('pl_drupal_forge.settings');
 
-  // Get the 'output_placeholder' value.
+  // Get values from the configuration.
   $output_placeholder = $config->get('output_placeholder');
+  $results_heading = $config->get('results_heading');
 
   // Page variables.
   $variables['site_slogan'] = $site_slogan;
   $variables['output_placeholder'] = $output_placeholder;
+  $variables['results_heading'] = $results_heading;
 }
 
 /**

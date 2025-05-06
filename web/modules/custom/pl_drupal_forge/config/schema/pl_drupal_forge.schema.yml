@@ -5,6 +5,10 @@ pl_drupal_forge.settings:
     show_url:
       type: boolean
       label: 'Show URL'
+    results_heading:
+      type: string
+      label: 'Results heading'
+      default: 'Test results'
     output_placeholder:
       type: string
       label: 'Output placeholder text'
