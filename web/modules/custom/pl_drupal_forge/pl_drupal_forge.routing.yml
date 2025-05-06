@@ -21,3 +21,10 @@ pl_drupal_forge.report:
     _permission: 'access content'
   options:
     no_cache: TRUE
+pl_drupal_forge.settings:
+  path: '/admin/config/pl-drupal-forge/settings'
+  defaults:
+    _form: '\Drupal\pl_drupal_forge\Form\PlDrupalForgeSettingsForm'
+    _title: 'PL Drupal Forge Settings'
+  requirements:
+    _permission: 'administer site configuration'

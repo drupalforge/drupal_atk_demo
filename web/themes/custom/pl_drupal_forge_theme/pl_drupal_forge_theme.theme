@@ -32,8 +32,15 @@ function pl_drupal_forge_theme_preprocess_page(array &$variables): void {
   // Load the site slogan from configuration.
   $site_slogan = \Drupal::config('system.site')->get('slogan');
 
-  // Add the site slogan to the page variables.
+  // Load the configuration for the PL Drupal Forge module.
+  $config = \Drupal::config('pl_drupal_forge.settings');
+
+  // Get the 'output_placeholder' value.
+  $output_placeholder = $config->get('output_placeholder');
+
+  // Page variables.
   $variables['site_slogan'] = $site_slogan;
+  $variables['output_placeholder'] = $output_placeholder;
 }
 
 /**

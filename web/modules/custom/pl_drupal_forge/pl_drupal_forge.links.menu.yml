@@ -4,3 +4,9 @@ test_me:
   parent: 'main'
   route_name: 'pl_drupal_forge.start'
   menu_name: main
+pl_drupal_forge.settings:
+  title: 'PL Drupal Forge Settings'
+  description: 'Configuration for the Test Runner page.'
+  parent: system.admin_config_system
+  route_name: pl_drupal_forge.settings
+  weight: 2

@@ -42,11 +42,17 @@ class AtkClientController extends ControllerBase {
    * @return array A simple renderable array.
    */
   public function start() {
+    // Get config from settings form.
+    $config = $this->config('pl_drupal_forge.settings');
+    $show_url = $config->get('show_url');
+
+
     // Build the form render array.
     $form = $this->formBuilder->getForm('Drupal\pl_drupal_forge\Form\TestRunnerForm');
 
     return [
       '#theme' => 'start_page_template',
+      '#show_url' => $show_url,
       '#start_test_form' => $form,
       '#base_url' => $this->getBaseUrl(),
       '#tags' => $this->config('pl_drupal_forge.settings')->get('tags'),

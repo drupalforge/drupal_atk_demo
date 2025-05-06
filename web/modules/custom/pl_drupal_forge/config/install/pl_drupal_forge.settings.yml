@@ -68,3 +68,7 @@ tags:
   - '@taxonomy'
   - '@user'
   - '@xml-sitemap'
+
+# Module settings default values.
+show_url: false
+output_placeholder: 'Test output will appear here...'
