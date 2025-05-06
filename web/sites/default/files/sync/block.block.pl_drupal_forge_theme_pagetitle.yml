@@ -1,0 +1,24 @@
+uuid: b9bf1425-6ae5-4c8a-9def-7298920a9d5a
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - pl_drupal_forge_theme
+id: pl_drupal_forge_theme_pagetitle
+theme: pl_drupal_forge_theme
+region: content
+weight: -7
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: "<front>\r\n/test-runner"

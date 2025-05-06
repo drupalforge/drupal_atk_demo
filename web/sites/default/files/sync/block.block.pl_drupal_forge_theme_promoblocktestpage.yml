@@ -12,7 +12,7 @@ dependencies:
 id: pl_drupal_forge_theme_promoblocktestpage
 theme: pl_drupal_forge_theme
 region: content
-weight: -6
+weight: -5
 provider: null
 plugin: 'block_content:26ba6e2e-3182-4e88-8033-84133fb6feaf'
 settings:

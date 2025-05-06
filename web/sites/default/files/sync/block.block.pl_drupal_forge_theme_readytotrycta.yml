@@ -12,7 +12,7 @@ dependencies:
 id: pl_drupal_forge_theme_readytotrycta
 theme: pl_drupal_forge_theme
 region: content
-weight: -5
+weight: -4
 provider: null
 plugin: 'block_content:08604b68-7d6b-4bcb-aabd-2b72825b3159'
 settings:
