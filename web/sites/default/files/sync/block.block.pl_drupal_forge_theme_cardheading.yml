@@ -1,0 +1,30 @@
+uuid: b7f445e7-6bed-4495-8457-171769739987
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:2d9827ac-6545-484c-a77d-5b99c253b73e'
+  module:
+    - block_content
+    - system
+  theme:
+    - pl_drupal_forge_theme
+id: pl_drupal_forge_theme_cardheading
+theme: pl_drupal_forge_theme
+region: pre_footer
+weight: -6
+provider: null
+plugin: 'block_content:2d9827ac-6545-484c-a77d-5b99c253b73e'
+settings:
+  id: 'block_content:2d9827ac-6545-484c-a77d-5b99c253b73e'
+  label: 'Card grid heading (front page)'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'

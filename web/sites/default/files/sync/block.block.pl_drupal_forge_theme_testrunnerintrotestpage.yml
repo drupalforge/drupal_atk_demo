@@ -1,0 +1,30 @@
+uuid: 9cf3fa18-3d6f-4643-9f87-0f85363e2bb6
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:e3443a11-60df-49c4-9022-02466a866444'
+  module:
+    - block_content
+    - system
+  theme:
+    - pl_drupal_forge_theme
+id: pl_drupal_forge_theme_testrunnerintrotestpage
+theme: pl_drupal_forge_theme
+region: hero
+weight: -5
+provider: null
+plugin: 'block_content:e3443a11-60df-49c4-9022-02466a866444'
+settings:
+  id: 'block_content:e3443a11-60df-49c4-9022-02466a866444'
+  label: 'Test Runner intro text (test page)'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /test-runner

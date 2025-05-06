@@ -1,126 +1,22 @@
 {{ attach_library('pl_drupal_forge/main') }}
 
-<div>
-  <p>Once upon a time, in one far away Web Development Studio… (here
-    should be an inspiring story on the value of end-to-end testing). </p>
-  <p>Press the  button below to run
-    <a href="https://www.drupal.org/project/automated_testing_kit/"
-       target="_blank">Automated Testing Kit 💧</a>.</p>
-  <label for="input-url" class="form-required form-item__label">URL</label>
-  <input id="input-url" type="text" name="url" value="{{ base_url }}" class="field" style="min-width: 400px">
-  <!-- select tags from the multiselect input -->
-  <label for="tags" class="form-item__label">Tags</label>
-  <select id="tags" class="field js-multiselect" style="min-width: 400px" name="tag[]" multiple="multiple">
-    {% for tag in tags %}
-      <option value="{{ tag }}">{{ tag }}</option>
-    {% endfor %}
-  </select>
-  <button id="the-button" onclick="invoke()">Press the button</button>
-  <div id="log-pane" style="display: none;">
-    <pre id="log-content"></pre>
-  </div>
+<div class="pl-card pl-div--width-600">
+  <form id="test-runner-form" class="pl-form">
+    {% if show_url %}
+      <div class="pl-form-item">
+        <label for="input-url" class="pl-form-item__label">URL</label>
+        <input id="input-url" class="pl-form-item__input" type="text" name="url" value="{{ base_url }}">
+      </div>
+    {% endif %}
+    <div class="pl-form-item">
+      <label for="tags" class="pl-form-item__label">Tags</label>
+      <select id="tags" class="pl-form-item__select js-multiselect" name="tag" multiple="multiple">
+        {% for tag in tags %}
+          <option class="tag-option" value="{{ tag }}">{{ tag }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <button id="the-button" class="pl-button pl-button--lg" onclick="invoke()">Start Tests</button>
+  </form>
+  {# {{ start_test_form }} #}
 </div>
-
-<script>
-  function $DRAPI(url, init) {
-    return $.ajax('/session/token').then((response) => {
-      const token = response;
-      init ||= {};
-      init.headers ||= {};
-      init.headers['X-CSRF-Token'] = token;
-      return $.ajax(url, init);
-    });
-  }
-
-  function invoke() {
-    // disable the button to prevent occasional double-click
-    $('#the-button').prop('disabled', true).text('Running...');
-    // clear previous logs, if any
-    $('#log-content').text('');
-
-    // form grep as a regex
-    const tags = $.map($('#tags :selected'), e => e.value);
-    const grep = !tags.length ? null : `(${tags.join('|')})`;
-    $DRAPI('/pl_drupal_forge/invoke?_format=json', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      data: JSON.stringify({
-        url: $('[name="url"]').val(),
-        grep,
-      }),
-    }).then(() => {
-      fetchLogs();
-    }).catch(onError);
-  }
-
-  let lastTimestamp;
-
-  function fetchLogs() {
-    let input = '/pl_drupal_forge/logs';
-    if (lastTimestamp) {
-      input += `?timestamp=${lastTimestamp}`;
-    }
-    $.ajax(input).then((response) => {
-      // automatically parsed by jQuery
-      const data = response;
-      if (data.status === 'running') {
-        $('#log-pane').css('display', 'block');
-        setTimeout(fetchLogs, 1000);
-      }
-      lastTimestamp = data.timestamp;
-
-      if (!data.hasOwnProperty('logs')) {
-        // bad bad response... don't know how to handle it...
-        return;
-      }
-      for (const log of data.logs) {
-        $('#log-content').append(
-          `${new Date(log.timestamp).toLocaleString()}            ${log.message}\n`
-        );
-        $('#log-pane').scrollTop($('#log-pane').prop('scrollHeight'));
-      }
-
-      // if ended, enable the button again
-      if (data.status === 'ended' || data.status === 'timeout') {
-        $('#the-button').prop('disabled', false).text('Press the button');
-        // if received message, show it up
-        if (data.message) {
-          let message = data.message;
-          if (data.resultUri) {
-            // To use JSON report pre-processed on the server:
-            // message += `<br><a href="/test-report?report-uri=${encodeURIComponent(data.resultUri)}">Report is ready.</a>`;
-            // To use standard HTML report in the new tab:
-            message += `<br><a href="${data.resultUri}" target="_blank">Report is ready.</a>`;
-          }
-          showMessage(message, data.statusCode !== 200);
-        }
-      }
-    }).catch(onError);
-  }
-
-  // function showMessage(data) {
-  //   $m
-  // }
-
-  function showMessage(message, isError = true) {
-    const $messages = $('.messages-list');
-    $messages.removeClass('hidden');
-    const $1 = $(`<div class="messages ${isError ? 'messages--error': ''}" style="white-space: pre-line;"></div>`).html(message);
-    $messages.append($1);
-    // scrollIntoView is not a function
-    // [0] will return native element
-    $messages[0].scrollIntoView();
-  }
-
-  function onError(error) {
-    // in case error handle fails, we can see the original object in console.
-    console.error(error);
-
-    // Drupal returns response as a piece of HTML, so handle it here
-    const message = error.responseText || '<strong>Unhandled error. Check out browser console for details.</strong>';
-    showMessage(message);
-  }
-
-</script>

@@ -1,0 +1,114 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming.
+ */
+
+ use Drupal\pl_drupal_forge_theme\PLDrupalForgeThemePreRender;
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function pl_drupal_forge_theme_preprocess_html(array &$variables): void {
+  // Get the current path.
+  $current_path = \Drupal::service('path.current')->getPath();
+
+  // Check if the page is the front page.
+  if (\Drupal::service('path.matcher')->isFrontPage()) {
+    $variables['attributes']['class'][] = 'page--front';
+  }
+  else {
+    // Sanitize the path and add it as a body class, prefixed with "page--".
+    $sanitized_path = \Drupal\Component\Utility\Html::getClass(trim($current_path, '/'));
+    $variables['attributes']['class'][] = 'page--' . $sanitized_path;
+
+    // Add another body class if the path contains "user".
+    if (strpos($current_path, '/user') !== false) {
+      $variables['attributes']['class'][] = 'page--user';
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function pl_drupal_forge_theme_preprocess_page(array &$variables): void {
+  // Load the site slogan from configuration.
+  $site_slogan = \Drupal::config('system.site')->get('slogan');
+
+  // Load the configuration for the PL Drupal Forge module.
+  $config = \Drupal::config('pl_drupal_forge.settings');
+
+  // Get values from the configuration.
+  $output_placeholder = $config->get('output_placeholder');
+  $results_heading = $config->get('results_heading');
+
+  // Page variables.
+  $variables['site_slogan'] = $site_slogan;
+  $variables['output_placeholder'] = $output_placeholder;
+  $variables['results_heading'] = $results_heading;
+}
+
+/**
+ * Implements hook_preprocess_menu().
+ */
+function pl_drupal_forge_theme_preprocess_menu(&$variables): void {
+  if ($variables['menu_name'] === 'main') {
+    // Check if the menu has links.
+    if (!empty($variables['items'])) {
+      foreach ($variables['items'] as &$item) {
+        // Add a custom class to the <a> tag.
+        $item['url']->setOption('attributes', [
+          'class' => array_merge(
+            $item['url']->getOption('attributes')['class'] ?? [],
+            ['pl-button']
+          ),
+        ]);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_image_widget().
+ */
+function pl_drupal_forge_theme_preprocess_image_widget(array &$variables): void {
+  $data = &$variables['data'];
+
+  // This prevents image widget templates from rendering preview container HTML
+  // to users that do not have permission to access these previews.
+  // @todo revisit in https://drupal.org/node/953034
+  // @todo revisit in https://drupal.org/node/3114318
+  if (isset($data['preview']['#access']) && $data['preview']['#access'] === FALSE) {
+    unset($data['preview']);
+  }
+}
+
+
+/**
+ * Implements hook_element_info_alter().
+ */
+function pl_drupal_forge_theme_element_info_alter(&$info): void {
+  if (isset($info['status_messages'])) {
+    $info['status_messages']['#pre_render'][] = [PLDrupalForgeThemePreRender::class, 'messagePlaceholder'];
+  }
+}
+
+
+
+/**
+ * Implements hook_form_alter().
+ */
+function pl_drupal_forge_theme_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if ($form_id === 'user_login_form') {
+    $form['#attributes']['class'][] = 'pl-form';
+    $form['name']['#attributes']['class'][] = 'pl-form-item__input';
+    $form['name']['#label_attributes']['class'][] = 'pl-form-item__label';
+    $form['name']['#wrapper_attributes']['class'][] = 'pl-form-item';
+    $form['pass']['#attributes']['class'][] = 'pl-form-item__input';
+    $form['pass']['#label_attributes']['class'][] = 'pl-form-item__label';
+    $form['pass']['#wrapper_attributes']['class'][] = 'pl-form-item';
+    $form['actions']['submit']['#attributes']['class'][] = 'pl-button';
+  }
+}

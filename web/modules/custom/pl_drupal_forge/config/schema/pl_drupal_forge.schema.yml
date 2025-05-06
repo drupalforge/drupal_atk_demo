@@ -1,0 +1,15 @@
+pl_drupal_forge.settings:
+  type: config_object
+  label: 'PL Drupal Forge settings'
+  mapping:
+    show_url:
+      type: boolean
+      label: 'Show URL'
+    results_heading:
+      type: string
+      label: 'Results heading'
+      default: 'Test results'
+    output_placeholder:
+      type: string
+      label: 'Output placeholder text'
+      default: 'Test output will appear here...'

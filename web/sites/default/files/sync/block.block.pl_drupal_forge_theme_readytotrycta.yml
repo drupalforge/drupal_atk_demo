@@ -1,0 +1,30 @@
+uuid: 2a4db083-6354-4a28-b82b-da38312325e8
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:08604b68-7d6b-4bcb-aabd-2b72825b3159'
+  module:
+    - block_content
+    - system
+  theme:
+    - pl_drupal_forge_theme
+id: pl_drupal_forge_theme_readytotrycta
+theme: pl_drupal_forge_theme
+region: content
+weight: -4
+provider: null
+plugin: 'block_content:08604b68-7d6b-4bcb-aabd-2b72825b3159'
+settings:
+  id: 'block_content:08604b68-7d6b-4bcb-aabd-2b72825b3159'
+  label: 'Ready to try CTA (front page)'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'

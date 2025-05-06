@@ -7,8 +7,12 @@ web/modules/contrib
 .idea
 /web/sites/default/files/xmlsitemap
 /web/sites/default/files/media-icons
+/web/sites/default/files/styles
+/web/sites/default/files/oembed_thumbnails
 /tests
 /recipes
 /playwright.config.js
 /playwright.atk.config.js
 /package.json
+.prettierrc.json
+.DS_Store

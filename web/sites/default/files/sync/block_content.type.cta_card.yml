@@ -1,0 +1,8 @@
+uuid: d22cded2-d37d-4646-b37b-20b40886522a
+langcode: en
+status: true
+dependencies: {  }
+id: cta_card
+label: 'CTA Card'
+revision: false
+description: 'Card with an icon, heading, description, and button. '

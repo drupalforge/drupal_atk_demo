@@ -1,0 +1,23 @@
+uuid: a30d3539-f5e5-4044-a44d-1f85806c4677
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.two_column_container
+    - field.storage.block_content.field_two_column_layout
+  module:
+    - options
+id: block_content.two_column_container.field_two_column_layout
+field_name: field_two_column_layout
+entity_type: block_content
+bundle: two_column_container
+label: 'Column Layout'
+description: 'Select the width of the first column. The second column will be adjusted to fill the remaining space. Both columns will be full width at smaller breakpoints. '
+required: true
+translatable: false
+default_value:
+  -
+    value: equal
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,25 @@
+{# Configure conditional classes. #}
+{% set additionalClasses = ['container-block container-block--multi container-block--two'] %}
+
+{% if content.field_container_style|render|striptags|trim == 'card' %}
+  {% set additionalClasses = additionalClasses|merge(['container-block--card','pl-card']) %}
+{% endif %}
+
+{% if content.field_extra_classes|render|striptags|trim %}
+  {% set additionalClasses = additionalClasses|merge(content.field_extra_classes|render|striptags|trim|split(' ')) %}
+{% endif %}
+
+{% set column_layout_class = content.field_two_column_layout|render|striptags|trim %}
+{% set additionalClasses = additionalClasses|merge(['layout--' ~ column_layout_class|replace({'_' : '-'})]) %}
+
+<div{{ attributes.addClass(additionalClasses) }}>
+  {{ title_suffix }}
+  {% block content %}
+  <div class="slot slot--1">
+    {{ content.field_slot_1 }}
+  </div>
+  <div class="slot slot--2">
+    {{ content.field_slot_2 }}
+  </div>
+  {% endblock %}
+</div>

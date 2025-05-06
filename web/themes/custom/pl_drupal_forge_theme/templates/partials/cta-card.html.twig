@@ -1,0 +1,17 @@
+<div{{ attributes.addClass("pl-card cta-card") }}>
+  {{ title_suffix }}
+  {% block content %}
+
+  <div class="cta-card__top">
+    <div class="cta-card__icon-wrapper">
+      <i data-lucide="{{ content.field_card_icon|render|striptags|trim }}" class="cta-card__icon"></i>
+    </div>
+    <div class="cta-card__text">
+      <h3 class="cta-card__heading">{{ content.field_card_heading|render|striptags|trim }}</h3>
+      <p class="cta-card__description">{{ content.field_card_description|render|striptags|trim }}</p>
+    </div>
+  </div>
+
+  <a class="cta-card__link pl-button pl-button--full" rel="nofollow" target="_blank" href="{{ content.field_card_link[0]['#url'] }}">{{ content.field_card_link[0]['#title'] }}</a>
+  {% endblock %}
+</div>

@@ -1,0 +1,23 @@
+uuid: b28782a0-ae7a-4e1e-a8ef-f2a7abbb6177
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.one_column_container
+    - field.storage.block_content.field_container_style
+  module:
+    - options
+id: block_content.one_column_container.field_container_style
+field_name: field_container_style
+entity_type: block_content
+bundle: one_column_container
+label: 'Container style'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: unstyled
+default_value_callback: ''
+settings: {  }
+field_type: list_string

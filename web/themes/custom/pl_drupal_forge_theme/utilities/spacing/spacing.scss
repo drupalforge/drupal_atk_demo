@@ -1,0 +1,57 @@
+$spacing-sizes: (
+  none: 0,
+  2xs: var(--pl-sp-2xs),
+  xs: var(--pl-sp-xs),
+  sm: var(--pl-sp-sm),
+  md: var(--pl-sp-md),
+  lg: var(--pl-sp-lg),
+  xl: var(--pl-sp-xl),
+  2xl: var(--pl-sp-2xl),
+  3xl: var(--pl-sp-3xl),
+  4xl: var(--pl-sp-4xl),
+  5xl: var(--pl-sp-5xl),
+  6xl: var(--pl-sp-6xl),
+);
+
+$spacing-directions: ('block-start', 'block-end', 'inline-start', 'inline-end');
+
+@each $size, $value in $spacing-sizes {
+  .pl-sp-m-#{$size} {
+    margin: $value;
+  }
+
+  .pl-sp-m-block-#{$size} {
+    margin-block: $value;
+  }
+
+  .pl-sp-m-inline-#{$size} {
+    margin-inline: $value;
+  }
+
+  @each $direction in $spacing-directions {
+    .pl-sp-m-#{$direction}-#{$size} {
+      margin-#{$direction}: $value;
+    }
+  }
+}
+
+/* Generate padding spacing utility classes. */
+@each $size, $value in $spacing-sizes {
+  .pl-sp-p-#{$size} {
+    padding: $value;
+  }
+
+  .pl-sp-p-block-#{$size} {
+    padding-block: $value;
+  }
+
+  .pl-sp-p-inline-#{$size} {
+    padding-inline: $value;
+  }
+
+  @each $direction in $spacing-directions {
+    .pl-sp-p-#{$direction}-#{$size} {
+      padding-#{$direction}: $value;
+    }
+  }
+}

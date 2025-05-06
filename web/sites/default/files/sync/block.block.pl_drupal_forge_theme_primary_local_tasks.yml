@@ -1,0 +1,22 @@
+uuid: 4ed06c93-1d28-44bd-93ae-6ca5718086a1
+langcode: en
+status: false
+dependencies:
+  theme:
+    - pl_drupal_forge_theme
+_core:
+  default_config_hash: nGE3EoPQQaQCuqTUtZgw0-KIzmrqdKDzdNQf2JyPUt4
+id: pl_drupal_forge_theme_primary_local_tasks
+theme: pl_drupal_forge_theme
+region: admin
+weight: -4
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primary tabs'
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: false
+visibility: {  }

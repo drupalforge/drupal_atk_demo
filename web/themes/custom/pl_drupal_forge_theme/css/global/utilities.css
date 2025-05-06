@@ -1,0 +1,87 @@
+.pl-container {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 var(--pl-sp-2xl);
+}
+
+.pl-card {
+  background: var(--pl-white);
+  border-radius: 0.75rem;
+  box-shadow: var(--pl-card-default-shadow);
+  padding: calc(var(--pl-sp-2xl) * 1.25);
+}
+
+.pl-div--width-auto {
+  margin-inline: auto;
+  width: max-content;
+}
+
+.pl-div--width-600 {
+  margin-inline: auto;
+  max-width: 600px;
+  text-align: center;
+}
+
+.pl-gradient-1 {
+  background: linear-gradient(
+    172deg,
+    rgba(228, 245, 248, 0.1) 10%,
+    rgba(202, 233, 238, 0.6) 40%,
+    rgba(175, 220, 228, 0.8) 75%
+  );
+}
+
+.pl-gradient-2 {
+  background: linear-gradient(
+    172deg,
+    rgba(228, 245, 248, 0.1) 10%,
+    rgba(175, 220, 228, 0.8) 40%,
+    rgba(202, 233, 238, 0.4) 90%
+  );
+}
+
+.pl-gradient-3 {
+  background: linear-gradient(
+    180deg,
+    rgba(202, 233, 238, 0.4) 2%,
+    rgba(228, 245, 248, 0.1) 75%
+  );
+}
+
+.pl-hero-text {
+  margin: 0 auto;
+  text-align: center;
+  text-wrap: balance;
+  width: 85%;
+
+  h1 {
+    font-size: 3.5rem;
+    line-height: 3.75rem;
+    margin: 0 0 var(--pl-sp-xl);
+  }
+
+  p {
+    font-size: 1.125rem;
+    letter-spacing: 0.02em;
+    line-height: 1.5;
+    margin: 0 auto;
+    width: 85%;
+  }
+}
+
+.page--front {
+  .pl-hero-text {
+    h1 {
+      font-size: 4.5rem;
+      line-height: 4.75rem;
+      margin: 0 0 var(--pl-sp-3xl);
+    }
+    p {
+      font-size: 1.25rem;
+      letter-spacing: 0.02em;
+      line-height: 1.5;
+      margin: 0 auto;
+      width: 85%;
+    }
+  }
+}

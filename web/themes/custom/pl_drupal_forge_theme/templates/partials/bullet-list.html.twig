@@ -1,0 +1,18 @@
+{% set heading_level = content.field_heading_level|render|striptags|trim %}
+{% set heading_content = content.field_list_heading|render|striptags|trim %}
+
+<div{{ attributes.addClass('bullet-list') }}{{ title_attributes }}>
+  {{ title_suffix }}
+
+  {% block content %}
+    {% if heading_content %}
+    <div class="bullet-list__heading">
+      <{{ heading_level }}>{{ heading_content }}</{{ heading_level }}>
+    </div>
+    {% endif %}
+
+    <ul class="bullet-list__list">
+      {{ content.field_list_item }}
+    </ul>
+  {% endblock %}
+</div>

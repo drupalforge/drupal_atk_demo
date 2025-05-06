@@ -1,0 +1,51 @@
+<div class="layout-container">
+  <div class="pl-gradient-2">
+    <header role="banner">
+      {{ page.header }}
+    </header>
+
+    {{ page.hero }}
+    {{ messages }}
+    {{ page.admin }}
+
+    <main role="main">
+      <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+
+      <div class="layout-content">
+        {{ page.content }}
+      </div>{# /.layout-content #}
+    </main>
+  </div>
+
+  {# Test output location -- this page only #}
+  <div class="pl-gradient-3">
+    <div id="test-results" class="pl-container test-output-container">
+      <div class="test-output-container__header">
+        <h2>{{ results_heading }}</h2>
+        {# Placeholder for link #}
+        <div id="report-link"></div>
+      </div>
+      <div id="log-container">
+        <div id="log-placeholder">
+        <pre>{{ output_placeholder }}</pre>
+        </div>
+        <div id="log-pane" style="display: none;">
+          <pre id="log-content"></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% if page.pre_footer %}
+    <div class="layout-pre-footer">
+      {{ page.pre_footer }}
+    </div>
+  {% endif %}
+
+  {% if page.footer %}
+    <footer role="contentinfo">
+      {{ page.footer }}
+    </footer>
+  {% endif %}
+
+</div>{# /.layout-container #}

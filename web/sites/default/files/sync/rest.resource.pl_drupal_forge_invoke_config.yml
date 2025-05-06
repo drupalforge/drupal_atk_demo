@@ -1,0 +1,22 @@
+uuid: e0ff377e-a91e-4848-8bb6-52d7ce949f2a
+langcode: en
+status: true
+dependencies:
+  module:
+    - pl_drupal_forge
+    - serialization
+    - user
+_core:
+  default_config_hash: eNy1uYFKxVTLxwMSCxl3negQOjh1W8-mLFT72XihXoI
+id: pl_drupal_forge_invoke_config
+plugin_id: pl_drupal_forge_invoke
+granularity: method
+configuration:
+  POST:
+    supported_formats:
+      - json
+    supported_auth:
+      - cookie
+  resource_permissions:
+    POST:
+      anonymous: true

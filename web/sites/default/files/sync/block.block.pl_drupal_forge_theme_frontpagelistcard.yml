@@ -1,0 +1,30 @@
+uuid: 2eba9983-fbaa-4e95-b313-c1f030bf1584
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:one_column_container:5f879a79-155c-4b40-b089-b1856eb64f4e'
+  module:
+    - block_content
+    - system
+  theme:
+    - pl_drupal_forge_theme
+id: pl_drupal_forge_theme_frontpagelistcard
+theme: pl_drupal_forge_theme
+region: hero
+weight: -6
+provider: null
+plugin: 'block_content:5f879a79-155c-4b40-b089-b1856eb64f4e'
+settings:
+  id: 'block_content:5f879a79-155c-4b40-b089-b1856eb64f4e'
+  label: 'List card (front page)'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'

@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+:root {
+  /* Colors */
+  --pl-blue-darker: #0b738f;
+  --pl-blue-dark: #10819f;
+  --pl-blue: #62bbcb;
+  --pl-blue-light: #beeaf1;
+  --pl-blue-lighter: #e4f5f8;
+  --pl-blue-lightest: #f2fafc;
+  --pl-neutral-darkest: #1d1d1d;
+  --pl-neutral-darker: #3e3b3b;
+  --pl-neutral-dark: #6a6a6a;
+  --pl-neutral: #898989;
+  --pl-neutral-light: #ccd1d1;
+  --pl-neutral-lighter: #f1f1f1;
+  --pl-white: #ffffff;
+  --pl-orange-dark: #bf590b;
+  --pl-orange: #ec6e0e;
+  --pl-orange-light: #f6bd91;
+  --pl-orange-lighter: #fdefe4;
+  --pl-tan: #f2efed;
+  --pl-tan-light: #faf8f6;
+  --pl-overlay: rgba(44, 56, 60, 0.7);
+
+  /* Fonts */
+  --pl-font-family: 'Rubik', sans-serif;
+
+  /* Shadows */
+  --pl-card-default-shadow: rgba(0, 0, 0, 0.1) 0px 1px 4px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+
+  /* Spacing */
+  --pl-sp-2xs: 0.25rem;
+  --pl-sp-xs: 0.5rem;
+  --pl-sp-sm: 0.75rem;
+  --pl-sp-md: 1rem;
+  --pl-sp-lg: 1.25rem;
+  --pl-sp-xl: 1.625rem;
+  --pl-sp-2xl: 2rem;
+  --pl-sp-3xl: 3.125rem;
+  --pl-sp-4xl: 4rem;
+  --pl-sp-5xl: 5rem;
+  --pl-sp-6xl: 6.25rem;
+}
+
+html {
+  background-color: var(--pl-neutral-darkest);
+}
+
+body {
+  background-color: var(--pl-white);
+  color: var(--pl-neutral-darker);
+  font-family: var(--pl-font-family);
+  font-size: 1rem;
+  font-variant-ligatures: none;
+}
+
+a {
+  color: var(--pl-orange-dark);
+
+  &:hover {
+    color: var(--pl-orange);
+    text-decoration: none;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--pl-neutral-darkest);
+  font-family: 'Rubik', sans-serif;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0;
+}
+
+h1 {
+  font-size: 3rem;
+  letter-spacing: 0.01em;
+}
+h2 {
+  font-size: 2.25rem;
+}
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.pl-button {
+  align-items: center;
+  background-color: var(--pl-blue-dark);
+  border-color: transparent;
+  border-radius: 10rem;
+  color: var(--pl-white);
+  display: inline-flex;
+  font-size: 0.875rem;
+  font-weight: 500;
+  gap: 0.5rem;
+  justify-content: center;
+  letter-spacing: 0.015em;
+  line-height: var(--pl-sp-lg);
+  padding: var(--pl-sp-xs) var(--pl-sp-lg);
+  text-decoration: none;
+
+  &:hover {
+    background-color: var(--pl-blue-darker);
+    color: var(--pl-white);
+  }
+
+  &:active {
+    background-color: var(--pl-blue-dark);
+    color: var(--pl-white);
+  }
+
+  &:focus {
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    background-color: var(--pl-neutral);
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.pl-button--lg {
+  font-size: 1.125rem;
+  padding: var(--pl-sp-md) var(--pl-sp-2xl);
+
+  &:focus {
+    outline-offset: 4px;
+  }
+}
+
+.pl-button--full {
+  align-self: stretch;
+}
+
+.pl-extlink {
+  color: var(--pl-blue-darker);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--pl-blue-dark);
+    text-decoration: underline;
+  }
+}
+
+.pl-media-caption {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.25;
+  margin-block-start: 0.5rem;
+}
+
+.pl-video-wrapper {
+  margin: 0 auto;
+  max-width: 100%;
+  width: 100%;
+}
+
+.pl-video-embed {
+  height: 0;
+  overflow: hidden;
+  padding-top: 56.25%;
+  position: relative;
+}
+
+.pl-video-embed iframe {
+  border: none;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.main-menu {
+  align-items: center;
+  column-gap: 1rem;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.messages {
+  background-color: var(--pl-white);
+  border-radius: 0.75rem;
+  box-shadow: var(--pl-card-default-shadow);
+  color: black;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0 auto 2rem;
+  max-width: 1200px;
+  overflow-x: scroll;
+  padding: var(--pl-sp-lg);
+  width: 100%;
+
+  pre {
+    font-size: 0.875rem;
+    line-height: 1.75;
+  }
+}
+
+.messages--status {
+  background-color: var(--pl-blue-light);
+}
+
+.messages--warning {
+  background-color: var(--pl-orange-light);
+}
+
+.messages--error {
+  background-color: var(--pl-orange-dark);
+  color: var(--pl-white);
+}
+
+.pl-alert {
+  border-radius: 0.75rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+#block-pl-drupal-forge-theme-pagetitle {
+  margin-block-end: var(--pl-sp-xl);
+}
+
+.page--user {
+  #block-pl-drupal-forge-theme-content {
+    min-height: 50vh;
+  }
+}
+
+.page--user-login {
+  .layout-content {
+    margin: 0 auto;
+    max-width: 40rem;
+    padding: var(--pl-sp-lg);
+  }
+}

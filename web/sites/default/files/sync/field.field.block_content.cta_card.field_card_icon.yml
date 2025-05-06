@@ -1,0 +1,21 @@
+uuid: 0ee0f731-ea1b-462e-b8bb-1145679ca1d5
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cta_card
+    - field.storage.block_content.field_card_icon
+id: block_content.cta_card.field_card_icon
+field_name: field_card_icon
+entity_type: block_content
+bundle: cta_card
+label: 'Card icon'
+description: 'Enter the name of the <a href="https://lucide.dev/icons/" target="_blank">Lucide icon</a> you would like to display. '
+required: true
+translatable: false
+default_value:
+  -
+    value: check
+default_value_callback: ''
+settings: {  }
+field_type: string
