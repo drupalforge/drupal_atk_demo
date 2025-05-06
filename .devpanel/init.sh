@@ -80,6 +80,8 @@ sudo chmod 644 $SETTINGS_FILES_PATH
 
 #== Enable PL Drupal Forge by default
 drush en pl_drupal_forge -y
+drush theme:install pl_drupal_forge_theme
+drush config:set system.theme default pl_drupal_forge_theme -y
 
 #== Apply recipe
 cd $APP_ROOT
