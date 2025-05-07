@@ -27,7 +27,6 @@ jobs:
           DB_USER: user
           DB_PASSWORD: password
           DB_DRIVER: mysql
-          DB_DUMP: '/var/www/html/.devpanel/dumps/initial.db.sql.tgz'
         ports:
           - 80:80
         volumes:
