@@ -64,6 +64,7 @@ if [[ -f $DB_DUMP ]]; then
   rm /tmp/$SQLFILE
   sudo rm -rf "$DB_DUMP"
 fi
+unset DB_DUMP
 
 #== Drush Site Install
 if [[ $(mysql -h$DB_HOST -P$DB_PORT -u$DB_USER -p$DB_PASSWORD $DB_NAME -e "show tables;") == '' ]]; then
