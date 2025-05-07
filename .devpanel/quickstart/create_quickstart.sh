@@ -32,7 +32,7 @@ mkdir -p $DUMPS_DIR
 cd $WORK_DIR
 echo -e "> Export database using drupal/drush"
 drush cr --quiet
-drush sql-dump > $TMP_DIR/$DB_NAME.sql --extra=--no-tablespaces
+drush sql-dump > $TMP_DIR/$DB_NAME.sql --extra-dump=--no-tablespaces
 
 echo -e "> Compress database"
 tar czf $DUMPS_DIR/db.sql.tgz -C $TMP_DIR $DB_NAME.sql
