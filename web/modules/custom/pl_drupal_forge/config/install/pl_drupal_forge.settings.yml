@@ -1,6 +1,11 @@
 # AWS system profile (in ~/.aws/credentials).
 profile: 'performantlabs'
 
+## Alternative way is to provide secrets directly.
+#credentials:
+#  key: '<your key>'
+#  secret: '<your secret>'
+
 # AWS region.
 region: 'us-east-1'
 

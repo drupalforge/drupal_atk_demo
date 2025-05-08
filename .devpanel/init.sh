@@ -36,15 +36,6 @@ fi
 echo "Install drush locally ..."
 composer require --dev drush/drush
 
-#== AWS configure.
-sudo mkdir -p /.aws/
-sudo tee /.aws/credentials > /dev/null <<EOT
-[performantlabs]
-aws_access_key_id = $AWS_ACCESS_KEY_ID
-aws_secret_access_key = $AWS_SECRET_ACCESS_KEY
-EOT
-
-
 
 cd $WEB_ROOT && git submodule update --init --recursive
 
@@ -97,6 +88,10 @@ sudo chmod 644 $SETTINGS_FILES_PATH
 drush en pl_drupal_forge -y
 drush theme:install pl_drupal_forge_theme
 drush config:set system.theme default pl_drupal_forge_theme -y
+
+#== AWS configure.
+drush cset -y pl_drupal_forge.settings credentials.key $AWS_ACCESS_KEY_ID
+drush cset -y pl_drupal_forge.settings credentials.secret $AWS_SECRET_ACCESS_KEY
 
 #== Apply recipe
 cd $APP_ROOT

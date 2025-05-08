@@ -34,7 +34,10 @@ class AtkClientService {
    */
   public function init(): void {
     $this->config = \Drupal::config('pl_drupal_forge.settings');
-    $options = [
+    $options = $this->config->get('credentials') ? [
+      'credentials' => $this->config->get('credentials'),
+      'region' => $this->config->get('region'),
+    ] : [
       'profile' => $this->config->get('profile'),
       'region' => $this->config->get('region'),
     ];
