@@ -51,6 +51,7 @@ class AtkClientService {
     $payload['uuid'] = $executionId;
     $payload['drushCmd'] = $this->config->get('drushCmd');
     $payload['targetSite'] = $this->config->get('targetSite');
+    $payload['workers'] = $this->config->get('workers');
     $function = $this->config->get('function');
     $this->logger->info('Invoke @function with payload: @payload', ['@function' => $function, '@payload' => $payload]);
     $result = $this->lambdaClient->invoke([

@@ -12,6 +12,9 @@ region: 'us-east-1'
 # AWS Lambda function name.
 function: 'atk-lambda-func-dev-execute_tests'
 
+# Number of workers (parallel threads) to run tests.
+workers: 2
+
 cloudWatch:
   # Group for custom logs in AWS CloudWatch.
   group: '/custom/atk_logs'
