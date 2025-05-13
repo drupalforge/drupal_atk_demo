@@ -5,8 +5,8 @@
 ```shell
 ddev start
 ddev composer install
-ddev drush site:install --account-name=admin --account-pass=password -y
-ddev drush en pl_drupal_forge -y
+tar -xzvf .devpanel/dumps/initial.db.sql.tgz
+ddev import-db --file=initial.db.sql
 ddev launch
 ```
 
