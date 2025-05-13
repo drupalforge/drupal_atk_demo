@@ -1,6 +1,6 @@
 {% for item in items %}
   <li{{ item.attributes.addClass("bullet-list__item") }}>
     <i data-lucide="circle-check-big" class="bullet-list__bullet"></i>
-    {{ item.content }}
+    {{ item.content|raw }}
   </li>
 {% endfor %}

@@ -7,7 +7,7 @@
       <i data-lucide="{{ content.field_card_icon|render|striptags|trim }}" class="cta-card__icon"></i>
     </div>
     <div class="cta-card__text">
-      <h3 class="cta-card__heading">{{ content.field_card_heading|render|striptags|trim }}</h3>
+      <h3 class="cta-card__heading">{{ content.field_card_heading|render|striptags|trim|raw }}</h3>
       <p class="cta-card__description">{{ content.field_card_description|render|striptags|trim }}</p>
     </div>
   </div>
