@@ -105,5 +105,9 @@ sudo curl -fsSL -o /usr/local/bin/n https://raw.githubusercontent.com/tj/n/maste
 sudo chmod 0755 /usr/local/bin/n
 sudo n install 22
 
-#== Install
-# TODO
+#== Install node dependencies and Playwright browsers
+# package.json must be already copied by the recipe.
+# Browser are preliminary versions, must be updated before
+# test run anyway. And we need chromium only.
+npm i --omit=dev
+npx playwright install chromium --with-deps
