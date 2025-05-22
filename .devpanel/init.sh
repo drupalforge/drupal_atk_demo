@@ -100,11 +100,10 @@ drush cr
 composer unpack drupal/automated_testing_kit_demo_recipe
 drush recipe ../recipes/automated_testing_kit_demo_recipe -v
 
-#== Install node
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
-sudo chown -R www:www /home/www/.nvm/
-nvm install 22
-nvm use 22
+#== Install node version manager
+sudo curl -fsSL -o /usr/local/bin/n https://raw.githubusercontent.com/tj/n/master/bin/n
+sudo chmod 0755 /usr/local/bin/n
+n install 22
 
 #== Install
 # TODO
