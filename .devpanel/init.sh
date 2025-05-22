@@ -103,7 +103,7 @@ drush recipe ../recipes/automated_testing_kit_demo_recipe -v
 #== Install node version manager
 sudo curl -fsSL -o /usr/local/bin/n https://raw.githubusercontent.com/tj/n/master/bin/n
 sudo chmod 0755 /usr/local/bin/n
-n install 22
+sudo n install 22
 
 #== Install
 # TODO
