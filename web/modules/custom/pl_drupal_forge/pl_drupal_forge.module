@@ -64,7 +64,9 @@ function pl_drupal_forge_install() {
      ->save();
 
   // Init ATK (AWS) client.
-  \Drupal::service('pl_drupal_forge.atk_client')->init();
+  if ($config_factory->get('pl_drupal_forge.settings')->get('runType') == 'aws') {
+    \Drupal::service('pl_drupal_forge.aws')->init();
+  }
 
   $role = Role::load('anonymous');
   if ($role) {

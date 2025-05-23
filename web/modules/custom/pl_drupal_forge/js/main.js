@@ -13,6 +13,9 @@ $(document).ready(function () {
   //   invoke();
   // });
 
+  // Fetch logs in case there is run launched from the different browser tab etc.
+  fetchLogs();
+
   $('.js-multiselect').multipleSelect({
     placeholder: 'Select tags...',
     minimumCountSelected: 4,
@@ -57,9 +60,13 @@ function $DRAPI(url, init) {
   });
 }
 
+function disableTheButton(value) {
+  $('#the-button').prop('disabled', value).text(value ? 'Running...' : 'Start Tests');
+}
+
 function invoke() {
   // disable the button to prevent occasional double-click
-  $('#the-button').prop('disabled', true).text('Running...');
+  disableTheButton(true);
   // clear previous logs and report link if they exist
   $('#log-content').text('');
   $('#report-link').html('');
@@ -119,7 +126,7 @@ function fetchLogs() {
 
       // If ended, enable the button again.
       if (data.status === 'ended' || data.status === 'timeout') {
-        $('#the-button').prop('disabled', false).text('Start Tests');
+        disableTheButton(false);
 
         // If message is received, collect it.
         if (data.message) {
@@ -140,6 +147,9 @@ function fetchLogs() {
             showMessage(message, data.statusCode !== 200);
           }
         }
+      }
+      if (data.status === 'running') {
+        disableTheButton(true);
       }
     })
     .catch(onError);
