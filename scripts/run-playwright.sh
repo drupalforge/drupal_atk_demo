@@ -4,7 +4,7 @@ set -x
 
 # Usage: ./run-playwright.sh [url] [grep]
 BASE_URL=$1
-GREP=${2:-@smoke}
+GREP=${2:-@(contact-us|media|taxonomy|user|menu|register-login)}
 
 # cd to project root (one level up from web/ or scripts/)
 cd ..
