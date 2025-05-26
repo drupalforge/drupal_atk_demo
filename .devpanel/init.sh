@@ -111,3 +111,12 @@ sudo n install 22
 # test run anyway. And we need chromium only.
 npm i --omit=dev
 npx playwright install chromium --with-deps
+
+# Allow run tests from web
+sudo usermod -aG sudo www-data
+sudo tee /etc/sudoers.d/runplaywright > /dev/null <<EOT
+www-data  ALL=(ALL) NOPASSWD: ALL
+EOT
+sudo chown -R www-data:www-data tests/ playwright.config.js playwright.atk.config.js
+sudo chmod 777 .
+sudo chmod 777 /var/www
