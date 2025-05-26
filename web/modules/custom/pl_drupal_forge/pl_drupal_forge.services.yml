@@ -1,5 +1,8 @@
 services:
 
   # A client to run ATK tests on AWS Lambda
-  pl_drupal_forge.atk_client:
-    class: Drupal\pl_drupal_forge\Service\AtkClientService
+  pl_drupal_forge.aws:
+    class: Drupal\pl_drupal_forge\Service\AwsRunService
+  pl_drupal_forge.local:
+    class: Drupal\pl_drupal_forge\Service\LocalRunService
+    arguments: ['@session', '@current_user', '@file_system', '@config.factory']

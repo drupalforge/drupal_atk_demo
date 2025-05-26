@@ -7,7 +7,8 @@ use Aws\Lambda\LambdaClient;
 use Drupal\pl_drupal_forge\Helper\Helper;
 use Psr\Log\LoggerInterface;
 
-class AtkClientService {
+class AwsRunService implements RunService
+{
   protected \Drupal\Core\Config\ImmutableConfig $config;
   protected LambdaClient $lambdaClient;
   protected CloudWatchLogsClient $logsClient;
@@ -46,7 +47,7 @@ class AtkClientService {
     $this->logsClient = CloudWatchLogsClient::factory($options);
   }
 
-  public function invokeFunction(array $payload): void {
+  public function startExecution(array $payload): void {
     $executionId = \Drupal::service('uuid')->generate();
     $payload['uuid'] = $executionId;
     $payload['drushCmd'] = $this->config->get('drushCmd');

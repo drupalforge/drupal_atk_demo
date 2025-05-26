@@ -1,3 +1,9 @@
+# Run type: aws | local
+runType: local
+
+# Script timeout, in ms.
+scriptTimeout: 300000
+
 # AWS system profile (in ~/.aws/credentials).
 profile: 'performantlabs'
 

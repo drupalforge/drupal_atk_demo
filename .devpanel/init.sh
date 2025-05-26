@@ -99,3 +99,24 @@ composer require drupal/automated_testing_kit_demo_recipe
 drush cr
 composer unpack drupal/automated_testing_kit_demo_recipe
 drush recipe ../recipes/automated_testing_kit_demo_recipe -v
+
+#== Install node version manager
+sudo curl -fsSL -o /usr/local/bin/n https://raw.githubusercontent.com/tj/n/master/bin/n
+sudo chmod 0755 /usr/local/bin/n
+sudo n install 22
+
+#== Install node dependencies and Playwright browsers
+# package.json must be already copied by the recipe.
+# Browser are preliminary versions, must be updated before
+# test run anyway. And we need chromium only.
+npm i --omit=dev
+npx playwright install chromium --with-deps
+
+# Allow run tests from web
+sudo usermod -aG sudo www-data
+sudo tee /etc/sudoers.d/runplaywright > /dev/null <<EOT
+www-data  ALL=(ALL) NOPASSWD: ALL
+EOT
+sudo chown -R www-data:www-data tests/ playwright.config.js playwright.atk.config.js
+sudo chmod 777 .
+sudo chmod 777 /var/www

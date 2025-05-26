@@ -8,6 +8,7 @@ on:
 jobs:
   build-application:
     runs-on: ubuntu-latest
+    if: github.repository == 'drupalforge/drupal_atk_demo'
     services:
       webserver:
         image: devpanel/php:8.3-base
