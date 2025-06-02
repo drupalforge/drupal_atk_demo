@@ -11,7 +11,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * Provide an endpoint to invoke ATK Lambda function.
  */
 #[RestResource(
-    id: 'pl_drupal_forge_invoke',
+    id: 'pl_drupal_forge_invoke_atk',
     label: new TranslatableMarkup('Invoke ATK Lambda Function'),
     uri_paths: [
         'create' => '/pl_drupal_forge/invoke'

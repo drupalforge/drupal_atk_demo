@@ -9,7 +9,7 @@ dependencies:
 _core:
   default_config_hash: eNy1uYFKxVTLxwMSCxl3negQOjh1W8-mLFT72XihXoI
 id: pl_drupal_forge_invoke_config
-plugin_id: pl_drupal_forge_invoke
+plugin_id: pl_drupal_forge_invoke_atk
 granularity: method
 configuration:
   POST:

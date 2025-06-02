@@ -20,6 +20,6 @@ is_admin: false
 permissions:
   - 'access content'
   - 'restful get pl_drupal_forge_logs'
-  - 'restful post pl_drupal_forge_invoke'
+  - 'restful post pl_drupal_forge_invoke_atk'
   - 'use text format restricted_html'
   - 'view media'
