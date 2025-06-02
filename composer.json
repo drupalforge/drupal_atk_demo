@@ -23,6 +23,7 @@
     "composer/installers": "^2.0",
     "drupal/admin_toolbar": "^3.6",
     "drupal/admin_toolbar_tools": "^3.4",
+    "drupal/asset_injector": "^2.21",
     "drupal/automated_testing_kit": "^2.0",
     "drupal/block_content_suggestions": "^1.1",
     "drupal/core": "^11.1",
