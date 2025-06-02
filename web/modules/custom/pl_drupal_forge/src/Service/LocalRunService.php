@@ -100,7 +100,6 @@ class LocalRunService implements RunService
     $random = new Random();
     $uniqueId = $random->string(10, TRUE, TRUE, TRUE); // Alphanumeric
     $outputFile = $this->fileSystem->getTempDirectory() . '/my_awesome_script_output_' . $currentUserId . '_' . $uniqueId . '.log';
-    $errorFile = $this->fileSystem->getTempDirectory() . '/my_awesome_script_error_' . $currentUserId . '_' . $uniqueId . '.log';
 
     // Command to run the script in the background and redirect output.
     // ' > ' redirects stdout, ' 2> ' redirects stderr.
@@ -111,7 +110,7 @@ class LocalRunService implements RunService
     if (array_key_exists('grep', $payload)) {
       $command = $command . " " . escapeshellarg($payload['grep']);
     }
-    $command = $command . " > " . escapeshellarg($outputFile) . " 2> " . escapeshellarg($errorFile) . " & echo $!";
+    $command = $command . " > " . escapeshellarg($outputFile) . " 2>&1 & echo $!";
 
     $process = proc_open($command, [
         0 => ['pipe', 'r'], // stdin
@@ -164,7 +163,6 @@ class LocalRunService implements RunService
     // Get script start time
     $startedTimestamp = $scriptData['started'];
     $lastReadPositionOutput = !(bool)$lastTimestamp ? 0 : $scriptData['last_read_position_output'] ?? 0;
-    $lastReadPositionError = !(bool)$lastTimestamp ? 0 : $scriptData['last_read_position_error'] ?? 0;
 
     $isRunning = $this->isScriptRunning($pid);
     $isTimedOut = false;
@@ -193,7 +191,6 @@ class LocalRunService implements RunService
     // Get the current modification time of the log files.
     // This will serve as the timestamp for all messages read in this call.
     $outputFileMtime = file_exists($outputFile) ? filemtime($outputFile) * 1000 : 0; // Epoch millis
-    $errorFileMtime = file_exists($errorFile) ? filemtime($errorFile) * 1000 : 0;   // Epoch millis
 
     // Read new output lines
     if (file_exists($outputFile)) {
@@ -219,30 +216,6 @@ class LocalRunService implements RunService
       }
     }
 
-    // Read new error lines
-    if (file_exists($errorFile)) {
-      $fileHandle = fopen($errorFile, 'r');
-      if ($fileHandle) {
-        fseek($fileHandle, $lastReadPositionError);
-        while (!feof($fileHandle)) {
-          $line = fgets($fileHandle);
-          if ($line === false) { // Reached end or error
-            break;
-          }
-          $line = rtrim($line, "\r\n"); // Remove newline characters
-          if (!empty($line)) {
-            $newLogs[] = [
-                'timestamp' => $errorFileMtime,
-                'message' => $line,
-            ];
-          }
-        }
-        $newReadPositionError = ftell($fileHandle);
-        fclose($fileHandle);
-        $scriptData['last_read_position_error'] = $newReadPositionError;
-      }
-    }
-
     // Sort logs by timestamp if you want them strictly ordered, though
     // sequential reading usually keeps them ordered by appearance.
     // ksort($newLogs); // Not needed if appending correctly
@@ -262,7 +235,7 @@ class LocalRunService implements RunService
     }
 
     $response = [
-        'timestamp' => max($outputFileMtime, $errorFileMtime),
+        'timestamp' => $outputFileMtime,
         'status' => $isTimedOut ? 'timeout' : ($isRunning ? 'running' : 'ended'),
         'logs' => $newLogs,
     ];
