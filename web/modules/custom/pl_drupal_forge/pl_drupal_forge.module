@@ -12,7 +12,8 @@ use Drupal\user\Entity\Role;
  *   <em> Implements hook_help().
  * </em>
  */
-function pl_drupal_forge_help($route_name, \Drupal\Core\Routing\RouteMatchInterface $route_match) {
+function pl_drupal_forge_help($route_name, \Drupal\Core\Routing\RouteMatchInterface $route_match)
+{
   switch ($route_name) {
     case 'help.page.pl_drupal_forge':
       return '<p>' . t('PL Drupal Forge help message placeholder') . '</p>';
@@ -24,21 +25,22 @@ function pl_drupal_forge_help($route_name, \Drupal\Core\Routing\RouteMatchInterf
  *   <em> Implements hook_theme().
  * </em>
  */
-function pl_drupal_forge_theme($existing, $type, $theme, $path) {
+function pl_drupal_forge_theme($existing, $type, $theme, $path)
+{
   return [
-    'start_page_template' => [
-      'variables' => [
-        'show_url' => null,
-        'start_test_form' => null,
-        'base_url' => null,
-        'tags' => [],
+      'start_page_template' => [
+          'variables' => [
+              'show_url' => null,
+              'start_test_form' => null,
+              'base_url' => null,
+              'tags' => [],
+          ],
       ],
-    ],
-    'report_page_template' => [
-      'variables' => [
-        'report' => null,
+      'report_page_template' => [
+          'variables' => [
+              'report' => null,
+          ],
       ],
-    ],
   ];
 }
 
@@ -50,18 +52,19 @@ function pl_drupal_forge_theme($existing, $type, $theme, $path) {
  *
  * @return void
  */
-function pl_drupal_forge_install() {
+function pl_drupal_forge_install()
+{
   // Ensure config is installed.
   \Drupal::service('config.installer')->installDefaultConfig('module', 'pl_drupal_forge');
 
   // Get the config factory service.
   $config_factory = \Drupal::configFactory();
 
-   // Update system.site configuration (e.g., default front page).
-   $system_site_config = $config_factory->getEditable('system.site');
-   $system_site_config
-     ->set('page.front', '/home')
-     ->save();
+  // Update system.site configuration (e.g., default front page).
+  $system_site_config = $config_factory->getEditable('system.site');
+  $system_site_config
+      ->set('page.front', '/home')
+      ->save();
 
   // Init ATK (AWS) client.
   if ($config_factory->get('pl_drupal_forge.settings')->get('runType') == 'aws') {
@@ -70,12 +73,12 @@ function pl_drupal_forge_install() {
 
   $role = Role::load('anonymous');
   if ($role) {
-    $role->grantPermission('restful get pl_drupal_forge_logs');
-    $role->grantPermission('restful post pl_drupal_forge_invoke');
+    $role->grantPermission('restful get pl_drupal_forge_logs_atk');
+    $role->grantPermission('restful post pl_drupal_forge_invoke_atk');
     $role->save();
 
     \Drupal::logger('pl_drupal_forge')->notice('' .
-      'Permission granted to anonymous users.
+        'Permission granted to anonymous users.
       Enjoy your AWS and Azure bills 🤪');
   }
 }

@@ -21,12 +21,23 @@ class AwsRunService implements RunService
     // 2. We started the service when the module is installed, in this
     //    case initialize it here.
     $this->logger = \Drupal::logger('pl_drupal_forge');
-    $config = \Drupal::config('pl_drupal_forge.settings');
-    if ($config->get()) {
-      $this->init();
-    }
-    else {
+    
+    try {
+      // Check if the config factory service is available
+      if (\Drupal::hasService('config.factory')) {
+        $config = \Drupal::config('pl_drupal_forge.settings');
+        // Only initialize if we can get a specific config value
+        if (!$config->isNew() && $config->get('runType') !== NULL) {
+          $this->init();
+          return;
+        }
+      }
+      
+      // If we get here, config is not ready
       $this->logger->notice('Postpone initialization because config is not ready yet.');
+    }
+    catch (\Exception $e) {
+      $this->logger->error('Error during service initialization: @message', ['@message' => $e->getMessage()]);
     }
   }
 
@@ -34,17 +45,39 @@ class AwsRunService implements RunService
    * @return void
    */
   public function init(): void {
-    $this->config = \Drupal::config('pl_drupal_forge.settings');
-    $options = $this->config->get('credentials') ? [
-      'credentials' => $this->config->get('credentials'),
-      'region' => $this->config->get('region'),
-    ] : [
-      'profile' => $this->config->get('profile'),
-      'region' => $this->config->get('region'),
-    ];
+    try {
+      $this->config = \Drupal::config('pl_drupal_forge.settings');
+      
+      // Make sure we have the required configuration values
+      $region = $this->config->get('region');
+      if (empty($region)) {
+        $this->logger->error('Missing required configuration: region');
+        return;
+      }
+      
+      // Build AWS client options
+      if ($this->config->get('credentials')) {
+        $options = [
+          'credentials' => $this->config->get('credentials'),
+          'region' => $region,
+        ];
+      } else if ($this->config->get('profile')) {
+        $options = [
+          'profile' => $this->config->get('profile'),
+          'region' => $region,
+        ];
+      } else {
+        $this->logger->error('Missing required configuration: either credentials or profile must be set');
+        return;
+      }
 
-    $this->lambdaClient = LambdaClient::factory($options);
-    $this->logsClient = CloudWatchLogsClient::factory($options);
+      // Create AWS clients
+      $this->lambdaClient = LambdaClient::factory($options);
+      $this->logsClient = CloudWatchLogsClient::factory($options);
+      $this->logger->info('AWS service initialized successfully');
+    } catch (\Exception $e) {
+      $this->logger->error('Error initializing AWS service: @message', ['@message' => $e->getMessage()]);
+    }
   }
 
   public function startExecution(array $payload): void {

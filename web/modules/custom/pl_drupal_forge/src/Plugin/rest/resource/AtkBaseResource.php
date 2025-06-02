@@ -41,19 +41,22 @@ class AtkBaseResource extends ResourceBase
       return;
     }
 
-    $container = \Drupal::getContainer();
-    // Initialize RunService regarding to the given configuration settings.
-    // Sometimes null comes, so Drupal will re-initialize it during request.
-    $config = $container->get('config.factory')->get('pl_drupal_forge.settings');
-    $runType = $config->get('runType');
-    if ((bool)$runType) {
-      $this->runService = $container->get("pl_drupal_forge.$runType");
-    }
-
-    if (!(bool)$this->runService) {
-      $this->logger->error("Initialization of 'pl_drupal_forge.$runType' miserably failed");
-    } else {
-      $this->logger->notice("Initialization of 'pl_drupal_forge.$runType' successful");
+    try {
+      $container = \Drupal::getContainer();
+      // Initialize RunService regarding to the given configuration settings.
+      $config = $container->get('config.factory')->get('pl_drupal_forge.settings');
+      $runType = $config->get('runType');
+      
+      if ((bool)$runType && $container->has("pl_drupal_forge.$runType")) {
+        $this->runService = $container->get("pl_drupal_forge.$runType");
+        $this->logger->notice("Initialization of 'pl_drupal_forge.$runType' successful");
+      } else {
+        // If the service doesn't exist or runType is not set, use a fallback approach
+        $this->logger->notice("Service 'pl_drupal_forge.$runType' not available, using fallback");
+        // You could set a fallback service here if needed
+      }
+    } catch (\Exception $e) {
+      $this->logger->error("Error initializing service: @message", ['@message' => $e->getMessage()]);
     }
   }
 

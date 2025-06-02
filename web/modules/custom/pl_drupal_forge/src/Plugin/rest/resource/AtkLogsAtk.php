@@ -8,7 +8,7 @@ use Drupal\rest\ResourceResponse;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 #[RestResource(
-    id: 'pl_drupal_forge_logs',
+    id: 'pl_drupal_forge_logs_atk',
     label: new TranslatableMarkup('Fetch the Lambda Function Logs'),
     uri_paths: [
         'canonical' => '/pl_drupal_forge/logs',

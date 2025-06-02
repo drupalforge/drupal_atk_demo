@@ -1,5 +1,5 @@
 id: pl_drupal_forge_logs_config
-plugin_id: pl_drupal_forge_logs
+plugin_id: pl_drupal_forge_logs_atk
 granularity: method
 configuration:
   GET:
