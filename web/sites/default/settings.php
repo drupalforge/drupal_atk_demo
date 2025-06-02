@@ -789,6 +789,9 @@ $databases['default']['default'] = [
 //   include $app_root . '/' . $site_path . '/settings.local.php';
 // }
 
+// Hide errors on DevPanel; show them on DDEV.
+
+$config['system.logging']['error_level'] = 'hide';
 // Automatically generated include for settings managed by ddev.
 $ddev_settings = __DIR__ . '/settings.ddev.php';
 if (getenv('IS_DDEV_PROJECT') == 'true' && is_readable($ddev_settings)) {
