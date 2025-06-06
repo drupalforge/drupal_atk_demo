@@ -25,7 +25,7 @@ module.exports = defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     ['html', { outputFolder: 'web/sites/default/files/playwright-report', open: 'never' }],
-    ['./tests/support/atk_reporter.js', { level: 'debug' }],
+    ['./tests/support/atk_reporter.js', { level: 'silly' }],
   ],
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
@@ -36,6 +36,7 @@ module.exports = defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on',
+    video: 'retain-on-failure',
     launchOptions: {
       slowMo: 0,
     },
