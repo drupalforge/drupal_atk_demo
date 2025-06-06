@@ -243,7 +243,7 @@ class LocalRunService implements RunService
       $response['message'] = "Script timeout: {$this->scriptTimeout}ms";
     } elseif (!$isRunning) {
       $response['message'] = 'Test execution finished.';
-      $response['resultUri'] = '/sites/default/files/playwright-report/index.html';
+      $response['resultUri'] = '/sites/default/files/playwright-report/index.html?t=' . $outputFileMtime;
     }
     return $response;
   }
