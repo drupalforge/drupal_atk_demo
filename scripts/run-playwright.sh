@@ -4,7 +4,7 @@ set -x
 
 # Usage: ./run-playwright.sh [url] [grep]
 BASE_URL=$1
-GREP=${2:-@(contact-us|media|taxonomy|user|menu|register-login)}
+GREP=${2:-@(user|ATK-PW-1000|ATK-PY-1012|ATK-PW-1030)}
 
 # cd to project root (one level up from web/ or scripts/)
 cd ..
