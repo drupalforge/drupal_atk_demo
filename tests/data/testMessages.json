@@ -1,0 +1,4 @@
+{
+    "ATK_MID_MISSING": "data-media-id is missing. Possible reasons:\n * Element is not a media item.\n * Automated Testing Kit is not installed and enabled:\n\n     `drush en automated_testing_kit`\n\n * Issue in the module, check: https://www.drupal.org/project/issues/automated_testing_kit?categories=1",
+    "ATK_NID_MISSING": "node-nid-*** is missing. Possible reasons:\n * Currently opened document is not a node.\n * Automated Testing Kit is not installed and enabled:\n\n     `drush en automated_testing_kit`\n\n * Issue in the module, check: https://www.drupal.org/project/issues/automated_testing_kit?categories=1"
+}

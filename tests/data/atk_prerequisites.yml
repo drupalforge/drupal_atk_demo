@@ -1,0 +1,7 @@
+- command: 'pm:list --format=json'
+  message: 'Automated Testing Kit, QA Accounts must be enabled. (See data/atk_prerequisites.yml for details)'
+  json:
+    automated_testing_kit.status:
+      eq: 'Enabled'
+    qa_accounts.status:
+      eq: 'Enabled'

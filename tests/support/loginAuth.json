@@ -1,0 +1,45 @@
+{
+  "cookies": [
+    {
+      "name": "_ga",
+      "value": "GA1.1.538295040.1749763435",
+      "domain": ".ddev.site",
+      "path": "/",
+      "expires": 1784323435.16305,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga_PHJXSHBS55",
+      "value": "GS2.1.s1749763435$o1$g0$t1749763435$j60$l0$h0",
+      "domain": ".ddev.site",
+      "path": "/",
+      "expires": 1784323435.548796,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "SSESSe6f748e215f8a22b1d091452b0cd0848",
+      "value": "r3gvt282c3ke7usem3go524ud6",
+      "domain": ".pl-drupal-forge.ddev.site",
+      "path": "/",
+      "expires": 1751763435.655161,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://pl-drupal-forge.ddev.site",
+      "localStorage": [
+        {
+          "name": "Drupal.toolbar.activeTabID",
+          "value": "\"toolbar-item-administration\""
+        }
+      ]
+    }
+  ]
+}
