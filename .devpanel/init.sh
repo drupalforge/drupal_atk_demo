@@ -112,6 +112,9 @@ sudo n install 22
 npm i --omit=dev
 npx playwright install chromium --with-deps
 
+# Restore customized tests from the repo
+git checkout tests
+
 # Allow run tests from web
 sudo usermod -aG sudo www-data
 sudo tee /etc/sudoers.d/runplaywright > /dev/null <<EOT

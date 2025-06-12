@@ -6,14 +6,14 @@
       <label for="input-url" class="pl-form-item__label">URL</label>
       <input id="input-url" class="pl-form-item__input" type="text" name="url" value="{{ base_url }}">
     </div>
-    {# <div class="pl-form-item">
+    <div class="pl-form-item">
       <label for="tags" class="pl-form-item__label">Tags</label>
       <select id="tags" class="pl-form-item__select js-multiselect" name="tag" multiple="multiple">
         {% for tag in tags %}
           <option class="tag-option" value="{{ tag }}">{{ tag }}</option>
         {% endfor %}
       </select>
-    </div> #}
+    </div>
     <button id="the-button" class="pl-button pl-button--lg" onclick="invoke()">Start Tests</button>
   </form>
   {# {{ start_test_form }} #}

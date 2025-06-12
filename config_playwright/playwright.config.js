@@ -41,7 +41,7 @@ module.exports = defineConfig({
       slowMo: 0,
     },
   },
-  timeout: 10000,
+  timeout: 20000,
   /* Configure projects for major browsers */
   projects: [
     {
